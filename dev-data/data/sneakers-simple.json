@@ -32,7 +32,7 @@
     "price": 337,
     "sizes": {
       "8": 10,
-      "8.5": 22,
+      "8-5": 22,
       "10": 40
     },
     "images": [
@@ -54,8 +54,8 @@
     "price": 525,
     "sizes": {
       "7": 10,
-      "7.5": 12,
-      "8.5": 78,
+      "7-5": 12,
+      "8-5": 78,
       "11": 22,
       "12": 40,
       "13": 60,
@@ -79,7 +79,7 @@
     "name": "WMNS AIR VAPORMAX 2020 'MULTI-COLOR'",
     "price": 325,
     "sizes": {
-      "7.5": 3
+      "7-5": 3
     },
     "images": ["nike-vapormax-2020-mulit-color-1.jpg"],
     "description": "",
@@ -177,14 +177,14 @@
     "name": "PHARRELL X NMD HUMAN RACE 'INSPIRATION PACK'",
     "price": 245,
     "sizes": {
-      "4.5": 15,
+      "4-5": 15,
       "7": 13,
       "8": 2,
-      "8.5": 29,
-      "9.5": 8,
-      "11.5": 22,
+      "8-5": 29,
+      "9-5": 8,
+      "11-5": 22,
       "12": 5,
-      "13.5": 2
+      "13-5": 2
     },
     "images": [
       "adidas-pharrell-inspiration-pack-1.jpg",
