@@ -2,17 +2,17 @@
   {
     "name": "AIR JORDAN 1 RETRO HIGH OG 'PINE GREEN'",
     "price": 546,
-    "sizes": {
-      "7": 10,
-      "8": 22,
-      "9": 40,
-      "10": 20,
-      "11": 70,
-      "12": 80,
-      "13": 23,
-      "14": 56,
-      "15": 78
-    },
+    "sizesAndQuantity": [
+      [7, 10],
+      [8, 22],
+      [9, 40],
+      [10, 20],
+      [11, 70],
+      [12, 80],
+      [13, 23],
+      [14, 56],
+      [15, 78]
+    ],
     "images": [
       "aj1-pine-green-1.jpg",
       "aj1-pine-green-2.jpg",
@@ -30,11 +30,11 @@
   {
     "name": "AIR JORDAN 3 RETRO 'TRUE BLUE' 2011",
     "price": 337,
-    "sizes": {
-      "8": 10,
-      "8-5": 22,
-      "10": 40
-    },
+    "sizesAndQuantity": [
+      [8, 10],
+      [8.5, 22],
+      [10, 40]
+    ],
     "images": [
       "aj3-true-blue-2011-1.jpg",
       "aj3-true-blue-2011-2.jpg",
@@ -52,15 +52,15 @@
   {
     "name": "AIR JORDAN 4 RETRO OG 'WHITE CEMENT' 2016",
     "price": 525,
-    "sizes": {
-      "7": 10,
-      "7-5": 12,
-      "8-5": 78,
-      "11": 22,
-      "12": 40,
-      "13": 60,
-      "16": 30
-    },
+    "sizesAndQuantity": [
+      [7, 10],
+      [7.5, 12],
+      [8.5, 78],
+      [11, 22],
+      [12, 40],
+      [13, 60],
+      [16, 30]
+    ],
     "images": [
       "aj4-white-cement-2016-1.jpg",
       "aj4-white-cement-2016-2.jpg",
@@ -78,9 +78,7 @@
   {
     "name": "WMNS AIR VAPORMAX 2020 'MULTI-COLOR'",
     "price": 325,
-    "sizes": {
-      "7-5": 3
-    },
+    "sizesAndQuantity": [[7.5, 3]],
     "images": ["nike-vapormax-2020-mulit-color-1.jpg"],
     "description": "",
     "brand": "Nike",
@@ -93,12 +91,11 @@
   {
     "name": "STEVEN HARRINGTON X AIR FORCE 1 LOW FLYLEATHER QS 'EARTH DAY'",
     "price": 995,
-    "sizes": {
-      "10": 10,
-      "11": 12,
-      "12": 78,
-      "14": 22
-    },
+    "sizesAndQuantity": [
+      [10, 10],
+      [11, 12],
+      [12, 78]
+    ],
     "images": [
       "nike-af1-earth-day-1.jpg",
       "nike-af1-earth-day-2.jpg",
@@ -116,9 +113,7 @@
   {
     "name": "BLAZER MID '77 VINTAGE 'LUCID GREEN'",
     "price": 255,
-    "sizes": {
-      "9": 10
-    },
+    "sizesAndQuantity": [[9, 10]],
     "images": [
       "nike-blazer-lucid-green-1.jpg",
       "nike-blazer-lucid-green-2.jpg",
@@ -136,9 +131,7 @@
   {
     "name": "STAN SMITH OG 'TUMBLED LEATHER'",
     "price": 90,
-    "sizes": {
-      "6": 10
-    },
+    "sizesAndQuantity": [[6, 10]],
     "images": [
       "adidas-stan-smith-og-tumbled-leather-1.jpg",
       "adidas-stan-smith-og-tumbled-leather-2.jpg",
@@ -156,9 +149,7 @@
   {
     "name": "SUPERSTAR 'WHITE BLACK'",
     "price": 43,
-    "sizes": {
-      "12": 135
-    },
+    "sizesAndQuantity": [[12, 35]],
     "images": [
       "adidas-superstar-white-black-1.jpg",
       "adidas-superstar-white-black-2.jpg",
@@ -176,16 +167,16 @@
   {
     "name": "PHARRELL X NMD HUMAN RACE 'INSPIRATION PACK'",
     "price": 245,
-    "sizes": {
-      "4-5": 15,
-      "7": 13,
-      "8": 2,
-      "8-5": 29,
-      "9-5": 8,
-      "11-5": 22,
-      "12": 5,
-      "13-5": 2
-    },
+    "sizesAndQuantity": [
+      [4.5, 15],
+      [7, 13],
+      [8, 2],
+      [8.5, 29],
+      [9.5, 8],
+      [11.5, 22],
+      [12, 5],
+      [13.5, 2]
+    ],
     "images": [
       "adidas-pharrell-inspiration-pack-1.jpg",
       "adidas-pharrell-inspiration-pack-2.jpg",

@@ -11,8 +11,8 @@ const sneakerSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'A sneaker must have a price'],
   },
-  sizes: {
-    type: Object,
+  sizesAndQuantity: {
+    type: [Array],
   },
   images: [String],
   description: {
