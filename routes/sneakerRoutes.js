@@ -7,4 +7,9 @@ router
   .get(sneakerController.getAllSneakers)
   .post(sneakerController.createSneaker);
 
+router
+  .route('/:id')
+  .get(sneakerController.getSneaker)
+  .patch(sneakerController.updateSneaker)
+  .delete(sneakerController.deleteSneaker);
 module.exports = router;
