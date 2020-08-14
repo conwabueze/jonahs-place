@@ -3,7 +3,18 @@ const Sneaker = require('../models/sneakerModel');
 //Get all sneakers
 exports.getAllSneakers = async (req, res) => {
   try {
-    const sneakers = await Sneaker.find();
+    //filter out general fields
+    let query = { ...req.query };
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    excludedFields.forEach((field) => delete query[field]);
+
+    //filtering for less than greater than operators
+    let queryStr = JSON.stringify(query);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+
+    query = Sneaker.find(JSON.parse(queryStr));
+
+    const sneakers = await query;
 
     res.status(200).json({
       status: 'success',
