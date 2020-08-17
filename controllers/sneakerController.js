@@ -1,20 +1,28 @@
 const Sneaker = require('../models/sneakerModel');
+const APIFeatures = require('../utils/apiFeatures');
 
 //Get all sneakers
 exports.getAllSneakers = async (req, res) => {
   try {
-    //filter out general fields
-    let query = { ...req.query };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
-    excludedFields.forEach((field) => delete query[field]);
+    // ///pagination
+    // const page = req.query.page * 1 || 1;
+    // const limit = req.query.limit * 1 || 100;
+    // const skip = (page - 1) * limit;
 
-    //filtering for less than greater than operators
-    let queryStr = JSON.stringify(query);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    // query = query.skip(skip).limit(limit);
 
-    query = Sneaker.find(JSON.parse(queryStr));
+    // if (req.query.page) {
+    //   const numSneakers = await Sneaker.countDocuments();
+    //   if (skip >= numSneakers) throw new Error('This page does not exist');
+    // }
 
-    const sneakers = await query;
+    const features = new APIFeatures(Sneaker.find(), req.query)
+      .filter()
+      .limitFields()
+      .sort()
+      .paginate();
+    const sneakers = await features.query;
+    // const sneakers = await query;
 
     res.status(200).json({
       status: 'success',
@@ -23,6 +31,7 @@ exports.getAllSneakers = async (req, res) => {
       },
     });
   } catch (err) {
+    console.log(err);
     res.status(404).json({
       status: 'fail',
       message: 'something went wrong',
