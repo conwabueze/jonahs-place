@@ -3,13 +3,20 @@ const sneakerController = require('../controllers/sneakerController');
 const router = express.Router();
 
 router
-  .route('/')
-  .get(sneakerController.getAllSneakers)
-  .post(sneakerController.createSneaker);
+  .route('/sneakers-released/:year')
+  .get(sneakerController.sneakersReleasedIn);
+
+router.route('/sneaker-averages').get(sneakerController.sneakerAverages);
 
 router
   .route('/:id')
   .get(sneakerController.getSneaker)
   .patch(sneakerController.updateSneaker)
   .delete(sneakerController.deleteSneaker);
+
+router
+  .route('/')
+  .get(sneakerController.getAllSneakers)
+  .post(sneakerController.createSneaker);
+
 module.exports = router;

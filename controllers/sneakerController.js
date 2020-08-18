@@ -115,3 +115,64 @@ exports.deleteSneaker = async (req, res) => {
     });
   }
 };
+
+//get sneakers realeased in particular year
+exports.sneakersReleasedIn = async (req, res) => {
+  try {
+    const year = req.params.year * 1; // * 1 to convert string to number
+    const sneakers = await Sneaker.aggregate([
+      {
+        $match: {
+          dateReleased: {
+            $gte: new Date(`${year}-01-01`),
+            $lte: new Date(`${year}-12-31`),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: '$brand',
+          total: { $sum: 1 },
+          sneakers: { $push: { name: '$name', year: '$dateReleased' } },
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        sneakers,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'something went wrong',
+    });
+  }
+};
+
+exports.sneakerAverages = async (req, res) => {
+  try {
+    const sneakerAvgs = await Sneaker.aggregate([
+      {
+        $group: {
+          _id: '$type',
+          sneakerAvg: { $avg: '$price' },
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        sneakerAvgs,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'something went wrong',
+    });
+  }
+};

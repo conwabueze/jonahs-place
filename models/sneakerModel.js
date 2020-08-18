@@ -36,9 +36,8 @@ const sneakerSchema = new mongoose.Schema({
     trim: true,
     unique: true,
   },
-  dataReleased: {
+  dateReleased: {
     type: Date,
-    default: Date.now(),
   },
   gender: {
     type: String,
