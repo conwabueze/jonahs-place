@@ -22,10 +22,13 @@ const sneakerSchema = new mongoose.Schema({
   brand: {
     type: String,
     trim: true,
+    required: [true, 'A sneaker must have a brand'],
+
   },
   type: {
     type: String,
     trim: true,
+    required: [true, 'A sneaker must have a type'],
   },
   color: {
     type: String,
@@ -35,6 +38,7 @@ const sneakerSchema = new mongoose.Schema({
     type: String,
     trim: true,
     unique: true,
+    required: [true, 'A sneaker must have a product code'],
   },
   dateReleased: {
     type: Date,
