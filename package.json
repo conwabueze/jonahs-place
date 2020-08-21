@@ -4,8 +4,9 @@
   "description": "A sneaker api and server rendered site",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Chino N",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "ndb": "^1.1.5",
     "nodemon": "^2.0.4"
   }
 }

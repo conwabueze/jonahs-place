@@ -6,7 +6,7 @@ router
   .route('/sneakers-released/:year')
   .get(sneakerController.sneakersReleasedIn);
 
-router.route('/sneaker-averages').get(sneakerController.sneakerAverages);
+router.route('/sneaker-averages/:type?').get(sneakerController.sneakerAverages);
 
 router
   .route('/:id')
