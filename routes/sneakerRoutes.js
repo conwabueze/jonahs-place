@@ -1,6 +1,7 @@
 const express = require('express');
 const sneakerController = require('../controllers/sneakerController');
 const router = express.Router();
+const authController = require('../controllers/authController');
 
 router
   .route('/sneakers-released/:year')
@@ -16,7 +17,7 @@ router
 
 router
   .route('/')
-  .get(sneakerController.getAllSneakers)
+  .get(authController.protect, sneakerController.getAllSneakers)
   .post(sneakerController.createSneaker);
 
 module.exports = router;

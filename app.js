@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const sneakerRouter = require('./routes/sneakerRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
@@ -15,14 +16,15 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 
 app.use('/api/v1/sneakers', sneakerRouter);
-
+app.use('/api/v1/users', userRouter);
 //middleware for unhandled routes
-app.all('*', (req,res,next)=>{
+
+app.all('*', (req, res, next) => {
   // const err = new Error(`Can't find ${req.originalUrl} on this server!`);
   // err.status = 'fail';
   // err.statusCode = 404;
 
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`,404));
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);
