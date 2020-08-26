@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
@@ -33,8 +34,13 @@ const userSchema = new mongoose.Schema({
   },
   passwordChangedAt: {
     type: Date,
-    default: Date.now(),
   },
+  role: {
+    type: String,
+    enum: ['admin', 'customer'],
+  },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 });
 
 //instance method for checking if user password was changed anytime after token was issued
@@ -47,6 +53,22 @@ userSchema.methods.changedPasswordAfter = function (JWTtimestamp) {
   }
 
   return false;
+};
+
+userSchema.methods.createPasswordResetToken = function () {
+  //1) Create token ... 32 === bit size
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  //2) encrypt token, set it in schema and provide expiration (set expiration to 10 mins after the current time)
+  this.passwordResetToken = crypto
+    .createHash('sha256') //sha256 algorithm
+    .update(resetToken)
+    .digest('hex');
+
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+  //3) Return plain text to provide in email to user
+  return resetToken;
 };
 
 userSchema.pre('save', async function (next) {

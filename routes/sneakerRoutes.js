@@ -13,7 +13,11 @@ router
   .route('/:id')
   .get(sneakerController.getSneaker)
   .patch(sneakerController.updateSneaker)
-  .delete(sneakerController.deleteSneaker);
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin'),
+    sneakerController.deleteSneaker
+  );
 
 router
   .route('/')
