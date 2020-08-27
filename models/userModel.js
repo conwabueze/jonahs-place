@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ['admin', 'customer'],
+    default: 'customer',
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -83,6 +84,16 @@ userSchema.pre('save', async function (next) {
   //we only need the passwordConfirm to validate the password at this point that the  job is already done
   //even though we set the passwordConfirm to required, required means that the field is required not that it has to be persisted to the database
   this.passwordConfirm = undefined;
+
+  next();
+});
+
+userSchema.pre('save', async function (next) {
+  //1)If the password is was not modified or is new just go on to the next middleware
+  if (!this.isModified || this.isNew) next();
+
+  //We are subtracting by 1000 milliseconds because sometimes issueing the token will happen alitle fastest than saving the passwordChangedAt to the DB
+  this.passwordChangedAt = Date.now() - 1000;
 
   next();
 });
