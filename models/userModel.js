@@ -42,6 +42,11 @@ const userSchema = new mongoose.Schema({
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
 
 //instance method for checking if user password was changed anytime after token was issued
@@ -94,6 +99,12 @@ userSchema.pre('save', async function (next) {
 
   //We are subtracting by 1000 milliseconds because sometimes issueing the token will happen alitle fastest than saving the passwordChangedAt to the DB
   this.passwordChangedAt = Date.now() - 1000;
+
+  next();
+});
+
+userSchema.pre(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
 
   next();
 });
