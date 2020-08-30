@@ -22,6 +22,10 @@ router
 router
   .route('/')
   .get(authController.protect, sneakerController.getAllSneakers)
-  .post(sneakerController.createSneaker);
+  .post(
+    authController.protect,
+    authController.restrictTo('admin'),
+    sneakerController.createSneaker
+  );
 
 module.exports = router;

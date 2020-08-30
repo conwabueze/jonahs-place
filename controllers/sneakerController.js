@@ -100,8 +100,6 @@ exports.sneakersReleasedIn = catchAsync(async (req, res, next) => {
 });
 
 exports.sneakerAverages = catchAsync(async (req, res, next) => {
-  const type = req.params.type;
-
   const aggregation = [
     {
       $group: {
@@ -113,7 +111,7 @@ exports.sneakerAverages = catchAsync(async (req, res, next) => {
 
   if (req.params.type) {
     aggregation.unshift({
-      $match: { type },
+      $match: { type: req.params.type },
     });
   }
 

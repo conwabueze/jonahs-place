@@ -7,8 +7,6 @@ class APIFeatures {
   filter() {
     //filter out general fields
     const queryObj = { ...this.queryString };
-    console.log(queryObj);
-    console.log(typeof this.queryString);
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((field) => delete queryObj[field]);
     //filtering for less than greater than operators
