@@ -34,7 +34,7 @@ exports.createSneaker = catchAsync(async (req, res, next) => {
 
 //get sneaker
 exports.getSneaker = catchAsync(async (req, res, next) => {
-  const sneaker = await Sneaker.findById(req.params.id);
+  const sneaker = await Sneaker.findById(req.params.id).populate('reviews');
 
   res.status(200).json({
     status: 'success',

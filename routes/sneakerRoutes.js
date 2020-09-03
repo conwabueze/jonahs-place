@@ -2,6 +2,9 @@ const express = require('express');
 const sneakerController = require('../controllers/sneakerController');
 const router = express.Router();
 const authController = require('../controllers/authController');
+const reviewRoutes = require('./reviewRoutes');
+
+router.use('/:sneakerId/reviews', reviewRoutes);
 
 router
   .route('/sneakers-released/:year')
@@ -27,5 +30,10 @@ router
     authController.restrictTo('admin'),
     sneakerController.createSneaker
   );
+
+//POST /sneakers/598530/reviews
+//GET  /sneakers/489389/reviews
+//GET  /sneakers/489389/reviews/e8ew9
+//router.route(':sneakerId/reviews').post
 
 module.exports = router;
