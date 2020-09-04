@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const catchAsync = require('../utils/catchAsync');
 const Review = require('../models/reviewModel');
+const handlerFactory = require('./handlerFactory');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   let filter = {};
@@ -30,3 +31,5 @@ exports.createReview = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getReview = handlerFactory.getOne(Review);

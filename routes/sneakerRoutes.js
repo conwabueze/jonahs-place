@@ -15,7 +15,11 @@ router.route('/sneaker-averages/:type?').get(sneakerController.sneakerAverages);
 router
   .route('/:id')
   .get(sneakerController.getSneaker)
-  .patch(sneakerController.updateSneaker)
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin'),
+    sneakerController.updateSneaker
+  )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
@@ -24,16 +28,11 @@ router
 
 router
   .route('/')
-  .get(authController.protect, sneakerController.getAllSneakers)
+  .get(sneakerController.getAllSneakers)
   .post(
     authController.protect,
     authController.restrictTo('admin'),
     sneakerController.createSneaker
   );
-
-//POST /sneakers/598530/reviews
-//GET  /sneakers/489389/reviews
-//GET  /sneakers/489389/reviews/e8ew9
-//router.route(':sneakerId/reviews').post
 
 module.exports = router;

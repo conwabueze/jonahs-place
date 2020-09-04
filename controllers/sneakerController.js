@@ -1,73 +1,13 @@
 const Sneaker = require('../models/sneakerModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
+const handlerFactory = require('./handlerFactory');
 
-//Get all sneakers
-exports.getAllSneakers = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Sneaker.find(), req.query)
-    .filter()
-    .limitFields()
-    .sort()
-    .paginate();
-  const sneakers = await features.query;
-
-  res.status(200).json({
-    status: 'success',
-    results: sneakers.length,
-    data: {
-      sneakers,
-    },
-  });
-});
-
-//create Sneaker
-exports.createSneaker = catchAsync(async (req, res, next) => {
-  const newSneaker = await Sneaker.create(req.body);
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      sneaker: newSneaker,
-    },
-  });
-});
-
-//get sneaker
-exports.getSneaker = catchAsync(async (req, res, next) => {
-  const sneaker = await Sneaker.findById(req.params.id).populate('reviews');
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      sneaker,
-    },
-  });
-});
-
-//update sneaker
-exports.updateSneaker = catchAsync(async (req, res, next) => {
-  //third param is needed to make sure that the update sneaker is return rather than the old one
-  const sneaker = await Sneaker.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      sneaker,
-    },
-  });
-});
-
-//delete sneaker
-exports.deleteSneaker = catchAsync(async (req, res, next) => {
-  await Sneaker.findByIdAndDelete(req.params.id);
-  res.status(200).json({
-    status: 'success',
-    data: null,
-  });
-});
+exports.getSneaker = handlerFactory.getOne(Sneaker, { path: 'reviews' });
+exports.getAllSneakers = handlerFactory.getAll(Sneaker);
+exports.createSneaker = handlerFactory.createOne(Sneaker);
+exports.updateSneaker = handlerFactory.updateOne(Sneaker);
+exports.deleteSneaker = handlerFactory.deleteOne(Sneaker);
 
 //get sneakers realeased in particular year
 exports.sneakersReleasedIn = catchAsync(async (req, res, next) => {
