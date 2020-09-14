@@ -1,0 +1,241 @@
+/*font-family: 'Teko', sans-serif;*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+}
+.header {
+  background: #ffffff;
+  border-bottom-style: solid;
+  border-bottom-color: #000000;
+  border-bottom-width: 0.5px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.content-container {
+  margin: 0 2%;
+}
+/*Nav Desktop functionality*/
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1em;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sneaker-nav {
+  font-size: 1.5rem;
+  position: relative;
+  height: 100%;
+}
+
+.nav-item {
+  margin: 0 0.5em;
+}
+
+.nav-item:hover,
+.logo:hover {
+  color: #4f4f4f;
+}
+
+.user-nav .searchbar {
+  border-color: #000000;
+  border-width: 1px;
+  height: 1.5rem;
+}
+
+::placeholder {
+  color: #000000;
+}
+
+.nav-nested-dropdown {
+  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  margin: 0 0.5em;
+  width: 100%;
+  border-style: solid;
+}
+
+.nested-nav-item:hover {
+  color: #4f4f4f;
+}
+
+.close-dropdown-nav {
+  display: none;
+}
+
+.open-dropdown-nav {
+  display: grid;
+}
+
+.hamburger {
+  display: none;
+}
+
+/*Nav Mobile Functionality*/
+@media (max-width: 880px) {
+  .header-container {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .hamburger {
+    background: 0;
+    border: 0;
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0.4em;
+    margin-top: 2.5px;
+    padding: 2px 4px;
+  }
+
+  .sneaker-nav,
+  .user-nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sneaker-nav {
+    text-align: center;
+    width: 100%;
+    order: 2;
+    position: relative;
+  }
+
+  .sneaker-nav .nav-item {
+    font-size: 1.8rem;
+    margin: 0;
+    border-style: none none solid none;
+    padding: 0.2em;
+  }
+
+  .sneaker-nav .nav-item:first-child {
+    border-top-style: solid;
+  }
+
+  .user-nav {
+    order: 1;
+    width: 100%;
+  }
+
+  .user-nav .searchbar {
+    height: 2.2rem;
+    margin: 0 5px;
+  }
+
+  .user-cart-container {
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  .user-cart-container .nav-item {
+    font-size: 1.3rem;
+    margin: 0 1em;
+  }
+
+  .nav-nested-dropdown {
+    border-bottom-style: solid;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nested-nav-item {
+    margin: 0.5em 0;
+  }
+
+  .close-nav {
+    display: none;
+  }
+
+  .open-nav {
+    display: flex;
+  }
+
+  .rando {
+    color: red;
+  }
+}
+
+/*Home Content Desktop functionality*/
+.jordan-home,
+.nike-home,
+.adidas-home {
+  position: relative;
+}
+
+.jordan-home-banner {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  opacity: 1;
+}
+
+.home-headers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2em;
+}
+
+.home-header-link:hover {
+  color: #4f4f4f;
+}
+
+.bottom-banners {
+  display: flex;
+  justify-content: space-around;
+}
+.home-header,
+.home-subheader {
+  text-transform: uppercase;
+}
+
+.jordan-home-header {
+  font-size: 6.5rem;
+  margin: 0;
+}
+
+.nike-home-banner,
+.adidas-home-banner {
+  height: 85vh;
+  opacity: 1;
+}
+
+.nike-home-headers,
+.adidas-home-headers {
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+.home-header {
+  font-size: 5rem;
+  margin: 0;
+}

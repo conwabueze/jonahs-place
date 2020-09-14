@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -16,6 +17,9 @@ const reviewRouter = require('./routes/reviewRoutes');
 const app = express();
 
 //1) Global Middlewares
+//Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 //Set security HTTP headers
 app.use(helmet());
 
@@ -56,6 +60,10 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.sendFile('index2.html');
+});
+//app.use('/', viewRouter);
 app.use('/api/v1/sneakers', sneakerRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);

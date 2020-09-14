@@ -15,7 +15,11 @@ exports.getOne = (Model, popOptions) =>
 
 exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
-    const features = new APIFeatures(Model.find(), req.query)
+    //filtering for getAllReviews /:sneakerId/reviews route
+    let filter = {};
+    if (req.params.sneakerId) filter = { sneaker: req.params.sneakerId };
+
+    const features = new APIFeatures(Model.find(filter), req.query)
       .filter()
       .limitFields()
       .sort()

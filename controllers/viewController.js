@@ -1,0 +1,1 @@
+exports.getHome = (req, res) => {};
