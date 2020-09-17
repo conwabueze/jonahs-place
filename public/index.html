@@ -18,8 +18,9 @@
     <header class="header">
       <div class="header-container nav">
         <a class="logo home-link" href="logo">Jonah's Place</a>
-
-        <div class="shop-nav">
+        <button aria-label="open-nav" class="hamburger">&#9776</button>
+       
+        <div class="shop-nav close-nav">
           <a class="nav-item sneaker-link air-jordan" href="#">Air Jordans</a>
 
           <div class="nested-shop-nav close-dropdown-nav" id="air-jordan">
@@ -55,83 +56,133 @@
             <a class="nested-shop-nav-item" href="#">574</a>
             <a class="nested-shop-nav-item" href="#">1500</a>
           </div>
-        </div>
 
-        <div class="contianer sca-container">
+         
+        </div>
+        <div class="container sca-container close-nav">
           <input
             class="nav-item searchbar"
             type="text"
             placeholder="Search.."
           />
-          <a class="nav-item cart-button" href="#"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
-          <a class="nav-item account-link" href="#">Account</a>
+          <div class="ca-container">
+            <a class="nav-item cart-button" href="#"
+              ><i class="fas fa-shopping-cart"></i
+            ></a>
+            <a class="nav-item account-link" href="#">Account</a>
+          </div>
         </div>
-      </div>
+      
+        
+     
 
-      <!-- <button aria-label="open-nav" class="hamburger">&#9776</button> -->
+      
     </header>
 
     <div class="content-container">
-      <section class="jordan-home">
+      <section class="home-section jordan-home">
         <img
-          class="jordan-home-banner"
-          src="./img/jordan-home-banner-5.jpg"
+          class="home-banner jordan-home-banner"
+          src="./img/jordan-home-banner.jpg"
           alt=""
         />
+
         <div class="home-headers jordan-home-headers">
-          <a class="home-header-link jordan-home-header-link" href="#">
-            <h1 class="home-header jordan-home-header">Air Jordan</h1>
-            <h2 class="home-subheader jordan-home-subheader">Shop Now</h2>
-          </a>
+          <h1 class="home-header jordan-home-header">Air Jordan</h1>
+          <a
+            class="home-header home-header-link jordan-home-header-link"
+            href="#"
+            >Shop Now</a
+          >
         </div>
       </section>
 
       <div class="bottom-banners">
-        <section class="nike-home">
+        <section class="home-section nike-home">
+          
+
           <img
-            class="nike-home-banner"
+            class="home-banner nike-home-banner"
             src="./img/nike-home-banner.jpg"
             alt=""
           />
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/nike-home-banner-mobile.jpg"
+          alt=""
+        />
+          </div>
           <div class="home-headers nike-home-headers">
-            <a class="home-header-link nike-home-header-link" href="#">
-              <h1 class="home-header nike-home-header">Nike</h1>
-              <h2 class="home-subheader nike-home-subheader">Shop Now</h2>
-            </a>
+            <h1 class="home-header nike-home-header">Nike</h1>
+            <a
+              class="home-header home-header-link nike-home-header-link"
+              href="#"
+              >Shop Now</a
+            >
           </div>
         </section>
 
-        <section class="adidas-home">
+        <section class="home-section adidas-home">
           <img
-            class="adidas-home-banner"
+            class="home-banner adidas-home-banner"
             src="./img/adidas-home-banner.jpg"
             alt=""
           />
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/adidas-home-banner-mobile-2.jpg"
+          alt=""
+        />
+          </div>
           <div class="home-headers adidas-home-headers">
-            <a class="home-header-link adidas-home-header-link" href="#">
-              <h1 class="home-header adidas-home-header">Adidas</h1>
-              <h2 class="home-subheader adidas-home-subheader">Shop Now</h2>
-            </a>
+            <h1 class="home-header adidas-home-header">Adidas</h1>
+            <a
+              class="home-header home-header-link adidas-home-header-link"
+              href="#"
+              >Shop Now</a
+            >
           </div>
         </section>
 
-        <section class="nike-home">
+        <section class="home-section nb-home">
           <img
-            class="nike-home-banner"
+            class="home-banner nb-home-banner"
             src="./img/nb-home-banner-2.jpg"
             alt=""
           />
-          <div class="home-headers nike-home-headers">
-            <a class="home-header-link nike-home-header-link" href="#">
-              <h1 class="home-header nike-home-header">New Balance</h1>
-              <h2 class="home-subheader nike-home-subheader">Shop Now</h2>
-            </a>
+
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/nb-home-banner-mobile-2.jpg"
+          alt=""
+        />
+      </div>
+          <div class="home-headers nb-home-headers">
+            <h1 class="home-header nb-home-header">New Balance</h1>
+            <a class="home-header home-header-link nb-home-header-link" href="#"
+              >Shop Now</a
+            >
           </div>
         </section>
       </div>
     </div>
+
+    <footer class="footer">
+      <a class="logo footer-logo" href="logo">Jonah's Place</a>
+
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a class="footer-link" href="#">About us</a></li>
+          <li><a class="footer-link" href="#">Careers</a></li>
+          <li><a class="footer-link" href="#">Stores</a></li>
+          <li><a class="footer-link" href="#">Contact</a></li>
+        </ul>
+        <p>&#169; by Chino Nwabueze</p>
+      </div>
+    </footer>
     <script src="/scripts/script.js"></script>
   </body>
 </html>

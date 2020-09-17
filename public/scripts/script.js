@@ -1,4 +1,7 @@
 const shopNav = document.querySelector('.shop-nav');
+const sca = document.querySelector('.sca-container');
+const hamburger = document.querySelector('.hamburger');
+
 shopNav.addEventListener('mouseover', (e) => {
   if (e.target.className.includes('sneaker-link')) {
     const dropdown = document.querySelector(`#${e.target.classList[2]}`);
@@ -46,72 +49,18 @@ shopNav.addEventListener('mouseout', (e) => {
     );
   }
 });
-// const sneakerNav = document.querySelector('.sneaker-nav');
-// const userNav = document.querySelector('.user-nav');
 
-// document.querySelector('.hamburger').addEventListener('click', (e) => {
-//   let sneakerNavClassNames = sneakerNav.className;
-//   let userNavClassNames = userNav.className;
-//   if (sneakerNavClassNames.includes('close-nav')) {
-//     sneakerNavClassNames = sneakerNavClassNames.replace(
-//       'close-nav',
-//       'open-nav'
-//     );
-//     userNavClassNames = userNavClassNames.replace('close-nav', 'open-nav');
-//   } else {
-//     sneakerNavClassNames = sneakerNavClassNames.replace(
-//       'open-nav',
-//       'close-nav'
-//     );
-//     userNavClassNames = userNavClassNames.replace('open-nav', 'close-nav');
-//   }
-//   sneakerNav.className = sneakerNavClassNames;
-//   userNav.className = userNavClassNames;
-// });
+hamburger.addEventListener('click', (e) => {
+  let shopNavClassNames = shopNav.className;
+  let scaClassNames = sca.className;
+  if (shopNavClassNames.includes('close-nav')) {
+    shopNavClassNames = shopNavClassNames.replace('close-nav', 'open-nav');
+    scaClassNames = scaClassNames.replace('close-nav', 'open-nav');
+  } else {
+    shopNavClassNames = shopNavClassNames.replace('open-nav', 'close-nav');
+    scaClassNames = scaClassNames.replace('open-nav', 'close-nav');
+  }
 
-// // Open/Close sub nav functionality
-// if (window.innerWidth > 880) {
-//   //hover desktop
-//   sneakerNav.addEventListener('mouseover', (e) => {
-//     if (e.target.classList[0] === 'nav-item') {
-//       const subMenu = document.querySelector(`#${e.target.classList[1]}`);
-//       if (subMenu.classList[1] === 'close-dropdown-nav') {
-//         subMenu.className = subMenu.className.replace(
-//           'close-dropdown-nav',
-//           'open-dropdown-nav'
-//         );
-//       }
-//     }
-//   });
-
-//   //hover off desktop
-//   sneakerNav.addEventListener('mouseout', (e) => {
-//     if (
-//       e.target.classList[0] === 'nav-item' ||
-//       e.target.classList[0] === 'nav-nested-dropdown'
-//     ) {
-//       console.log(e.target);
-//       const targetClass = e.target.classList[0];
-//       let subMenu;
-//       if (targetClass === 'nav-nested-dropdown') {
-//         console.log(e.target);
-//         // subMenu.className = subMenu.className.replace(
-//         //   'open-dropdown-nav',
-//         //   'close-dropdown-nav'
-//         // );
-//       }
-//     }
-//   });
-// } else {
-//   sneakerNav.addEventListener('click', (e) => {
-//     if (e.target.classList[0] === 'nav-item') {
-//       const subMenu = document.querySelector(`#${e.target.classList[1]}`);
-//       if (subMenu.classList[1] === 'close-nav') {
-//         subMenu.className = subMenu.className.replace('close-nav', 'open-nav');
-//       } else {
-//         subMenu.className = subMenu.className.replace('open-nav', 'close-nav');
-//       }
-//     }
-//     //console.log(e.currentTarget);
-//   });
-// }
+  shopNav.className = shopNavClassNames;
+  sca.className = scaClassNames;
+});
