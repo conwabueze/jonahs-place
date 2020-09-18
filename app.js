@@ -60,9 +60,14 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.sendFile('index2.html');
+app.get('/air-jordan', (req, res) => {
+  res.sendFile(__dirname + '/public/air-jordan.html');
 });
+
+app.get('/', (req, res) => {
+  res.sendFile('index.html');
+});
+
 //app.use('/', viewRouter);
 app.use('/api/v1/sneakers', sneakerRouter);
 app.use('/api/v1/users', userRouter);

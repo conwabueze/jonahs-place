@@ -243,6 +243,7 @@ a {
   .footer-right {
     margin: 0;
     text-align: center;
+    width: 250px;
   }
 
   .footer-right p {
@@ -251,7 +252,7 @@ a {
   .footer-links {
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: 0 0 0.8rem 0;
   }
   .footer-link {
     margin: 0;
@@ -313,9 +314,14 @@ a {
   display: flex;
   justify-content: space-around;
 }
+.bottom-banners .home-banner-container {
+  max-height: 600px;
+  max-width: 400px;
+}
 
 .bottom-banners .home-banner {
-  max-height: 600px;
+  width: 100%;
+  object-fit: contain;
   opacity: 1;
 }
 
@@ -353,7 +359,14 @@ a {
 
   .logo {
     margin-bottom: 0;
-    margin-left: 0.5em;
+    padding-left: 1rem;
+  }
+  .jordan-home-banner {
+    margin-bottom: 2rem;
+  }
+
+  .jordan-home-header {
+    font-size: 5rem;
   }
   .sca-container {
     margin-top: 1.5em;
@@ -366,8 +379,9 @@ a {
     width: 100%;
   }
   .bottom-banners .home-headers {
-    margin-bottom: 2em;
+    margin-bottom: 2.5em;
   }
+
   .bottom-banners .nb-home-headers {
     margin-top: 1.5em;
   }
@@ -392,22 +406,49 @@ a {
     display: block;
   }
 
-  /* .bottom-banners .home-banner-mobile {
-    height: 300px;
-    margin: 0 auto;
-    display: block;
-  } */
   .bottom-banners .home-headers {
-    /* height: auto;
-    width: auto; */
     position: static;
   }
+}
 
-  .nike-home-banner,
-  .adidas-home-banner,
-  .nb-home-banner {
-    max-width: 100%;
-    display: block;
-    height: 200px;
-  }
+/*Sneaker Directory Functionality*/
+.sneaker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+}
+.sneaker-card {
+  width: 300px;
+  background-color: #f2f2f2;
+}
+
+.sneaker-card-img {
+  width: 100%;
+  padding: 1em 0.8em;
+}
+
+.sneaker-details {
+  padding-bottom: 2em;
+  margin-left: 0.8em;
+}
+.sneaker-details > * {
+  margin: 0;
+}
+
+.sneaker-brand {
+  font-size: 1.3rem;
+}
+
+.sneaker-title {
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
+.sneaker-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.sneaker-brand {
+  color: #444444;
 }
