@@ -2,7 +2,6 @@ const shopNav = document.querySelector('.shop-nav');
 const sca = document.querySelector('.sca-container');
 const hamburger = document.querySelector('.hamburger');
 
-console.log(window.innerWidth);
 hamburger.addEventListener('click', (e) => {
   let shopNavClassNames = shopNav.className;
   let scaClassNames = sca.className;
@@ -84,3 +83,11 @@ if (window.innerWidth > 970) {
     }
   });
 }
+
+const sneakerFilter = document.querySelector('.sneaker-filter');
+
+sneakerFilter.addEventListener('click', (e) => {
+  if (e.target.classList[0] === 'sneaker-filter-option') {
+    const filterOption = document.querySelector(`#${e.target.classList[0]}`);
+  }
+});
