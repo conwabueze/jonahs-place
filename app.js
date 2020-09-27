@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const bodyParser = require('body-parser');
 
 //routers
 const AppError = require('./utils/appError');
@@ -13,15 +14,25 @@ const globalErrorHandler = require('./controllers/errorController');
 const sneakerRouter = require('./routes/sneakerRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+//set view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views')); //give directory to our views folder
 
 //1) Global Middlewares
 //Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Set security HTTP headers
-app.use(helmet());
+//app.use(helmet());
 
 //Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -56,17 +67,12 @@ app.use(
       'color',
       'productCode',
       'gender',
+      'size',
     ],
   })
 );
 
-app.get('/air-jordan', (req, res) => {
-  res.sendFile(__dirname + '/public/air-jordan.html');
-});
-
-app.get('/', (req, res) => {
-  res.sendFile('index.html');
-});
+app.use('/', viewRouter);
 
 //app.use('/', viewRouter);
 app.use('/api/v1/sneakers', sneakerRouter);

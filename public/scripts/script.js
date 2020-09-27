@@ -84,10 +84,59 @@ if (window.innerWidth > 970) {
   });
 }
 
-const sneakerFilter = document.querySelector('.sneaker-filter');
+if (document.querySelector('body').className === 'sneakers-overview-body') {
+  const sneakerFilter = document.querySelector('.sneaker-filter');
 
-sneakerFilter.addEventListener('click', (e) => {
-  if (e.target.classList[0] === 'sneaker-filter-option') {
-    const filterOption = document.querySelector(`#${e.target.classList[0]}`);
-  }
-});
+  //Sneaker filter toggle
+  sneakerFilter.addEventListener('click', (e) => {
+    if (e.target.classList[0] === 'sneaker-filter-option') {
+      const filterOption = document.querySelector(`#${e.target.classList[1]}`);
+      if (filterOption.className.includes('close-filter-options')) {
+        filterOption.className = filterOption.className.replace(
+          'close-filter-options',
+          'open-filter-options'
+        );
+      } else {
+        filterOption.className = filterOption.className.replace(
+          'open-filter-options',
+          'close-filter-options'
+        );
+      }
+    }
+  });
+
+  //Sneaker filter persist checkedboxes and
+  const checkboxValues =
+    JSON.parse(localStorage.getItem('checkboxValues')) || {};
+  const checkboxes = document.querySelectorAll(
+    ".sneaker-filter input[type='checkbox']"
+  );
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = checkboxValues[checkbox.id];
+
+    //if a box is checked in one of the filter keep that filter open
+    if (checkbox.checked === true) {
+      if (checkbox.parentElement.className.includes('close-filter-options')) {
+        checkbox.parentElement.className = checkbox.parentElement.className.replace(
+          'close-filter-options',
+          'open-filter-options'
+        );
+      }
+    }
+  });
+
+  sneakerFilter.addEventListener('change', (e) => {
+    if (e.target.parentElement.className.includes('filter-options')) {
+      checkboxes.forEach((checkbox) => {
+        checkboxValues[checkbox.id] = checkbox.checked;
+      });
+      localStorage.setItem('checkboxValues', JSON.stringify(checkboxValues));
+
+      //submit all forms/filter
+      const submitFilter = document.querySelector('.filter-submission');
+      submitFilter.submit();
+    }
+  });
+} else {
+  localStorage.removeItem('checkboxValues');
+}

@@ -7,14 +7,33 @@ class APIFeatures {
   filter() {
     //filter out general fields
     const queryObj = { ...this.queryString };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    const excludedFields = ['page', 'sort', 'limit', 'fields', 'size'];
     excludedFields.forEach((field) => delete queryObj[field]);
     //filtering for less than greater than operators
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-
     this.query = this.query.find(JSON.parse(queryStr));
 
+    return this;
+  }
+
+  sizeFilter() {
+    if (this.queryString.size) {
+      const sizes = this.queryString.size;
+      if (typeof sizes === 'string') {
+        this.query = this.query.find({
+          [`sizesAndQuantity.${sizes}`]: { $exists: true },
+        });
+      } else if (typeof sizes === 'object') {
+        const filterArr = [];
+        sizes.forEach((size) => {
+          filterArr.push({ [`sizesAndQuantity.${size}`]: { $exists: true } });
+        });
+        this.query = this.query.find({
+          $or: filterArr,
+        });
+      }
+    }
     return this;
   }
 

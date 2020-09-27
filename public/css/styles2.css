@@ -289,7 +289,7 @@ a {
   object-fit: cover;
   object-position: center;
   width: 100%;
-  height: 85vh;
+  height: 70vh;
 }
 
 .jordan-home-headers {
@@ -414,6 +414,7 @@ a {
 /*Sneaker Directory Functionality*/
 .sneaker-directory-container {
   display: flex;
+  margin-top: 2em;
 }
 
 .sneaker-filter {
@@ -432,6 +433,11 @@ a {
   font-family: 'Teko', sans-serif;
   font-weight: 300;
   padding: 1em;
+  margin-top: 1.5em;
+}
+
+.sneaker-filter-option.model-options {
+  margin: 0;
 }
 
 .sneaker-filter-option:hover {
@@ -463,11 +469,18 @@ a {
   margin: 7px 0;
 }
 
+.close-filter-options {
+  display: none;
+}
+
 .sneaker-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-items: center;
   width: 80%;
+}
+.sneaker-link-wrapper {
+  margin-bottom: 2em;
 }
 .sneaker-card {
   width: 300px;

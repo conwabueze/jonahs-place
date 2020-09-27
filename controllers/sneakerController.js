@@ -65,3 +65,5 @@ exports.sneakerAverages = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.uniqueSneakerTypes = catchAsync(async (req, res, next) => {});
