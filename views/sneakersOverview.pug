@@ -87,18 +87,11 @@ html
                         p.sneaker-filter-name Size
                         img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
                     div.filter-options.close-filter-options#size-options
-                        input(type="checkbox" id="9" name="size" value="9")
-                        label.sneaker-filter-label(for='9') 9 
-                        br
-                        input(type="checkbox" id="10" name="size" value="10")
-                        label.sneaker-filter-label(for='10') 10
-                        br
-                        input(type="checkbox" id="11" name="size" value="11")
-                        label.sneaker-filter-label(for='11') 11 
-                        br
-                        input(type="checkbox" id="12" name="size" value="12")
-                        label.sneaker-filter-label(for='12') 12 
-                        br
+                        each size in sneakerSizes
+                            input(type="checkbox" id=`${size._id}` name="size" value=`${size._id}`)
+                            label.sneaker-filter-label(for=`${size._id}`)= size._id
+                                span.sneaker-filter-label-count= `(${size.count})`
+                            br
 
             .sneaker-grid
                 each sneaker in sneakers

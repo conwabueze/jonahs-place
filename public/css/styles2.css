@@ -466,7 +466,13 @@ a {
 
 .filter-options .sneaker-filter-label {
   display: inline-block;
-  margin: 7px 0;
+  margin: 7px 4px;
+}
+
+.filter-options .sneaker-filter-label-count {
+  color: #444444;
+  font-size: 1rem;
+  padding-left: 3px;
 }
 
 .close-filter-options {

@@ -3,7 +3,6 @@ const Sneaker = require('../models/sneakerModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
-  console.log(req.query);
   const brand = req.params.brand;
   const features = new APIFeatures(Sneaker.find({ brand: brand }), req.query)
     .filter()
@@ -14,6 +13,7 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
 
   const sneakers = await features.query;
 
+  //used to get information on the different sneaker types/models a particular brand has
   const sneakerTypes = await Sneaker.aggregate([
     {
       $group: {
@@ -31,10 +31,48 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
     },
   ]);
 
+  //used to get all size options avaible for all sneakers in a particular brand
+  const sneakerSizes = await Sneaker.aggregate([
+    {
+      $project: {
+        name: '$name',
+        brand: '$brand',
+        sizesAndQuantity: { $objectToArray: '$sizesAndQuantity' },
+      },
+    },
+    {
+      $unwind: '$sizesAndQuantity',
+    },
+    {
+      $project: {
+        name: '$name',
+        brand: '$brand',
+        sizes: '$sizesAndQuantity.k',
+      },
+    },
+    {
+      $match: { brand: brand },
+    },
+    {
+      $group: {
+        //have to convert sizes to decimal in order to sort it later in the pipleline
+        _id: { $convert: { input: '$sizes', to: 'decimal' } },
+        count: { $sum: 1 },
+        sneakers: { $push: { name: '$name' } },
+      },
+    },
+    {
+      $sort: {
+        _id: 1,
+      },
+    },
+  ]);
+
   res.render('sneakersOverview', {
     sneakers,
     models: sneakerTypes[0].brandTypes.sort(),
     brand,
+    sneakerSizes,
   });
 });
 
