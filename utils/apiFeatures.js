@@ -7,7 +7,15 @@ class APIFeatures {
   filter() {
     //filter out general fields
     const queryObj = { ...this.queryString };
-    const excludedFields = ['page', 'sort', 'limit', 'fields', 'size'];
+    const excludedFields = [
+      'page',
+      'sort',
+      'limit',
+      'fields',
+      'size',
+      'priceTo',
+      'priceFrom',
+    ];
     excludedFields.forEach((field) => delete queryObj[field]);
     //filtering for less than greater than operators
     let queryStr = JSON.stringify(queryObj);
@@ -37,6 +45,31 @@ class APIFeatures {
     return this;
   }
 
+  priceFilter() {
+    if (this.queryString.priceFrom && this.queryString.priceTo) {
+      this.query = this.query.find({
+        price: {
+          $gte: this.queryString.priceFrom,
+          $lte: this.queryString.priceTo,
+        },
+      });
+    } else if (this.queryString.priceFrom && !this.queryString.priceTo) {
+      this.query = this.query.find({
+        price: {
+          $gte: this.queryString.priceFrom,
+        },
+      });
+    } else if (this.queryString.priceTo && !this.queryString.priceFrom) {
+      this.query = this.query.find({
+        price: {
+          $lte: this.queryString.priceTo,
+        },
+      });
+    }
+
+    return this;
+  }
+
   limitFields() {
     //field limiting
     if (this.queryString.fields) {
@@ -55,7 +88,7 @@ class APIFeatures {
       const fields = this.queryString.sort.split(',').join(' ');
       this.query = this.query.sort(fields);
     } else {
-      this.query = this.query.sort('brand');
+      this.query = this.query.sort('price');
     }
 
     return this;

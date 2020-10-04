@@ -105,7 +105,9 @@ if (document.querySelector('body').className === 'sneakers-overview-body') {
     }
   });
 
-  //Sneaker filter persist checkedboxes and
+  //Sneaker filter persist data
+
+  //checkbox persist
   const checkboxValues =
     JSON.parse(localStorage.getItem('checkboxValues')) || {};
   const checkboxes = document.querySelectorAll(
@@ -125,18 +127,120 @@ if (document.querySelector('body').className === 'sneakers-overview-body') {
     }
   });
 
+  const submitFilter = document.querySelector('.filter-submission');
   sneakerFilter.addEventListener('change', (e) => {
-    if (e.target.parentElement.className.includes('filter-options')) {
+    if (
+      e.target.parentElement.className.includes('filter-options') &&
+      e.target.type === 'checkbox'
+    ) {
       checkboxes.forEach((checkbox) => {
         checkboxValues[checkbox.id] = checkbox.checked;
       });
       localStorage.setItem('checkboxValues', JSON.stringify(checkboxValues));
 
       //submit all forms/filter
-      const submitFilter = document.querySelector('.filter-submission');
+
       submitFilter.submit();
     }
   });
+
+  //pricing persist/keep price filter open if being used
+  const priceValues = JSON.parse(localStorage.getItem('priceValues')) || [];
+  const priceInputs = document.querySelectorAll('.price-input');
+  if (priceValues.from) {
+    priceInputs[0].value = priceValues.from;
+  }
+  if (priceValues.to) {
+    priceInputs[1].value = priceValues.to;
+  }
+  if (priceValues.from || priceValues.to) {
+    const priceOptions = document.querySelector('#price-options');
+    priceOptions.className = priceOptions.className.replace(
+      'close-filter-options',
+      'open-filter-options'
+    );
+  }
+
+  //Pricing filter submit logic
+
+  //Prevent users form submitting pricing form by hitting enter
+  priceInputs.forEach((label) => {
+    label.addEventListener('keypress', (e) => {
+      //13 is keycode for Enter button
+      if (e.keyCode == 13) e.preventDefault();
+    });
+  });
+
+  //price submit function
+  let persistedPriceValues = {};
+  const submitPricing = () => {
+    priceInputs[0].setAttribute('name', 'priceFrom');
+    priceInputs[1].setAttribute('name', 'priceTo');
+    persistedPriceValues = {
+      from: priceInputs[0].value,
+      to: priceInputs[1].value,
+    };
+    localStorage.setItem('priceValues', JSON.stringify(persistedPriceValues));
+    submitFilter.submit();
+  };
+
+  const showPricingError = (errMsg) => {
+    const priceError = document.querySelector('.price-error');
+    priceError.innerHTML = `Error: ${errMsg}`;
+    priceError.className = priceError.className.replace('close', 'open');
+
+    priceInputs.forEach((input) => {
+      input.classList.add('price-input-error');
+    });
+  };
+
+  //check if both input fields are filled before adding name parameter to inputs upon submission
+  const priceSubmitBtn = document.querySelector('.price-submit');
+  priceSubmitBtn.addEventListener('click', (e) => {
+    if (
+      (Number.isNaN(parseInt(priceInputs[0].value)) &&
+        priceInputs[0].value !== '') ||
+      (Number.isNaN(parseInt(priceInputs[1].value)) &&
+        priceInputs[1].value !== '')
+    ) {
+      showPricingError('Please make sure both fields are numbers');
+      return;
+    }
+
+    //if no values are entered at all
+    if (!priceInputs[0].value && !priceInputs[1].value) {
+      // showPricingError('At least one or both fields should be filled out');
+      // return;
+      localStorage.setItem('priceValues', JSON.stringify(persistedPriceValues));
+      submitFilter.submit();
+    }
+    //If both values are filled out check if the starting price is less than the
+    //ending price
+    if (priceInputs[0].value && priceInputs[1].value) {
+      if (priceInputs[0].value <= priceInputs[1].value) {
+        submitPricing();
+      } else {
+        showPricingError('Ending price must be greater than starting price');
+        return;
+      }
+    }
+
+    //check is on or the other values is filled
+    if (priceInputs[0].value && !priceInputs[1].value) {
+      priceInputs[0].setAttribute('name', 'priceFrom');
+      persistedPriceValues = { from: priceInputs[0].value };
+      localStorage.setItem('priceValues', JSON.stringify(persistedPriceValues));
+      submitFilter.submit();
+    } else if (!priceInputs[0].value && priceInputs[1].value) {
+      priceInputs[1].setAttribute('name', 'priceTo');
+      persistedPriceValues = { to: priceInputs[1].value };
+      localStorage.setItem('priceValues', JSON.stringify(persistedPriceValues));
+      submitFilter.submit();
+    }
+  });
+
+  //Check
 } else {
   localStorage.removeItem('checkboxValues');
+  localStorage.removeItem('priceValues');
 }

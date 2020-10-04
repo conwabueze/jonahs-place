@@ -7,12 +7,15 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Sneaker.find({ brand: brand }), req.query)
     .filter()
     .sizeFilter()
+    .priceFilter()
     .limitFields()
     .sort()
     .paginate();
 
+  //add aggregation pipeline to retrieved Sneakers
   const sneakers = await features.query;
 
+  console.log(await Sneaker.find({ sneakers }));
   //used to get information on the different sneaker types/models a particular brand has
   const sneakerTypes = await Sneaker.aggregate([
     {

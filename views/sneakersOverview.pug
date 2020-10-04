@@ -59,13 +59,13 @@ html
 
         .sneaker-directory-container.content-container
             .sneaker-filter
-                form.filter-submission(action=`/sneakers/${brand}` method="GET")
+                form.filter-submission(action=`/sneakers/${brand}` method="GET" novalidate)
 
                     //Model filter
                     button.sneaker-filter-option.model-options(type='button')
                         p.sneaker-filter-name Model
                         img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
-                    div.filter-options.close-filter-options#model-options
+                    .filter-options.close-filter-options#model-options
                         each model in models
                             input(type="checkbox" id=`${model}` name="type" value=`${model}`)
                             - 
@@ -86,12 +86,25 @@ html
                     button.sneaker-filter-option.size-options(type='button')
                         p.sneaker-filter-name Size
                         img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
-                    div.filter-options.close-filter-options#size-options
+                    .filter-options.close-filter-options#size-options
                         each size in sneakerSizes
                             input(type="checkbox" id=`${size._id}` name="size" value=`${size._id}`)
                             label.sneaker-filter-label(for=`${size._id}`)= size._id
                                 span.sneaker-filter-label-count= `(${size.count})`
                             br
+                    //Price Filter        
+                    button.sneaker-filter-option.price-options(type='button')
+                        p.sneaker-filter-name Price
+                        img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
+                    .filter-options.close-filter-options#price-options
+                        .price-error.close-price-error Error:
+                        label.sneaker-filter-label.starting-price-label.price-label(for="starting-price") From:
+                        input.price-input( id='starting-price')
+                        br
+                        label.sneaker-filter-label.ending-price-label.price-label(for="ending-price") To:
+                        input.price-input( id='ending-price')
+
+                        button.price-submit(type="button") Submit
 
             .sneaker-grid
                 each sneaker in sneakers
