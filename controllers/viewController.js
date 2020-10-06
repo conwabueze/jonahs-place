@@ -8,14 +8,23 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
     .filter()
     .sizeFilter()
     .priceFilter()
-    .limitFields()
     .sort()
     .paginate();
 
   //add aggregation pipeline to retrieved Sneakers
   const sneakers = await features.query;
 
-  console.log(await Sneaker.find({ sneakers }));
+  const featuresTotal = new APIFeatures(
+    Sneaker.find({ brand: brand }),
+    req.query
+  )
+    .filter()
+    .sizeFilter()
+    .priceFilter()
+    .totalCount();
+
+  const totalSneakers = await featuresTotal.query;
+
   //used to get information on the different sneaker types/models a particular brand has
   const sneakerTypes = await Sneaker.aggregate([
     {
@@ -71,11 +80,20 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
     },
   ]);
 
+  //page number
+  let pageNumber = 1;
+  if (req.url.includes('page=')) {
+    const pageIndex = req.url.indexOf('page=');
+    pageNumber = req.url.substring(pageIndex + 5, pageIndex + 6);
+  }
+
   res.render('sneakersOverview', {
     sneakers,
+    totalSneakers,
     models: sneakerTypes[0].brandTypes.sort(),
     brand,
     sneakerSizes,
+    pageNumber,
   });
 });
 

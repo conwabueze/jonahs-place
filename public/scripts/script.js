@@ -239,6 +239,46 @@ if (document.querySelector('body').className === 'sneakers-overview-body') {
     }
   });
 
+  //sneaker-pagination funtionality
+  const pageData = document.querySelector('.page-data').innerText;
+  const currentPage = pageData.split('/')[0] * 1;
+  const pageLimit = pageData.split('/')[1] * 1;
+
+  const previousResult = document.querySelector('.previous-result');
+  const forwardResult = document.querySelector('.forward-result');
+
+  if (pageLimit === 1) {
+    previousResult.classList.add('hide-result-button');
+    forwardResult.classList.add('hide-result-button');
+  }
+  //if pagelimit is equal to 1 hide both buttons
+  else if (currentPage === 1) {
+    previousResult.classList.add('hide-result-button');
+  }
+
+  //if currentPage === pageLimit forward-result button
+  else if (currentPage === pageLimit) {
+    forwardResult.classList.add('hide-result-button');
+  }
+
+  //if currentpage is equal to 1 hide previous - button
+
+  //Take response from button and add value to invisible input in form
+  const sneakerPagination = document.querySelector('.sneaker-pagination');
+  sneakerPagination.addEventListener('click', (e) => {
+    const pageInput = document.querySelector('.page-input');
+    if (e.target.className === 'previous-result') {
+      pageInput.value = currentPage - 1;
+      pageInput.setAttribute('name', 'page');
+      submitFilter.submit();
+    }
+    if (e.target.className === 'forward-result') {
+      pageInput.value = currentPage + 1;
+      pageInput.setAttribute('name', 'page');
+      submitFilter.submit();
+    }
+  });
+
   //Check
 } else {
   localStorage.removeItem('checkboxValues');

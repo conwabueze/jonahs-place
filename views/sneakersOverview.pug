@@ -106,29 +106,38 @@ html
 
                         button.price-submit(type="button") Submit
 
-            .sneaker-grid
-                each sneaker in sneakers
-                    a.sneaker-link-wrapper(href='#')
-                        .sneaker-card
-                            .sneaker-img-container
-                                img.sneaker-card-img(src=`/img/${sneaker.images[0]}` alt='aj1-pine-green-1')
-                            .sneaker-details
-                                -
-                                    let brand = sneaker.brand
-                                    if(sneaker.brand.includes('-')){
-                                        brand = brand.split('-');
-                                        let x = 0;
-                                        brand.forEach(word => {
-                                            brand[x++]= word.substring(0,1).toUpperCase() + word.substring(1);
-                                        });
-                                        brand = brand.join(' ');
-                                    }
-                                    else{
-                                        brand = brand.substring(0,1).toUpperCase() + brand.substring(1);
-                                    }
-                                p.sneaker-brand= brand
-                                h2.sneaker-title= sneaker.name
-                                p.sneaker-price= `$${sneaker.price}`
+                    
+                    
+                    input.page-input( id='page')
+            
+            .sneaker-content-container
+                .sneaker-grid
+                    each sneaker in sneakers
+                        a.sneaker-link-wrapper(href='#')
+                            .sneaker-card
+                                .sneaker-img-container
+                                    img.sneaker-card-img(src=`/img/${sneaker.images[0]}` alt='aj1-pine-green-1')
+                                .sneaker-details
+                                    -
+                                        let brand = sneaker.brand
+                                        if(sneaker.brand.includes('-')){
+                                            brand = brand.split('-');
+                                            let x = 0;
+                                            brand.forEach(word => {
+                                                brand[x++]= word.substring(0,1).toUpperCase() + word.substring(1);
+                                            });
+                                            brand = brand.join(' ');
+                                        }
+                                        else{
+                                            brand = brand.substring(0,1).toUpperCase() + brand.substring(1);
+                                        }
+                                    p.sneaker-brand= brand
+                                    h2.sneaker-title= sneaker.name
+                                    p.sneaker-price= `$${sneaker.price}`
+                .sneaker-pagination
+                    button.previous-result &#8592
+                    p.page-data= `${pageNumber}/${Math.ceil(totalSneakers/3)}`
+                    button.forward-result &#8594
     
     footer.footer
         a.logo.footer-logo(href='logo') Jonah's Place
