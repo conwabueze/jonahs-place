@@ -97,6 +97,15 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getSneaker = catchAsync(async (req, res, next) => {
+  const sneakerId = req.params.sneakerId;
+  const sneaker = await Sneaker.findById(sneakerId);
+
+  res.render('sneaker', {
+    sneaker,
+  });
+});
+
 exports.getHome = (req, res) => {
   res.sendFile('index.html');
 };

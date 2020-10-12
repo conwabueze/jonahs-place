@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/styles2.css')
+        link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap')
+        script(src='https://kit.fontawesome.com/e556938a57.js' crossorigin='anonymous')
+        title Jonah's Place
+
+    body
+        include _header
+        
+        .sneaker-page-container
+            .sneaker-carousel
+                button.previous-image(type='button') &#8249;
+                .sneaker-carousel-imgs 
+                    each imgFilename in sneaker.images
+                        img.sneaker-carousel-img.hide-carousel-img(src=`/img/${imgFilename}` alt=`${imgFilename}`)
+                button.next-image(type='button') &#8250;
+
+            .sneaker-details
+                h1.sneaker-details-name= sneaker.name
+                h2.sneaker-details-price= `$${sneaker.price}`
+
+                .size-container
+                    p.size-select select size
+                    .size-grid
+                        -
+                            const sizes = Object.keys(sneaker.sizesAndQuantity)
+                        each size in sizes
+                            button.size-button(type='button')= size
+
+        
+        include _footer
+
+    script(src='/scripts/navScript.js')
+    script(src='/scripts/sneakerScript.js')
