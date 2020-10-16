@@ -2,6 +2,8 @@ const sneakerCarousel = document.querySelector('.sneaker-carousel');
 const sneakerCarouselImgs = document.querySelectorAll('.sneaker-carousel-img');
 const previousImage = document.querySelector('.previous-image');
 const nextImage = document.querySelector('.next-image');
+const shippingBtn = document.querySelector('.product-shipping-button');
+const shippingDetails = document.querySelector('.shipping-details');
 
 //select the first imgElement from sneakerCarouselImgs and remove the hide class
 sneakerCarouselImgs[0].classList.remove('hide-carousel-img');
@@ -34,5 +36,14 @@ sneakerCarousel.addEventListener('click', (e) => {
       sneakerCarouselImgs[currIndex + 1].classList.remove('hide-carousel-img');
 
     currIndex++;
+  }
+});
+
+//Shipping and Return Toggle
+shippingBtn.addEventListener('click', (e) => {
+  if (shippingDetails.className.includes('open-shipping-details')) {
+    shippingDetails.classList.remove('open-shipping-details');
+  } else {
+    shippingDetails.classList.add('open-shipping-details');
   }
 });

@@ -11,27 +11,85 @@ html
     body
         include _header
         
-        .sneaker-page-container
-            .sneaker-carousel
-                button.previous-image(type='button') &#8249;
-                .sneaker-carousel-imgs 
-                    each imgFilename in sneaker.images
-                        img.sneaker-carousel-img.hide-carousel-img(src=`/img/${imgFilename}` alt=`${imgFilename}`)
-                button.next-image(type='button') &#8250;
+        .content-container
+            .sneaker-page-container.inner-content-container
+                .sneaker-carousel
+                    button.previous-image(type='button') &#8249;
+                    .sneaker-carousel-imgs 
+                        each imgFilename in sneaker.images
+                            img.sneaker-carousel-img.hide-carousel-img(src=`/img/${imgFilename}` alt=`${imgFilename}`)
+                    button.next-image(type='button') &#8250;
 
-            .sneaker-details
-                h1.sneaker-details-name= sneaker.name
-                h2.sneaker-details-price= `$${sneaker.price}`
+                .sneaker-details
+                    .product-main-container
+                        h1.sneaker-details-name= sneaker.name
+                        h2.sneaker-details-price= `$${sneaker.price}`
 
-                .size-container
-                    p.size-select select size
-                    .size-grid
+                        .size-container
+                            p.size-select select size
+                            .size-grid
+                                -
+                                    const sizes = Object.keys(sneaker.sizesAndQuantity)
+                                each size in sizes
+                                    button.size-button(type='button')= size
+
+                        button.add-to-chart(type='button') add to cart
+
+                    .line-break
+
+                    .product-summary-container
+                        h3.product-summary-title about this product
+
+                        p.product-summary= sneaker.description
+                        
                         -
-                            const sizes = Object.keys(sneaker.sizesAndQuantity)
-                        each size in sizes
-                            button.size-button(type='button')= size
+                            const dateReleased = sneaker.dateReleased;
+                            const sneakerDate = `${dateReleased.getMonth()}/${dateReleased.getDate()}/${dateReleased.getFullYear()}`;
+                        p.product-summary-other= `Product Code: ${sneaker.productCode}`
+                        p.product-summary-other= `Color: ${sneaker.color}`
+                        p.product-summary-other= `Release Date: ${sneakerDate}`
 
-        
+                    .line-break
+
+                    .product-shipping-container
+                        button.product-shipping-button(type='button')
+                            p.product-shipping-header shipping &amp; returns
+                            img.shipping-dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
+
+                        .shipping-details
+                            h4.shipping-details-header Delivery
+                            p.shipping-details-p Delivery and processing speeds vary by pricing options. "Lowest Price" orders ship to Jonah's Place first for verification and typically take 7-9 days (M-F) to reach you. "Fastest To You" orders will be shipped out the same day if ordered by 2PM ET (M-F, excluding holidays) and typically take 1-4 days (M-F) to reach you.
+                            p.shipping-details-p Estimated delivery times do not apply to international orders. International customers are responsible for any additional fees or taxes after an item ships.
+
+                            h4.shipping-details-header Returns
+                            p.shipping-details-p All sales with Jonah's Place are final.
+                    
+            .sneaker-recommendations.inner-content-container
+                h2.sneaker-recommendations-header Recommendations
+                .sneaker-recommendations-grid
+                    each sneaker in sneakerRecommendations
+                            a.sneaker-link-wrapper(href=`/sneakers/${sneaker.brand}/${sneaker._id}`)
+                                .sneaker-card
+                                    .sneaker-img-container
+                                        img.sneaker-card-img(src=`/img/${sneaker.images[0]}` alt=`${sneaker.images[0]}`)
+                                    .sneaker-details
+                                        -
+                                            let brand = sneaker.brand
+                                            if(sneaker.brand.includes('-')){
+                                                brand = brand.split('-');
+                                                let x = 0;
+                                                brand.forEach(word => {
+                                                    brand[x++]= word.substring(0,1).toUpperCase() + word.substring(1);
+                                                });
+                                                brand = brand.join(' ');
+                                            }
+                                            else{
+                                                brand = brand.substring(0,1).toUpperCase() + brand.substring(1);
+                                            }
+                                        p.sneaker-brand= brand
+                                        h2.sneaker-title= sneaker.name
+                                        p.sneaker-price= `$${sneaker.price}`
+                
         include _footer
 
     script(src='/scripts/navScript.js')

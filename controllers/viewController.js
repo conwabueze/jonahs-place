@@ -101,8 +101,18 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
   const sneakerId = req.params.sneakerId;
   const sneaker = await Sneaker.findById(sneakerId);
 
+  const sneakerRecommendations = await Sneaker.aggregate([
+    {
+      $match: { brand: sneaker.brand },
+    },
+    {
+      $sample: { size: 8 },
+    },
+  ]);
+
   res.render('sneaker', {
     sneaker,
+    sneakerRecommendations,
   });
 });
 
