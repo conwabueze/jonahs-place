@@ -103,7 +103,7 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
 
   const sneakerRecommendations = await Sneaker.aggregate([
     {
-      $match: { brand: sneaker.brand },
+      $match: { brand: sneaker.brand, _id: { $ne: sneaker._id } },
     },
     {
       $sample: { size: 8 },

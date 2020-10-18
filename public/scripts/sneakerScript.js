@@ -4,6 +4,12 @@ const previousImage = document.querySelector('.previous-image');
 const nextImage = document.querySelector('.next-image');
 const shippingBtn = document.querySelector('.product-shipping-button');
 const shippingDetails = document.querySelector('.shipping-details');
+const mDetailsName = document.querySelector('.mobile-sneaker-details-name');
+const mDetailsPrice = document.querySelector('.mobile-sneaker-details-price');
+const detailsName = document.querySelector('.sneaker-details-name');
+const detailsPrice = document.querySelector('.sneaker-details-price');
+const sizeGrid = document.querySelector('.size-grid');
+const sizeDropdown = document.querySelector('.size-dropdown-container');
 
 //select the first imgElement from sneakerCarouselImgs and remove the hide class
 sneakerCarouselImgs[0].classList.remove('hide-carousel-img');
@@ -45,5 +51,39 @@ shippingBtn.addEventListener('click', (e) => {
     shippingDetails.classList.remove('open-shipping-details');
   } else {
     shippingDetails.classList.add('open-shipping-details');
+  }
+});
+
+// Mobile Funcitionality
+if (window.innerWidth < 970) {
+  mDetailsName.classList.add('display-mb-header');
+  mDetailsPrice.classList.add('display-mb-header');
+  detailsName.classList.add('hide-dt-header');
+  detailsPrice.classList.add('hide-dt-header');
+  sizeGrid.classList.add('hide-size-grid');
+  sizeDropdown.classList.add('display-size-dropdown');
+  previousImage.classList.add('hide-sneaker-carousel');
+  nextImage.classList.add('hide-sneaker-carousel');
+}
+
+window.addEventListener('resize', (e) => {
+  if (window.innerWidth < 970) {
+    mDetailsName.classList.add('display-mb-header');
+    mDetailsPrice.classList.add('display-mb-header');
+    detailsName.classList.add('hide-dt-header');
+    detailsPrice.classList.add('hide-dt-header');
+    sizeGrid.classList.add('hide-size-grid');
+    sizeDropdown.classList.add('display-size-dropdown');
+    previousImage.classList.add('hide-sneaker-carousel');
+    nextImage.classList.add('hide-sneaker-carousel');
+  } else {
+    mDetailsName.classList.remove('display-mb-header');
+    mDetailsPrice.classList.remove('display-mb-header');
+    detailsName.classList.remove('hide-dt-header');
+    detailsPrice.classList.remove('hide-dt-header');
+    sizeGrid.classList.remove('hide-size-grid');
+    sizeDropdown.classList.remove('display-size-dropdown');
+    previousImage.classList.remove('hide-sneaker-carousel');
+    nextImage.classList.remove('hide-sneaker-carousel');
   }
 });

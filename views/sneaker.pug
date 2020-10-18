@@ -13,12 +13,18 @@ html
         
         .content-container
             .sneaker-page-container.inner-content-container
+                h1.mobile-sneaker-details-name= sneaker.name
+                h2.mobile-sneaker-details-price= `$${sneaker.price}`
                 .sneaker-carousel
                     button.previous-image(type='button') &#8249;
                     .sneaker-carousel-imgs 
                         each imgFilename in sneaker.images
                             img.sneaker-carousel-img.hide-carousel-img(src=`/img/${imgFilename}` alt=`${imgFilename}`)
                     button.next-image(type='button') &#8250;
+                    .sneaker-carousel-state-mb
+                        each imgFilename in sneaker.images
+                            .carousel-state 
+                            
 
                 .sneaker-details
                     .product-main-container
@@ -27,11 +33,16 @@ html
 
                         .size-container
                             p.size-select select size
+                            -
+                                const sizes = Object.keys(sneaker.sizesAndQuantity)
                             .size-grid
-                                -
-                                    const sizes = Object.keys(sneaker.sizesAndQuantity)
                                 each size in sizes
                                     button.size-button(type='button')= size
+                            .size-dropdown-container
+                                select.size-dropdown(name='sizes')
+                                    each size in sizes
+                                        option(value=`${size}`)= size
+
 
                         button.add-to-chart(type='button') add to cart
 
@@ -64,6 +75,8 @@ html
                             h4.shipping-details-header Returns
                             p.shipping-details-p All sales with Jonah's Place are final.
                     
+                    .line-break
+
             .sneaker-recommendations.inner-content-container
                 h2.sneaker-recommendations-header Recommendations
                 .sneaker-recommendations-grid
