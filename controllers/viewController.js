@@ -117,5 +117,9 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
 });
 
 exports.getHome = (req, res) => {
-  res.sendFile('index.html');
+  res.render('home');
+};
+
+exports.getLogin = (req, res) => {
+  res.render('login');
 };

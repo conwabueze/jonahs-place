@@ -10,12 +10,13 @@ const detailsName = document.querySelector('.sneaker-details-name');
 const detailsPrice = document.querySelector('.sneaker-details-price');
 const sizeGrid = document.querySelector('.size-grid');
 const sizeDropdown = document.querySelector('.size-dropdown-container');
+const carouselStates = document.querySelectorAll('.carousel-state');
+let currIndex = 0;
 
 //select the first imgElement from sneakerCarouselImgs and remove the hide class
 sneakerCarouselImgs[0].classList.remove('hide-carousel-img');
 
 //Carousel Logic
-let currIndex = 0;
 sneakerCarousel.addEventListener('click', (e) => {
   //if user clicks back buttone
   if (e.target.className.includes('previous-image')) {
@@ -55,6 +56,25 @@ shippingBtn.addEventListener('click', (e) => {
 });
 
 // Mobile Funcitionality
+const mobileCarousel = () => {
+  carouselStates[currIndex].classList.add('curr-carousel-state');
+  sneakerCarousel.addEventListener('click', (e) => {
+    sneakerCarouselImgs[currIndex].classList.add('hide-carousel-img');
+    carouselStates[currIndex].classList.remove('curr-carousel-state');
+    if (currIndex === sneakerCarouselImgs.length - 1) {
+      sneakerCarouselImgs[0].classList.remove('hide-carousel-img');
+      carouselStates[0].classList.add('curr-carousel-state');
+      currIndex = 0;
+      return;
+    } else {
+      sneakerCarouselImgs[currIndex + 1].classList.remove('hide-carousel-img');
+      carouselStates[currIndex + 1].classList.add('curr-carousel-state');
+    }
+    currIndex++;
+  });
+};
+
+//Hiding and Revealing neccessary elements
 if (window.innerWidth < 970) {
   mDetailsName.classList.add('display-mb-header');
   mDetailsPrice.classList.add('display-mb-header');
@@ -64,6 +84,7 @@ if (window.innerWidth < 970) {
   sizeDropdown.classList.add('display-size-dropdown');
   previousImage.classList.add('hide-sneaker-carousel');
   nextImage.classList.add('hide-sneaker-carousel');
+  mobileCarousel();
 }
 
 window.addEventListener('resize', (e) => {
@@ -76,6 +97,7 @@ window.addEventListener('resize', (e) => {
     sizeDropdown.classList.add('display-size-dropdown');
     previousImage.classList.add('hide-sneaker-carousel');
     nextImage.classList.add('hide-sneaker-carousel');
+    mobileCarousel();
   } else {
     mDetailsName.classList.remove('display-mb-header');
     mDetailsPrice.classList.remove('display-mb-header');
