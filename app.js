@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 //routers
 const AppError = require('./utils/appError');
@@ -18,10 +19,24 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
+// app.use(function (req, res, next) {
+//   res.header(
+//     'Access-Control-Allow-Origin',
+//     'http://127.0.0.1:8000/api/v1/users/login'
+//   ); // update to match the domain you will make the request from
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   next();
+// });
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+//parses cookies from request
+app.use(cookieParser());
 
 //set view engine
 app.set('view engine', 'pug');

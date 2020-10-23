@@ -1006,3 +1006,43 @@ a {
     justify-items: center;
   }
 }
+
+/*Login Desktop*/
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+}
+
+.login-container .login-header {
+  text-transform: uppercase;
+}
+
+.login-form {
+  width: 65%;
+}
+
+.login-form > label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.login-form > input {
+  margin-bottom: 1.5em;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.login-form .login-submit {
+  font-family: 'Teko', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-style: none;
+  height: 2.7rem;
+  width: 100%;
+  margin-bottom: 1.5em;
+}
