@@ -35,9 +35,12 @@ header.header
                 a.nested-shop-nav-item(href='#') 1500
         
         .container.sca-container.close-nav
-            input.nav-item.searchbar(type='text' placeholder='Search..')
-
             .ca-container
                 a.nav-item.cart-button(href='#')
-                    i.fas.fa-shopping-cart
-                a.nav-item.account-link(href='#') Account
+                    i.fas.fa-shopping-cart.fa-sm
+                    p.cart-button-text cart
+                .v-line
+                if user
+                    a.nav-item.account-link(href='#')= `Hi, ${user.name.split(' ')[0]}` 
+                else
+                    a.nav-item.account-link(href='/login') Account

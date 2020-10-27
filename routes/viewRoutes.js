@@ -1,6 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const viewController = require('../controllers/viewController');
+const authController = require('../controllers/authController');
+
+const router = express.Router();
+
+router.use(authController.isLoggedIn);
 
 router.route('/sneakers/:brand').get(viewController.getSneakerDirectory);
 router.route('/sneakers/:brand/:sneakerId').get(viewController.getSneaker);

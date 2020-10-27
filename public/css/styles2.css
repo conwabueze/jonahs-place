@@ -51,7 +51,7 @@ a {
 /*Nav Desktop functionality*/
 .header-container {
   display: grid;
-  grid-template-columns: 20% 50% 30%;
+  grid-template-columns: 30% 40% 30%;
   align-items: center;
 }
 
@@ -121,6 +121,26 @@ a {
   text-align: end;
   display: flex;
   justify-content: flex-end;
+}
+
+.ca-container,
+.ca-container .cart-button {
+  display: flex;
+  align-items: center;
+}
+
+.ca-container .nav-item {
+  font-size: 1.3rem;
+}
+
+.cart-button .cart-button-text {
+  margin: 0 0 0 0.3em;
+  text-transform: uppercase;
+}
+
+.ca-container .v-line {
+  height: 1rem;
+  border-left: 1px solid #000000;
 }
 
 .close-dropdown-nav {
@@ -388,7 +408,10 @@ a {
   }
 
   .jordan-home-header {
-    font-size: 5rem;
+    font-size: 4rem;
+  }
+  .jordan-home-header-link {
+    font-size: 2rem;
   }
   .sca-container {
     margin-top: 1.5em;
@@ -402,6 +425,14 @@ a {
   }
   .bottom-banners .home-headers {
     margin-bottom: 2.5em;
+  }
+
+  .bottom-banners .home-header {
+    font-size: 4rem;
+  }
+
+  .bottom-banners .home-header-link {
+    font-size: 2rem;
   }
 
   .bottom-banners .nb-home-headers {
@@ -1017,6 +1048,7 @@ a {
 
 .login-container .login-header {
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .login-form {

@@ -14,7 +14,7 @@ html
         .content-container 
                 .login-container.inner-content-container
                     h1.login-header login
-                    form.login-form(action="")
+                    form.login-form
                         label(for="email") email
                         br
                         input(type="email" id="email" name="email" required)
@@ -23,7 +23,7 @@ html
                         br
                         input(type="password" id="password" name="password" minlength="8" required)
                         br
-                        button.login-submit Login
+                        button.login-submit(type="submit") Login
             
 
         include _footer

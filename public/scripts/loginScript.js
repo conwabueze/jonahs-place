@@ -1,7 +1,6 @@
-const loginSubmit = document.querySelector('.login-submit');
+const loginForm = document.querySelector('.login-form');
 
 const login = async (email, password) => {
-  console.log(email, password);
   try {
     const res = await axios({
       method: 'POST',
@@ -12,13 +11,13 @@ const login = async (email, password) => {
       },
     });
 
-    console.log(res);
-  } catch (err) {
-    console.log(err.response.data);
-  }
+    if (res.data.status === 'success') {
+      location.assign('/');
+    }
+  } catch (err) {}
 };
 
-loginSubmit.addEventListener('click', (e) => {
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
