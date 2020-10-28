@@ -6,11 +6,14 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/scripts/*.js --out-dir ./public --out-file bundle.js",
+    "build:js": "parcel watch ./public/scripts/*.js --out-dir ./public --out-file bundle.js"
   },
   "author": "Chino N",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "ndb": "^1.1.5",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "^1.12.4"
   }
 }

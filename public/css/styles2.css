@@ -127,6 +127,7 @@ a {
 .ca-container .cart-button {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .ca-container .nav-item {
@@ -141,6 +142,22 @@ a {
 .ca-container .v-line {
   height: 1rem;
   border-left: 1px solid #000000;
+}
+
+.nested-account-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  margin-top: 100.5px;
+  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  width: 100%;
+}
+
+.nested-account-nav > * {
+  display: block;
 }
 
 .close-dropdown-nav {
@@ -1051,6 +1068,15 @@ a {
   font-weight: 500;
 }
 
+.login-container .input-error-header {
+  font-weight: 400;
+  color: #ff0033;
+}
+
+.login-container .hide-header {
+  display: none;
+}
+
 .login-form {
   width: 65%;
 }
@@ -1061,10 +1087,15 @@ a {
   font-weight: 300;
 }
 
-.login-form > input {
+.login-form .login-input {
   margin-bottom: 1.5em;
   height: 2.5rem;
   width: 100%;
+}
+
+.login-form .input-error {
+  border-style: solid;
+  border-color: #ff0033;
 }
 
 .login-form .login-submit {

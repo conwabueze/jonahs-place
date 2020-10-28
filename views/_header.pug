@@ -41,6 +41,10 @@ header.header
                     p.cart-button-text cart
                 .v-line
                 if user
-                    a.nav-item.account-link(href='#')= `Hi, ${user.name.split(' ')[0]}` 
+                    a.nav-item.account-link= `Hi, ${user.name.split(' ')[0]}`
+                    .nested-account-nav
+                        a.nested-account-nav-item(href="#") My Account
+                        button.nested-account-nav-btn.account-logout Log Out
+
                 else
                     a.nav-item.account-link(href='/login') Account

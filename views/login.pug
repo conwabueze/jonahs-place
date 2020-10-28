@@ -14,14 +14,15 @@ html
         .content-container 
                 .login-container.inner-content-container
                     h1.login-header login
+                    h2.input-error-header.hide-header Invalid Email or Password
                     form.login-form
                         label(for="email") email
                         br
-                        input(type="email" id="email" name="email" required)
+                        input.login-input(type="email" id="email" name="email" required)
                         br
                         label(for="password") password
                         br
-                        input(type="password" id="password" name="password" minlength="8" required)
+                        input.login-input(type="password" id="password" name="password" minlength="8" required)
                         br
                         button.login-submit(type="submit") Login
             

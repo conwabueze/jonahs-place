@@ -1,4 +1,8 @@
+// import axios from 'axios';
+
 const loginForm = document.querySelector('.login-form');
+const loginInputs = document.querySelectorAll('.login-input');
+const inputErrorHeader = document.querySelector('.input-error-header');
 
 const login = async (email, password) => {
   try {
@@ -14,7 +18,19 @@ const login = async (email, password) => {
     if (res.data.status === 'success') {
       location.assign('/');
     }
-  } catch (err) {}
+  } catch (err) {
+    inputErrorHeader.classList.remove('hide-header');
+    loginInputs.forEach((input) => {
+      input.classList.add('input-error');
+    });
+
+    // setTimeout(() => {
+    //   inputErrorHeader.classList.add('hide-header');
+    //   loginInputs.forEach((input) => {
+    //     input.classList.remove('input-error');
+    //   });
+    // }, 3000);
+  }
 };
 
 loginForm.addEventListener('submit', (e) => {
