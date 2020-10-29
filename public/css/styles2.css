@@ -107,12 +107,6 @@ a {
   color: #4f4f4f;
 }
 
-.searchbar {
-  border-color: #000000;
-  border-width: 1px;
-  height: 1.5rem;
-}
-
 ::placeholder {
   color: #000000;
 }
@@ -134,6 +128,10 @@ a {
   font-size: 1.3rem;
 }
 
+.ca-container .nav-item:hover {
+  cursor: pointer;
+}
+
 .cart-button .cart-button-text {
   margin: 0 0 0 0.3em;
   text-transform: uppercase;
@@ -145,19 +143,46 @@ a {
 }
 
 .nested-account-nav {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   position: absolute;
   z-index: 1;
-  margin-top: 100.5px;
+  margin-top: 239px;
   background-color: #ffffff;
   border: 0.5px solid #000000;
   width: 100%;
 }
 
+.open-account-nav {
+  display: flex;
+}
+
 .nested-account-nav > * {
   display: block;
+  margin: 0.3em 0;
+  font-size: 1.2rem;
+}
+
+.nested-account-nav > *:hover {
+  cursor: pointer;
+  color: #4f4f4f;
+}
+
+.nested-account-nav .account-logout {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #ffffff;
+  background-color: black;
+  border-style: none;
+  width: 80%;
+  margin-bottom: 0.5em;
+  padding: 0.4em 0;
+}
+
+.nested-account-nav .account-logout:hover {
+  background-color: #4f4f4f;
 }
 
 .close-dropdown-nav {

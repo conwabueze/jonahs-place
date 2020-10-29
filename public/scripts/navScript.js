@@ -1,6 +1,8 @@
 const shopNav = document.querySelector('.shop-nav');
 const sca = document.querySelector('.sca-container');
 const hamburger = document.querySelector('.hamburger');
+const activeAccount = document.querySelector('.active-account');
+const nestedAccountNav = document.querySelector('.nested-account-nav');
 
 hamburger.addEventListener('click', (e) => {
   let shopNavClassNames = shopNav.className;
@@ -65,6 +67,13 @@ if (window.innerWidth > 970) {
       );
     }
   });
+
+  if (activeAccount)
+    activeAccount.addEventListener('click', (e) => {
+      if (nestedAccountNav.classList.length === 1)
+        nestedAccountNav.classList.add('open-account-nav');
+      else nestedAccountNav.classList.remove('open-account-nav');
+    });
 } else {
   shopNav.addEventListener('click', (e) => {
     if (e.target.className.includes('sneaker-link')) {

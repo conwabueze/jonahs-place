@@ -78,6 +78,15 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, token, res);
 });
 
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+
+  res.status(200).json({ status: 'success' });
+};
+
 //this middleware function only deals with routes we need protected
 exports.protect = catchAsync(async (req, res, next) => {
   //1) Check if there is a token in the request header. If not tell user to login
@@ -123,32 +132,39 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 //only for rendered pages, no errors
-exports.isLoggedIn = catchAsync(async (req, res, next) => {
+exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
-    let token = req.cookies.jwt;
+    try {
+      let token = req.cookies.jwt;
 
-    //1) Verify if token is an actual token
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+      //1) Verify if token is an actual token
+      const decoded = await promisify(jwt.verify)(
+        token,
+        process.env.JWT_SECRET
+      );
 
-    //2) Check if the user still exist
-    const currentUser = await User.findById(decoded.id);
+      //2) Check if the user still exist
+      const currentUser = await User.findById(decoded.id);
 
-    if (!currentUser) {
+      if (!currentUser) {
+        return next();
+      }
+
+      //3) Check if user changed password after the token was issued
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next();
+      }
+
+      //There is a logged in user
+      res.locals.user = currentUser; //give pug template access to current user
+      return next();
+    } catch (err) {
       return next();
     }
-
-    //3) Check if user changed password after the token was issued
-    if (currentUser.changedPasswordAfter(decoded.iat)) {
-      return next();
-    }
-
-    //There is a logged in user
-    res.locals.user = currentUser; //give pug template access to current user
-    return next();
   }
 
   next();
-});
+};
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
