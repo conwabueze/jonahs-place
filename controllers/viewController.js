@@ -1,6 +1,8 @@
 const catchAsync = require('../utils/catchAsync');
 const Sneaker = require('../models/sneakerModel');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const ObjectID = require('mongodb').ObjectID;
 
 exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
   const brand = req.params.brand;
@@ -99,7 +101,16 @@ exports.getSneakerDirectory = catchAsync(async (req, res, next) => {
 
 exports.getSneaker = catchAsync(async (req, res, next) => {
   const sneakerId = req.params.sneakerId;
+
+  if (!ObjectID.isValid(sneakerId)) {
+    next(new AppError('There is no sneaker with that name'), 404);
+  }
+
   const sneaker = await Sneaker.findById(sneakerId);
+
+  if (!sneaker) {
+    next(new AppError('There is no sneaker with that name'), 404);
+  }
 
   const sneakerRecommendations = await Sneaker.aggregate([
     {

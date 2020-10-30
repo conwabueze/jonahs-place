@@ -30,6 +30,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 80vh;
 }
 
 .inner-content-container,
@@ -280,7 +281,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 25vh;
+  height: 20vh;
 }
 
 .footer-logo {
@@ -319,6 +320,7 @@ a {
   .footer-container {
     flex-direction: column;
     justify-content: center;
+    min-height: 25vh;
   }
 
   .footer-logo {
@@ -1085,10 +1087,12 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2em;
+  justify-content: center;
+  min-height: 80vh;
 }
 
 .login-container .login-header {
+  font-size: 2.7rem;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -1113,8 +1117,8 @@ a {
 }
 
 .login-form .login-input {
-  margin-bottom: 1.5em;
-  height: 2.5rem;
+  margin-bottom: 2.5em;
+  height: 3rem;
   width: 100%;
 }
 
@@ -1127,10 +1131,42 @@ a {
   font-family: 'Teko', sans-serif;
   background-color: #000000;
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
   border-style: none;
-  height: 2.7rem;
+  height: 3.7rem;
   width: 100%;
   margin-bottom: 1.5em;
+}
+
+/*Error Page Desktop*/
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.error-title-header,
+.error-message-header {
+  text-transform: uppercase;
+}
+
+.error-title-header {
+  font-size: 3.5rem;
+}
+
+.error-message-header {
+  font-size: 1.8rem;
+}
+
+@media (max-width: 970px) {
+  .error-title-header {
+    font-size: 2.3rem;
+  }
+
+  .error-message-header {
+    font-size: 1.3rem;
+  }
 }
