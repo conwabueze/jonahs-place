@@ -1,6 +1,7 @@
 {
   "name": "jonahsplace",
   "version": "1.0.0",
+  "type": "module",
   "description": "A sneaker api and server rendered site",
   "main": "app.js",
   "scripts": {

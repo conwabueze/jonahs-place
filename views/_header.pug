@@ -43,7 +43,7 @@ header.header
                 if user
                     a.nav-item.account-link.active-account= `Hi, ${user.name.split(' ')[0]}`
                     .nested-account-nav
-                        a.nested-account-nav-item(href="#") My Account
+                        a.nested-account-nav-item(href="/me") My Account
                         a.nested-account-nav-item(href="#") My Orders
                         a.nested-account-nav-item(href="#") Track My Order
                         button.nested-account-nav-item.account-logout Log Out

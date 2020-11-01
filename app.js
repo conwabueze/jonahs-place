@@ -28,9 +28,9 @@ const app = express();
 //   next();
 // });
 
-// parse application/x-www-form-urlencoded
+// parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));
-// parse application/json
+// parse application/json data
 app.use(bodyParser.json());
 //parses cookies from request
 app.use(cookieParser());

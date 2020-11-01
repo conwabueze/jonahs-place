@@ -6,9 +6,14 @@ const router = express.Router();
 
 router.use(authController.isLoggedIn);
 
-router.route('/sneakers/:brand').get(viewController.getSneakerDirectory);
-router.route('/sneakers/:brand/:sneakerId').get(viewController.getSneaker);
-router.route('/login').get(viewController.getLogin);
+router
+  .route('/sneakers/:brand')
+  .get(authController.isLoggedIn, viewController.getSneakerDirectory);
+router
+  .route('/sneakers/:brand/:sneakerId')
+  .get(authController.isLoggedIn, viewController.getSneaker);
+router.route('/login').get(authController.isLoggedIn, viewController.getLogin);
+router.route('/me').get(authController.protect, viewController.getAccount);
 
 router.route('/').get(viewController.getHome);
 

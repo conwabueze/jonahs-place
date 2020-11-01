@@ -128,9 +128,13 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
 });
 
 exports.getHome = (req, res) => {
-  res.render('home');
+  res.status(200).render('home');
 };
 
 exports.getLogin = (req, res) => {
-  res.render('login');
+  res.status(200).render('login');
+};
+
+exports.getAccount = (req, res) => {
+  res.status(200).render('account');
 };

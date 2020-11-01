@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 const loginForm = document.querySelector('.login-form');
 const loginInputs = document.querySelectorAll('.login-input');
 const inputErrorHeader = document.querySelector('.input-error-header');

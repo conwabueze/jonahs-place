@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/styles2.css')
+        link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap')
+        script(src='https://kit.fontawesome.com/e556938a57.js' crossorigin='anonymous')
+        title Jonah's Place
+
+    body
+        include _header
+        
+        .content-container
+            .account-container.inner-content-container
+                h1.my-account-header= `Hi, ${user.name.split(' ')[0]}`
+                h2.my-account-settings-header here are your account settings
+                h2.my-account-error-header please enter in a valid email
+                form.edit-form
+                        label(for="name") name
+                        br
+                        input.edit-input(type="text" id="name" name="name" value=`${user.name}`)
+                        br
+                        label(for="email") email
+                        br
+                        input.edit-input(type="email" id="email" name="email" value=`${user.email}`)
+                        br
+                        button.edit-submit(type="submit") Edit
+                
+        
+        include _footer
+
+
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha512-3BBFWr73Xrf8GRjO+0pl0cbVwESBvg3ovnuCXpoqOkC/mkt/hTkFtutUPrwRz8eLySYvy5v1daulkyUZYvH8jw==" crossorigin="anonymous")
+    script(src='/scripts/navScript.js')
+    script(src='/scripts/loginScript.js')
+    script(src='/scripts/updateAccountScript.js')
