@@ -259,7 +259,13 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     return next(new AppError('Incorrect Password', 401));
   }
 
-  //3) update password
+  //3) Check if new password is equal to confirm password
+  if (newPassword !== newPasswordConfirm) {
+    return next(
+      new AppError('Confirm Password is not equal to new password', 401)
+    );
+  }
+  //4) update password
   user.password = newPassword;
   user.passwordConfirm = newPasswordConfirm;
   await user.save();

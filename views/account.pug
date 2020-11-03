@@ -15,18 +15,36 @@ html
             .account-container.inner-content-container
                 h1.my-account-header= `Hi, ${user.name.split(' ')[0]}`
                 h2.my-account-settings-header here are your account settings
-                h2.my-account-error-header please enter in a valid email
-                form.edit-form
+                h2.edit-success-header.success-header Edit Successful
+                h2.edit-error-header.error-header please enter in a valid email
+                form.account-form.edit-form
                         label(for="name") name
                         br
-                        input.edit-input(type="text" id="name" name="name" value=`${user.name}`)
+                        input.account-input.edit-input(type="text" id="name" name="name" value=`${user.name}`)
                         br
                         label(for="email") email
                         br
-                        input.edit-input(type="email" id="email" name="email" value=`${user.email}`)
+                        input.account-input.edit-input(type="email" id="email" name="email" value=`${user.email}`)
                         br
-                        button.edit-submit(type="submit") Edit
+                        button.account-submit.edit-submit(type="submit") Edit
                 
+                .line-break
+                h2.my-account-settings-header want to change your password?
+                h2.password-success-header.success-header Edit Successful
+                h2.password-error-header.error-header please enter in a valid email
+                form.account-form.password-change-form
+                        label(for="current-password") current password
+                        br
+                        input.account-input.password-change-input(type="password" id="current-password" name="current-password" required)
+                        br
+                        label(for="new-password") new password
+                        br
+                        input.account-input.password-change-input(type="password" id="new-password" name="new-password" required)
+                        label(for="confirm-password") confirm password
+                        br
+                        input.account-input.password-change-input(type="password" id="confirm-password" name="confirm-password" required)
+                        br
+                        button.account-submit.password-change-submit(type="submit") change password
         
         include _footer
 
