@@ -16,7 +16,7 @@ html
                 h1.my-account-header= `Hi, ${user.name.split(' ')[0]}`
                 h2.my-account-settings-header here are your account settings
                 h2.edit-success-header.success-header Edit Successful
-                h2.edit-error-header.error-header please enter in a valid email
+                h2.edit-error-header.error-header invalid email
                 form.account-form.edit-form
                         label(for="name") name
                         br
@@ -30,8 +30,8 @@ html
                 
                 .line-break
                 h2.my-account-settings-header want to change your password?
-                h2.password-success-header.success-header Edit Successful
-                h2.password-error-header.error-header please enter in a valid email
+                h2.password-success-header.success-header Password Change Successful
+                h2.password-error-header.error-header
                 form.account-form.password-change-form
                         label(for="current-password") current password
                         br

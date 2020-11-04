@@ -3,6 +3,7 @@ const sca = document.querySelector('.sca-container');
 const hamburger = document.querySelector('.hamburger');
 const activeAccount = document.querySelector('.active-account');
 const nestedAccountNav = document.querySelector('.nested-account-nav');
+const vLine = document.querySelector('.v-line');
 
 hamburger.addEventListener('click', (e) => {
   let shopNavClassNames = shopNav.className;
@@ -19,7 +20,7 @@ hamburger.addEventListener('click', (e) => {
   sca.className = scaClassNames;
 });
 
-if (window.innerWidth > 970) {
+const dtSneakerDropdown = () => {
   shopNav.addEventListener('mouseover', (e) => {
     if (e.target.className.includes('sneaker-link')) {
       const dropdown = document.querySelector(`#${e.target.classList[2]}`);
@@ -67,28 +68,43 @@ if (window.innerWidth > 970) {
       );
     }
   });
+};
 
+const accountDropdown = () => {
   if (activeAccount)
     activeAccount.addEventListener('click', (e) => {
       if (nestedAccountNav.classList.length === 1)
         nestedAccountNav.classList.add('open-account-nav');
       else nestedAccountNav.classList.remove('open-account-nav');
     });
-} else {
-  shopNav.addEventListener('click', (e) => {
-    if (e.target.className.includes('sneaker-link')) {
-      const dropdown = document.querySelector(`#${e.target.classList[2]}`);
-      if (dropdown.className.includes('close-dropdown-nav')) {
-        dropdown.className = dropdown.className.replace(
-          'close-dropdown-nav',
-          'open-dropdown-nav'
-        );
-      } else if (dropdown.className.includes('open-dropdown-nav')) {
-        dropdown.className = dropdown.className.replace(
-          'open-dropdown-nav',
-          'close-dropdown-nav'
-        );
-      }
-    }
-  });
-}
+};
+
+const hideVLine = () => {
+  vLine.classList.add('hide-v-line');
+};
+
+accountDropdown();
+
+if (window.innerWidth > 970) dtSneakerDropdown();
+
+window.addEventListener('resize', (e) => {
+  if (window.innerWidth > 970) dtSneakerDropdown();
+});
+
+//dropdown for sneaker types in mobile
+// shopNav.addEventListener('click', (e) => {
+//   if (e.target.className.includes('sneaker-link')) {
+//     const dropdown = document.querySelector(`#${e.target.classList[2]}`);
+//     if (dropdown.className.includes('close-dropdown-nav')) {
+//       dropdown.className = dropdown.className.replace(
+//         'close-dropdown-nav',
+//         'open-dropdown-nav'
+//       );
+//     } else if (dropdown.className.includes('open-dropdown-nav')) {
+//       dropdown.className = dropdown.className.replace(
+//         'open-dropdown-nav',
+//         'close-dropdown-nav'
+//       );
+//     }
+//   }
+// });
