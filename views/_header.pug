@@ -42,7 +42,9 @@ header.header
                 .v-line
                 if user
                     a.nav-item.account-link.active-account= `Hi, ${user.name.split(' ')[0]}`
+                    
                     .nested-account-nav
+                        button.account-filter-exit(type='button') &times;
                         a.nested-account-nav-item(href="/me") My Account
                         a.nested-account-nav-item(href="#") My Orders
                         a.nested-account-nav-item(href="#") Track My Order

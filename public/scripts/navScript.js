@@ -4,6 +4,7 @@ const hamburger = document.querySelector('.hamburger');
 const activeAccount = document.querySelector('.active-account');
 const nestedAccountNav = document.querySelector('.nested-account-nav');
 const vLine = document.querySelector('.v-line');
+const accountFilterExit = document.querySelector('.account-filter-exit');
 
 hamburger.addEventListener('click', (e) => {
   let shopNavClassNames = shopNav.className;
@@ -70,7 +71,7 @@ const dtSneakerDropdown = () => {
   });
 };
 
-const accountDropdown = () => {
+const accountDropdownDT = () => {
   if (activeAccount)
     activeAccount.addEventListener('click', (e) => {
       if (nestedAccountNav.classList.length === 1)
@@ -79,16 +80,34 @@ const accountDropdown = () => {
     });
 };
 
-const hideVLine = () => {
-  vLine.classList.add('hide-v-line');
+const accountSlideMB = () => {
+  if (activeAccount) {
+    activeAccount.addEventListener('click', (e) => {
+      nestedAccountNav.classList.add('nested-account-nav-mobile-open');
+    });
+    accountFilterExit.addEventListener('click', (e) => {
+      nestedAccountNav.classList.remove('nested-account-nav-mobile-open');
+    });
+  }
 };
 
-accountDropdown();
-
-if (window.innerWidth > 970) dtSneakerDropdown();
+if (window.innerWidth > 970) {
+  dtSneakerDropdown();
+  accountDropdownDT();
+} else {
+  accountSlideMB();
+  vLine.classList.add('hide-v-line');
+}
 
 window.addEventListener('resize', (e) => {
-  if (window.innerWidth > 970) dtSneakerDropdown();
+  if (window.innerWidth > 970) {
+    dtSneakerDropdown();
+    accountDropdownDT();
+    vLine.classList.remove('hide-v-line');
+  } else {
+    accountSlideMB();
+    vLine.classList.add('hide-v-line');
+  }
 });
 
 //dropdown for sneaker types in mobile

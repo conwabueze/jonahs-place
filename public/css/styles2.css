@@ -202,6 +202,10 @@ a {
   display: none;
 }
 
+.nested-account-nav .account-filter-exit {
+  display: none;
+}
+
 /*Nav Mobile Functionality*/
 @media (max-width: 970px) {
   .header {
@@ -239,7 +243,7 @@ a {
     display: flex;
     flex-direction: column;
     order: 2;
-    z-index: 1;
+    /* z-index: 1; */
     background-color: #ffffff;
     width: 100%;
     height: auto;
@@ -255,28 +259,34 @@ a {
   .sca-container {
     width: 100%;
     justify-content: center;
-    padding-bottom: 1.5em;
+    text-align: initial;
   }
 
   .ca-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     align-items: flex-start;
+    width: 100%;
+    height: 70px;
+    background-color: #000000;
+  }
+
+  .ca-container .nav-item {
+    height: 100%;
+    color: #ffffff;
+    margin: 0;
   }
 
   .ca-container .cart-button {
     grid-column: 1/2;
+    justify-content: center;
+    border-right: 0.5px solid #ffffff;
   }
   .ca-container .account-link {
     grid-column: 2/3;
-  }
-
-  .nested-account-nav {
-    grid-row: 2;
-    grid-column: 1/3;
-    position: static;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .close-nav {
@@ -287,11 +297,49 @@ a {
     display: flex;
   }
 
-  .nested-shop-nav {
+  /* .nested-shop-nav {
     position: static;
     margin: 0;
     border-top-style: none;
     border-bottom-style: solid;
+  } */
+  .nested-account-nav {
+    display: flex;
+    background-color: #ffffff;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    height: 100vh;
+    transition: transform 300ms;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .nested-account-nav-mobile-open {
+    transform: translateX(-100%);
+  }
+
+  .nested-account-nav > * {
+    margin: 1.5em 0;
+    font-size: 1.9rem;
+  }
+
+  .nested-account-nav .account-filter-exit {
+    align-self: flex-end;
+    margin: 0.5em;
+    background-color: #ffffff;
+    border: none;
+    font-size: 2.7em;
+    display: block;
+  }
+
+  .nested-account-nav .account-logout {
+    font-size: 1.9rem;
   }
 }
 
@@ -480,9 +528,6 @@ a {
   }
   .jordan-home-header-link {
     font-size: 2rem;
-  }
-  .sca-container {
-    margin-top: 1.5em;
   }
 
   .bottom-banners {
@@ -1064,7 +1109,7 @@ a {
   }
 
   .sneaker-carousel-imgs {
-    width: 500px;
+    width: 420px;
   }
 }
 
