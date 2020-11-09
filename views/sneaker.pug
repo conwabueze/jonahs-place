@@ -30,21 +30,19 @@ html
                     .product-main-container
                         h1.sneaker-details-name= sneaker.name
                         h2.sneaker-details-price= `$${sneaker.price}`
-
-                        .size-container
-                            p.size-select select size
-                            -
-                                const sizes = Object.keys(sneaker.sizesAndQuantity)
-                            .size-grid
-                                each size in sizes
-                                    button.size-button(type='button')= size
-                            .size-dropdown-container
-                                select.size-dropdown(name='sizes')
-                                    each size in sizes
-                                        option(value=`${size}`)= size
+                        
+                        form.add-to-cart-form(action=`${url}` method="POST")
+                            .size-container
+                                p.size-select select size
+                                -
+                                    const sizes = Object.keys(sneaker.sizesAndQuantity)
+                                .size-dropdown-container
+                                    select.size-dropdown(name='size')
+                                        each size in sizes
+                                            option(value=`${size}`)= size
 
 
-                        button.add-to-chart(type='button') add to cart
+                            button.add-to-chart(type='submit') add to cart
 
                     .line-break
 

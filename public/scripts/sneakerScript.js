@@ -80,8 +80,8 @@ if (window.innerWidth < 970) {
   mDetailsPrice.classList.add('display-mb-header');
   detailsName.classList.add('hide-dt-header');
   detailsPrice.classList.add('hide-dt-header');
-  sizeGrid.classList.add('hide-size-grid');
-  sizeDropdown.classList.add('display-size-dropdown');
+  // sizeGrid.classList.add('hide-size-grid');
+  // sizeDropdown.classList.add('display-size-dropdown');
   previousImage.classList.add('hide-sneaker-carousel');
   nextImage.classList.add('hide-sneaker-carousel');
   mobileCarousel();
@@ -93,8 +93,8 @@ window.addEventListener('resize', (e) => {
     mDetailsPrice.classList.add('display-mb-header');
     detailsName.classList.add('hide-dt-header');
     detailsPrice.classList.add('hide-dt-header');
-    sizeGrid.classList.add('hide-size-grid');
-    sizeDropdown.classList.add('display-size-dropdown');
+    // sizeGrid.classList.add('hide-size-grid');
+    // sizeDropdown.classList.add('display-size-dropdown');
     previousImage.classList.add('hide-sneaker-carousel');
     nextImage.classList.add('hide-sneaker-carousel');
     mobileCarousel();
@@ -103,8 +103,8 @@ window.addEventListener('resize', (e) => {
     mDetailsPrice.classList.remove('display-mb-header');
     detailsName.classList.remove('hide-dt-header');
     detailsPrice.classList.remove('hide-dt-header');
-    sizeGrid.classList.remove('hide-size-grid');
-    sizeDropdown.classList.remove('display-size-dropdown');
+    // sizeGrid.classList.remove('hide-size-grid');
+    // sizeDropdown.classList.remove('display-size-dropdown');
     previousImage.classList.remove('hide-sneaker-carousel');
     nextImage.classList.remove('hide-sneaker-carousel');
   }

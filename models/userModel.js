@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: {
     type: Date,
   },
+  cart: [Array],
   role: {
     type: String,
     enum: ['admin', 'customer'],

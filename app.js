@@ -15,18 +15,10 @@ const globalErrorHandler = require('./controllers/errorController');
 const sneakerRouter = require('./routes/sneakerRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const checkoutRouter = require('./routes/checkoutRoutes');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
-
-// app.use(function (req, res, next) {
-//   res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8000/'); // update to match the domain you will make the request from
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept'
-//   );
-//   next();
-// });
 
 // parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -90,6 +82,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/sneakers', sneakerRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/checkout', checkoutRouter);
 
 //middleware for unhandled routes
 app.all('*', (req, res, next) => {

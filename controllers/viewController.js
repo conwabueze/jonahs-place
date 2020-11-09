@@ -124,7 +124,18 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
   res.render('sneaker', {
     sneaker,
     sneakerRecommendations,
+    url: req.url,
   });
+});
+
+exports.addToCart = catchAsync(async (req, res, next) => {
+  //figure out how to get user then push array into user cart field
+  const sneakerID = req.url.split('/')[req.url.split('/').length - 1];
+  const cartEntry = [ObjectID(sneakerID), req.body.size];
+  // const sneaker = await Sneaker.findByIdAndUpdate(
+  //   { sneakerID },
+  //   { $push: { ccartEntry } }
+  // );
 });
 
 exports.getHome = (req, res) => {

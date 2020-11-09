@@ -973,7 +973,7 @@ a {
   font-size: 1.6rem;
   text-transform: uppercase;
 }
-.size-grid {
+/* .size-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 7px;
@@ -994,19 +994,23 @@ a {
 
 .hide-size-grid {
   display: none;
-}
+} */
 
 .size-dropdown-container {
-  display: none;
-}
-
-.display-size-dropdown {
   display: block;
 }
 
+/* .display-size-dropdown {
+  display: block;
+} */
+
 .size-dropdown-container .size-dropdown {
   width: 100%;
-  height: 3rem;
+  height: 3.2rem;
+}
+
+.size-dropdown-container .size-dropdown:after {
+  background-color: #ffffff;
 }
 
 .sneaker-details .add-to-chart {

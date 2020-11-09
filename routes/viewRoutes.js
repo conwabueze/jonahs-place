@@ -11,7 +11,8 @@ router
   .get(authController.isLoggedIn, viewController.getSneakerDirectory);
 router
   .route('/sneakers/:brand/:sneakerId')
-  .get(authController.isLoggedIn, viewController.getSneaker);
+  .get(authController.isLoggedIn, viewController.getSneaker)
+  .post(authController.isLoggedIn, viewController.addToCart);
 router.route('/login').get(authController.isLoggedIn, viewController.getLogin);
 router.route('/me').get(authController.protect, viewController.getAccount);
 
