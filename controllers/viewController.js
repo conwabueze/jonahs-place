@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const Sneaker = require('../models/sneakerModel');
+const User = require('../models/userModel');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
 const ObjectID = require('mongodb').ObjectID;
@@ -130,12 +131,13 @@ exports.getSneaker = catchAsync(async (req, res, next) => {
 
 exports.addToCart = catchAsync(async (req, res, next) => {
   //figure out how to get user then push array into user cart field
+  const userID = res.locals.user.id;
   const sneakerID = req.url.split('/')[req.url.split('/').length - 1];
-  const cartEntry = [ObjectID(sneakerID), req.body.size];
-  // const sneaker = await Sneaker.findByIdAndUpdate(
-  //   { sneakerID },
-  //   { $push: { ccartEntry } }
-  // );
+  const cartEntry = [sneakerID, req.body.size];
+  await User.findByIdAndUpdate({ _id: userID }, { $push: { cart: cartEntry } });
+  //AndUpdate({ userID }, { $push: { cart: cartEntry } });
+
+  //const user = Use
 });
 
 exports.getHome = (req, res) => {
