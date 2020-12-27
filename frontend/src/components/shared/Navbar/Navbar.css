@@ -30,6 +30,10 @@
   text-transform: uppercase;
 }
 
+.Navbar-hamburger {
+  display: none;
+}
+
 .Navbar-sneaker-links {
   display: flex;
   justify-content: space-between;
@@ -39,6 +43,7 @@
 .Navbar-sneaker-link {
   font-size: 1.5rem;
   padding: 18.5px;
+  text-align: center;
 }
 
 .Navbar-cart-account-links {
@@ -65,4 +70,92 @@
 .Navbar-cart-link .cart-text {
   text-transform: uppercase;
   margin-left: 0.5em;
+}
+
+@media (max-width: 970px) {
+  .Navbar {
+    z-index: 1;
+    width: 100%;
+    border-bottom-style: none;
+  }
+  .Navbar .ContentContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .Navbar-logo {
+    width: 100%;
+    padding-left: 1rem;
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+  }
+
+  .Navbar-hamburger {
+    background: none;
+    border: 0;
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0.4em;
+    margin-top: 2.5px;
+    padding: 2px 4px;
+  }
+
+  .Navbar-sneaker-links {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+    /* z-index: 1; */
+    background-color: #ffffff;
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+  .Navbar-sneaker-link {
+    border-bottom-style: solid;
+    border-width: 0.5px;
+  }
+
+  .Navbar-cart-account-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    width: 100%;
+    height: 70px;
+    background-color: #000000;
+  }
+
+  .Navbar-cart-link {
+    grid-column: 1/2;
+    justify-content: center;
+    border-right: 0.5px solid #ffffff;
+    color: #ffffff;
+  }
+  .Navbar-cart-account-line-break {
+    display: none;
+  }
+  .Navbar-account-link {
+    grid-column: 2/3;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .Navbar-sneaker-links,
+  .Navbar-cart-account-links {
+    display: none;
+  }
+
+  .sneaker-links-open-nav {
+    display: flex;
+  }
+
+  .cart-account-links-open-nav {
+    display: grid;
+  }
 }
