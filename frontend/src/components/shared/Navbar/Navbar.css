@@ -18,6 +18,12 @@
   color: #000000;
 }
 
+.Navbar-logo:hover,
+.Navbar-sneaker-link:hover,
+.Navbar-cart-account-link:hover {
+  color: #4f4f4f;
+}
+
 .Navbar-logo {
   font-size: 2.5rem;
   font-weight: 400;
@@ -32,6 +38,7 @@
 
 .Navbar-sneaker-link {
   font-size: 1.5rem;
+  padding: 18.5px;
 }
 
 .Navbar-cart-account-links {

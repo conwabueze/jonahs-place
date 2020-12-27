@@ -1,0 +1,21 @@
+.SneakerDropdown {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  background-color: #ffffff;
+  border-style: solid;
+  border-width: 0.5px;
+  margin-top: 71.4px;
+  font-size: 1.2rem;
+}
+.SneakerDropdown-link {
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+  margin: 0.5em 0;
+}
+.SneakerDropdown-link:hover {
+  color: #4f4f4f;
+}

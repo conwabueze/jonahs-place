@@ -1,17 +1,38 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 import ContentContainer from '../ContentContainer/ContentContainer';
+import SneakerDropdown from './SneakerDropdown';
 import './Navbar.css';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
 
-    this.sneakerLinksMouseEnter = this.sneakerLinksMouseEnter.bind(this);
+    this.state = {
+      activeDropdown: '',
+    };
+
+    this.sneakerLinksMouseOver = this.sneakerLinksMouseOver.bind(this);
+    this.sneakerLinksMouseLeave = this.sneakerLinksMouseLeave.bind(this);
   }
 
-  sneakerLinksMouseEnter(e) {
-    console.log(e.target);
+  sneakerLinksMouseOver(e) {
+    if (e.target.classList[0] === 'Navbar-sneaker-link') {
+      this.setState({ activeDropdown: e.target.classList[1] });
+    }
+  }
+
+  sneakerLinksMouseLeave(e) {
+    if (e.target.parentNode.className === 'Navbar-sneaker-links') {
+      this.setState({ activeDropdown: '' });
+    }
+  }
+
+  dropdownRender() {
+    if (this.state.activeDropdown === '') {
+      return '';
+    }
+    return <SneakerDropdown dropdownType={this.state.activeDropdown} />;
   }
 
   render() {
@@ -24,7 +45,8 @@ class Navbar extends Component {
 
           <div
             className="Navbar-sneaker-links"
-            onMouseEnter={this.sneakerLinksMouseEnter}
+            onMouseOver={this.sneakerLinksMouseOver}
+            onMouseLeave={this.sneakerLinksMouseLeave}
           >
             <Link
               to="/sneakers/air-jordan"
@@ -50,6 +72,7 @@ class Navbar extends Component {
             >
               New Balance
             </Link>
+            {this.dropdownRender()}
           </div>
           <div className="Navbar-cart-account-links">
             <Link to="#" className="Navbar-cart-account-link Navbar-cart-link">
