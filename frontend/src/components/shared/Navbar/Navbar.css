@@ -1,0 +1,61 @@
+.Navbar {
+  background: #ffffff;
+  border-bottom-style: solid;
+  border-bottom-color: #000000;
+  border-bottom-width: 0.5px;
+}
+
+.Navbar .ContentContainer {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: center;
+}
+
+.Navbar-logo,
+.Navbar-sneaker-link,
+.Navbar-cart-account-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.Navbar-logo {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.Navbar-sneaker-links {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.Navbar-sneaker-link {
+  font-size: 1.5rem;
+}
+
+.Navbar-cart-account-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Navbar-cart-account-link {
+  font-size: 1.3rem;
+  margin: 0 0.5em;
+}
+
+.Navbar-cart-account-line-break {
+  height: 1rem;
+  border-left: 1px solid #000000;
+}
+
+.Navbar-cart-link {
+  display: flex;
+  align-items: center;
+}
+
+.Navbar-cart-link .cart-text {
+  text-transform: uppercase;
+  margin-left: 0.5em;
+}
