@@ -32,9 +32,6 @@
 /*Mobile Renderstyling*/
 
 @media (max-width: 970px) {
-  .Home-jordan-banner .TextOnImg-txt {
-    margin: 0;
-  }
   .Home-jordan-banner .TextOnImg-txt-h1 {
     font-size: 4rem;
   }
@@ -62,7 +59,7 @@
   align-items: center;
   text-align: center;
   margin-bottom: 2.5em;
-  margin-left: 0;
+  padding-left: 0;
 }
 
 .Home-bottom-banners-mobile .TextOnImg-txt-h1 {
@@ -71,4 +68,28 @@
 
 .Home-bottom-banners-mobile .CallToActionBtn {
   font-size: 2rem;
+}
+
+@media (max-width: 360px) {
+  .Home-jordan-banner .TextOnImg-txt-h1 {
+    font-size: 3rem;
+  }
+  .Home-jordan-banner .CallToActionBtn {
+    font-size: 1.5rem;
+  }
+
+  .Home-bottom-banners-mobile > * .TextOnImg-img {
+    display: block;
+    max-height: 250px;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .Home-bottom-banners-mobile .TextOnImg-txt-h1 {
+    font-size: 3rem;
+  }
+
+  .Home-bottom-banners-mobile .CallToActionBtn {
+    font-size: 1.5rem;
+  }
 }
