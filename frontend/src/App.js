@@ -11,11 +11,15 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" children={<Home />} />
-        <Route
-          exact
-          path="/sneakers/air-jordan"
-          children={<SneakerDirectory />}
-        />
+        <Route exact key="air-jordan" path="/sneakers/air-jordan">
+          <SneakerDirectory brandDirectory="air-jordan" />
+        </Route>
+        <Route exact key="nike" path="/sneakers/nike">
+          <SneakerDirectory brandDirectory="nike" />
+        </Route>
+        <Route exact key="adidas" path="/sneakers/adidas">
+          <SneakerDirectory brandDirectory="adidas" />
+        </Route>
       </Switch>
       <Footer />
     </div>
