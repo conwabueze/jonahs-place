@@ -3,6 +3,8 @@
   background-color: #f2f2f2;
   margin-bottom: 2em;
   height: 406px;
+  text-decoration: none;
+  color: #000000;
 }
 
 .SneakerCard:hover {

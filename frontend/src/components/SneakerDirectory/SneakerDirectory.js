@@ -3,6 +3,8 @@ import axios from 'axios';
 import './SneakerDirectory.css';
 import SneakerGrid from '../shared/SneakerGrid/SneakerGrid';
 import SneakerPagination from './SneakerPagination';
+import SneakerFilter from './SneakerFilter';
+import ContentContainer from '../shared/ContentContainer/ContentContainer';
 
 class SneakerDirectory extends Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class SneakerDirectory extends Component {
       pageNumber: 1,
     };
 
-    this.previousPage = this.previousPage.bind(this);
-    this.nextPage = this.nextPage(this);
+    // this.previousPage = this.previousPage.bind(this);
+    // this.nextPage = this.nextPage(this);
   }
 
   async componentDidMount() {
@@ -29,25 +31,32 @@ class SneakerDirectory extends Component {
     });
   }
 
-  previousPage() {
-    this.setState({ pageNumber: this.state.pageNumber - 1 });
-  }
+  // previousPage() {
+  //   this.setState({ pageNumber: this.state.pageNumber - 1 });
+  // }
 
-  nextPage() {
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
-  }
+  // nextPage(e) {
+  //   this.setState({ pageNumber: this.state.pageNumber + 1 });
+  // }
 
   render() {
     //console.log(this.state.sneakers);
     return (
       <div className="SneakerDirectory">
-        <SneakerGrid sneakersForDisplay={this.state.sneakers} />
-        <SneakerPagination
-          totalSneakers={this.state.totalSneakers}
-          pageNumber={this.state.pageNumber}
-          previousPage={this.previousPage}
-          nextPage={() => this.nextPage}
-        />
+        <ContentContainer>
+          <div className="SneakerDirectory-filters">
+            <SneakerFilter buttonName="Model" />
+          </div>
+          <div className="SneakerDirectory-content">
+            <SneakerGrid sneakersForDisplay={this.state.sneakers} />
+            <SneakerPagination
+              totalSneakers={this.state.totalSneakers}
+              pageNumber={this.state.pageNumber}
+              previousPage={this.previousPage}
+              nextPage={() => this.nextPage}
+            />
+          </div>
+        </ContentContainer>
       </div>
     );
   }
