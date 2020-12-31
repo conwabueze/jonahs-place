@@ -1,0 +1,41 @@
+.SneakerCard {
+  width: 100%;
+  background-color: #f2f2f2;
+  margin-bottom: 2em;
+  height: 406px;
+}
+
+.SneakerCard:hover {
+  cursor: pointer;
+}
+
+.SneakerCard-img {
+  width: 100%;
+  height: 100%;
+  padding: 1em 0.8em;
+}
+
+.SneakerCard-details {
+  padding-bottom: 2em;
+  margin-left: 0.8em;
+}
+
+.SneakerCard-details > * {
+  margin: 0;
+  padding: 0;
+}
+
+.SneakerCard-details-brand {
+  color: #444444;
+}
+
+.SneakerCard-details-name {
+  font-weight: 400;
+  font-size: 1.7rem;
+  height: 77px;
+}
+
+.SneakerCard-details-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+}

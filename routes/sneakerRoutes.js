@@ -13,6 +13,10 @@ router
 router.route('/sneaker-averages/:type?').get(sneakerController.sneakerAverages);
 
 router
+  .route('/:brand')
+  .get(authController.isLoggedIn, sneakerController.getAllSneakersByBrand);
+
+router
   .route('/:id')
   .get(sneakerController.getSneaker)
   .patch(

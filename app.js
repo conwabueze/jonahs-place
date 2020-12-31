@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 //routers
 const AppError = require('./utils/appError');
@@ -20,6 +21,7 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
+app.use(cors());
 // parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json data

@@ -5,7 +5,7 @@ import './CallToActionBtn.css';
 class CallToActionBtn extends Component {
   render() {
     return (
-      <Link className="CallToActionBtn" to={this.props.destination}>
+      <Link className="CallToActionBtn" to="#">
         {this.props.btnText}
       </Link>
     );
