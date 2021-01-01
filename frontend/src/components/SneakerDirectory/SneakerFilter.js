@@ -25,7 +25,7 @@ class SneakerFilter extends Component {
       : '';
     return (
       <div className="SneakerFilter">
-        <button className="SneakerFilter-button">
+        <button className="SneakerFilter-button" onClick={this.revealFilter}>
           <p className="SneakerFilter-button-name">{this.props.buttonName}</p>
           <img
             className="SneakerFilter-button-icon"
@@ -33,10 +33,7 @@ class SneakerFilter extends Component {
             alt="dropdown-icon"
           />
         </button>
-        <div
-          className={`SneakerFilter-options ${openCloseOptions}`}
-          onClick={this.revealFilter}
-        ></div>
+        <div className={`SneakerFilter-options ${openCloseOptions}`}></div>
       </div>
     );
   }

@@ -4,27 +4,39 @@ import './SneakerPagination.css';
 class SneakerPagination extends Component {
   constructor(props) {
     super(props);
-    this.handleNextPage = this.handleNextPage.bind(this);
   }
 
-  handleNextPage() {
-    this.props.nextPage();
-  }
   render() {
-    return (
-      <div className="SneakerPagination">
-        <button className="SneakerPagination-previous">
+    const renderPreviousButton =
+      this.props.pageNumber === 1 ? (
+        ''
+      ) : (
+        <button
+          className="SneakerPagination-previous"
+          onClick={this.props.previousPage}
+        >
           {String.fromCharCode(8592)}
         </button>
-        <p className="SneakerPagination-page-data">{`${
-          this.props.pageNumber
-        }/${Math.ceil(this.props.totalSneakers / 9)}`}</p>
+      );
+
+    const renderForwardButton =
+      this.props.pageNumber === Math.ceil(this.props.totalSneakers / 9) ? (
+        ''
+      ) : (
         <button
           className="SneakerPagination-forward"
-          onClick={() => this.props.nextPage}
+          onClick={this.props.nextPage}
         >
           {String.fromCharCode(8594)}
         </button>
+      );
+    return (
+      <div className="SneakerPagination">
+        {renderPreviousButton}
+        <p className="SneakerPagination-page-data">{`${
+          this.props.pageNumber
+        }/${Math.ceil(this.props.totalSneakers / 9)}`}</p>
+        {renderForwardButton}
       </div>
     );
   }

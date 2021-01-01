@@ -16,8 +16,8 @@ class SneakerDirectory extends Component {
       pageNumber: 1,
     };
 
-    // this.previousPage = this.previousPage.bind(this);
-    // this.nextPage = this.nextPage(this);
+    this.previousPage = this.previousPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
 
   async componentDidMount() {
@@ -31,13 +31,24 @@ class SneakerDirectory extends Component {
     });
   }
 
-  // previousPage() {
-  //   this.setState({ pageNumber: this.state.pageNumber - 1 });
-  // }
+  async componentDidUpdate() {
+    const sneakersInfo = await axios.get(
+      `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}`
+    );
 
-  // nextPage(e) {
-  //   this.setState({ pageNumber: this.state.pageNumber + 1 });
-  // }
+    this.setState({
+      sneakers: sneakersInfo.data.data.sneakers,
+      totalSneakers: sneakersInfo.data.data.totalSneakers,
+    });
+  }
+
+  previousPage() {
+    this.setState({ pageNumber: this.state.pageNumber - 1 });
+  }
+
+  nextPage() {
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
+  }
 
   render() {
     //console.log(this.state.sneakers);
@@ -53,7 +64,7 @@ class SneakerDirectory extends Component {
               totalSneakers={this.state.totalSneakers}
               pageNumber={this.state.pageNumber}
               previousPage={this.previousPage}
-              nextPage={() => this.nextPage}
+              nextPage={this.nextPage}
             />
           </div>
         </ContentContainer>
