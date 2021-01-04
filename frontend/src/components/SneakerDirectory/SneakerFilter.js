@@ -33,7 +33,9 @@ class SneakerFilter extends Component {
             alt="dropdown-icon"
           />
         </button>
-        <div className={`SneakerFilter-options ${openCloseOptions}`}></div>
+        <div className={`SneakerFilter-options ${openCloseOptions}`}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

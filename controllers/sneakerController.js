@@ -172,6 +172,7 @@ exports.getAllSneakersByBrand = catchAsync(async (req, res, next) => {
     data: {
       sneakers,
       totalSneakers,
+      sneakerTypes,
     },
   });
 });

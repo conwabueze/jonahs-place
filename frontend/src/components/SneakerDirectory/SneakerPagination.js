@@ -2,10 +2,6 @@ import { React, Component } from 'react';
 import './SneakerPagination.css';
 
 class SneakerPagination extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const renderPreviousButton =
       this.props.pageNumber === 1 ? (
