@@ -13,7 +13,6 @@ class SneakerFilter extends Component {
   }
 
   revealFilter() {
-    console.log('heyy');
     this.state.revealFilterOptions
       ? this.setState({ revealFilterOptions: false })
       : this.setState({ revealFilterOptions: true });
