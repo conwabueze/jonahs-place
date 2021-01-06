@@ -173,6 +173,7 @@ exports.getAllSneakersByBrand = catchAsync(async (req, res, next) => {
       sneakers,
       totalSneakers,
       sneakerTypes,
+      sneakerSizes,
     },
   });
 });
