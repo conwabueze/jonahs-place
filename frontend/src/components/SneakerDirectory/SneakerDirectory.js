@@ -36,18 +36,17 @@ class SneakerDirectory extends Component {
   }
 
   async componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('outside yerr');
     if (
       prevState.pageNumber !== this.state.pageNumber ||
       prevState.checkedModelFilter !== this.state.checkedModelFilter
     ) {
-      console.log('yerr');
+      let brandQuery = '';
+      this.state.checkedModelFilter.forEach(
+        (model) => (brandQuery += `&type=${model}`)
+      );
+      console.log(brandQuery);
       const sneakersInfo = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/${
-          this.props.brandDirectory
-        }?page=${
-          this.state.pageNumber
-        }&type=${this.state.checkedModelFilter.join(',')}`
+        `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}${brandQuery}`
       );
 
       this.setState({
@@ -68,7 +67,7 @@ class SneakerDirectory extends Component {
   }
 
   checkBoxOnChange(e) {
-    const checkedModelFilter = this.state.checkedModelFilter;
+    const checkedModelFilter = [...this.state.checkedModelFilter];
 
     if (checkedModelFilter.includes(e.target.id)) {
       checkedModelFilter.splice(checkedModelFilter.indexOf(e.target.id), 1);
