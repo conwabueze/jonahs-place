@@ -85,7 +85,11 @@ class Navbar extends Component {
     return (
       <div className="Navbar">
         <ContentContainer>
-          <Link to="/" className="Navbar-logo Navbar-home-link">
+          <Link
+            to="/"
+            className="Navbar-logo Navbar-home-link"
+            onClick={this.toggleMobileNav}
+          >
             Jonah's Place
           </Link>
 
@@ -97,6 +101,7 @@ class Navbar extends Component {
             className={`Navbar-sneaker-links ${displaySneakerLinks}`}
             onMouseOver={this.sneakerLinksMouseOver}
             onMouseLeave={this.sneakerLinksMouseLeave}
+            onClick={this.toggleMobileNav}
           >
             <Link
               to="/sneakers/air-jordan"

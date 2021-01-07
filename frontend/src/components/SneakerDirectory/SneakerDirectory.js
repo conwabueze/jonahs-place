@@ -21,6 +21,7 @@ class SneakerDirectory extends Component {
       startingPrice: '',
       endingPrice: '',
       priceSubmit: false,
+      mobileFilterOpen: false,
     };
 
     this.previousPage = this.previousPage.bind(this);
@@ -28,6 +29,7 @@ class SneakerDirectory extends Component {
     this.checkBoxOnChange = this.checkBoxOnChange.bind(this);
     this.priceFilterOnSubmit = this.priceFilterOnSubmit.bind(this);
     this.handlePriceFilterInput = this.handlePriceFilterInput.bind(this);
+    this.toggleMobileFilters = this.toggleMobileFilters.bind(this);
   }
 
   async componentDidMount() {
@@ -112,7 +114,14 @@ class SneakerDirectory extends Component {
 
   priceFilterOnSubmit(e) {
     this.setState({ priceSubmit: true });
+    this.toggleMobileFilters();
+
     e.preventDefault();
+  }
+
+  toggleMobileFilters() {
+    if (this.state.mobileFilterOpen) this.setState({ mobileFilterOpen: false });
+    else this.setState({ mobileFilterOpen: true });
   }
 
   renderModelFilterForm() {
@@ -209,10 +218,27 @@ class SneakerDirectory extends Component {
   }
 
   render() {
+    const mobileFilterClassActive = this.state.mobileFilterOpen
+      ? 'open-mobile-filters'
+      : '';
     return (
       <div className="SneakerDirectory">
         <ContentContainer>
-          <div className="SneakerDirectory-filters">
+          <button
+            className="SneakerDirectory-filters-toggle"
+            onClick={this.toggleMobileFilters}
+          >
+            <p>Open Filters</p>
+          </button>
+          <div
+            className={`SneakerDirectory-filters ${mobileFilterClassActive}`}
+          >
+            <button
+              className="SneakerDirectory-filters-mb-exitBtn"
+              onClick={this.toggleMobileFilters}
+            >
+              {String.fromCharCode(9747)}
+            </button>
             <SneakerFilter buttonName="Model">
               {this.renderModelFilterForm()}
             </SneakerFilter>
