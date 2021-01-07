@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import './SneakerCard.css';
 
 class SneakerCard extends Component {
+  reformateBrand(brand) {
+    let brandSplit = brand.split('-');
+    brandSplit = brandSplit.map(
+      (brand) => brand.substring(0, 1).toUpperCase() + brand.substring(1)
+    );
+    return brandSplit.join(' ');
+  }
+
   render() {
     const sneaker = this.props.sneaker;
     return (
@@ -15,7 +23,9 @@ class SneakerCard extends Component {
           />
         </div>
         <div className="SneakerCard-details">
-          <p className="SneakerCard-details-brand">{sneaker.brand}</p>
+          <p className="SneakerCard-details-brand">
+            {this.reformateBrand(sneaker.brand)}
+          </p>
           <h2 className="SneakerCard-details-name">{sneaker.name}</h2>
           <p className="SneakerCard-details-price">{`$${sneaker.price}`}</p>
         </div>

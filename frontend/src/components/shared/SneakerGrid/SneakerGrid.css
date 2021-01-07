@@ -7,6 +7,6 @@
 
 @media (max-width: 970px) {
   .SneakerGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 270px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 290px));
   }
 }
