@@ -18,12 +18,16 @@ class SneakerDirectory extends Component {
       checkedModelFilter: [],
       sneakerSizes: '',
       checkedSizeFilter: [],
+      startingPrice: '',
+      endingPrice: '',
+      priceSubmit: false,
     };
 
     this.previousPage = this.previousPage.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.checkBoxOnChange = this.checkBoxOnChange.bind(this);
     this.priceFilterOnSubmit = this.priceFilterOnSubmit.bind(this);
+    this.handlePriceFilterInput = this.handlePriceFilterInput.bind(this);
   }
 
   async componentDidMount() {
@@ -43,7 +47,8 @@ class SneakerDirectory extends Component {
     if (
       prevState.pageNumber !== this.state.pageNumber ||
       prevState.checkedModelFilter !== this.state.checkedModelFilter ||
-      prevState.checkedSizeFilter !== this.state.checkedSizeFilter
+      prevState.checkedSizeFilter !== this.state.checkedSizeFilter ||
+      this.state.priceSubmit
     ) {
       let brandQuery = '';
       this.state.checkedModelFilter.forEach(
@@ -53,13 +58,17 @@ class SneakerDirectory extends Component {
       this.state.checkedSizeFilter.forEach(
         (size) => (sizeQuery += `&size=${size}`)
       );
+      let priceQuery = '';
+      priceQuery = `&priceFrom=${this.state.startingPrice}&priceTo=${this.state.endingPrice}`;
+
       const sneakersInfo = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}${brandQuery}${sizeQuery}`
+        `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}${brandQuery}${sizeQuery}${priceQuery}`
       );
 
       this.setState({
         sneakers: sneakersInfo.data.data.sneakers,
         totalSneakers: sneakersInfo.data.data.totalSneakers,
+        priceSubmit: false,
       });
     }
   }
@@ -97,7 +106,12 @@ class SneakerDirectory extends Component {
     }
   }
 
+  handlePriceFilterInput(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   priceFilterOnSubmit(e) {
+    this.setState({ priceSubmit: true });
     e.preventDefault();
   }
 
@@ -159,18 +173,32 @@ class SneakerDirectory extends Component {
   renderPriceFilterForm() {
     const priceFilterForm = (
       <form className="PriceFilter">
-        <label className="PriceFilter-label" id="starting-price">
+        <label className="PriceFilter-label" id="startingPrice">
           From:
         </label>
-        <input className="PriceFilter-input" htmlFor="ending-price" />
+        <input
+          type="number"
+          className="PriceFilter-input"
+          htmlFor="startingPrice"
+          name="startingPrice"
+          value={this.state.startingPrice}
+          onChange={this.handlePriceFilterInput}
+        />
         <br></br>
-        <label className="PriceFilter-label" id="ending-price">
+        <label className="PriceFilter-label" id="endingPrice">
           To:
         </label>
-        <input className="PriceFilter-input" htmlFor="ending-price" />
+        <input
+          type="number"
+          className="PriceFilter-input"
+          htmlFor="endingPrice"
+          name="endingPrice"
+          value={this.state.endingPrice}
+          onChange={this.handlePriceFilterInput}
+        />
         <button
           className="PriceFilter-button"
-          onSubmit={this.priceFilterOnSubmit}
+          onClick={this.priceFilterOnSubmit}
         >
           Submit
         </button>
