@@ -17,7 +17,7 @@ router
   .get(authController.isLoggedIn, sneakerController.getAllSneakersByBrand);
 
 router
-  .route('/:id')
+  .route('/:brand/:id')
   .get(sneakerController.getSneaker)
   .patch(
     authController.protect,

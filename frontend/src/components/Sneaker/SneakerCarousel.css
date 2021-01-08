@@ -1,0 +1,18 @@
+.SneakerCarousel {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  margin-right: 1em;
+}
+
+.SneakerCarousel-previous,
+.SneakerCarousel-next {
+  background-color: #ffffff;
+  border-style: none;
+  font-size: 4em;
+  height: 100%;
+}
+
+.SneakerCarousel-img {
+  width: 615px;
+}

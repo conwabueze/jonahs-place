@@ -88,7 +88,7 @@ class Navbar extends Component {
           <Link
             to="/"
             className="Navbar-logo Navbar-home-link"
-            onClick={this.toggleMobileNav}
+            onClick={() => this.setState({ mobileNavOpen: false })}
           >
             Jonah's Place
           </Link>

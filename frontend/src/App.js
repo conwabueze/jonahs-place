@@ -4,13 +4,14 @@ import Navbar from './components/shared/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Footer from './components/shared/Footer/Footer';
 import SneakerDirectory from './components/SneakerDirectory/SneakerDirectory';
+import Sneaker from './components/Sneaker/Sneaker';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Switch>
-        <Route exact path="/" children={<Home />} />
+        <Route exact path="/" component={Home} />
         <Route exact key="air-jordan" path="/sneakers/air-jordan">
           <SneakerDirectory brandDirectory="air-jordan" />
         </Route>
@@ -20,6 +21,7 @@ function App() {
         <Route exact key="adidas" path="/sneakers/adidas">
           <SneakerDirectory brandDirectory="adidas" />
         </Route>
+        <Route exact path="/sneakers/:brand/:sneakerID" component={Sneaker} />
       </Switch>
       <Footer />
     </div>

@@ -14,7 +14,7 @@ class SneakerCard extends Component {
   render() {
     const sneaker = this.props.sneaker;
     return (
-      <Link className="SneakerCard" to="#">
+      <Link className="SneakerCard" to={`${sneaker.brand}/${sneaker._id}`}>
         <div className="SneakerCard-img-container">
           <img
             className="SneakerCard-img"
