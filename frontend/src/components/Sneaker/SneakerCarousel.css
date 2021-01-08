@@ -16,3 +16,9 @@
 .SneakerCarousel-img {
   width: 615px;
 }
+
+@media (max-width: 1260px) {
+  .SneakerCarousel-img {
+    width: 420px;
+  }
+}

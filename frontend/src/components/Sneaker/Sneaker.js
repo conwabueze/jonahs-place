@@ -2,6 +2,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import ContentContainer from '../shared/ContentContainer/ContentContainer';
 import SneakerCarousel from './SneakerCarousel';
+import SneakerDetails from './SneakerDetails';
 import './Sneaker.css';
 
 class Sneaker extends Component {
@@ -21,14 +22,21 @@ class Sneaker extends Component {
     this.setState({ sneakerInfo: sneakerInfo.data.data.data });
   }
 
+  renderContent() {
+    return this.state.sneakerInfo !== '' ? (
+      <div className="Sneaker-main-content">
+        <SneakerCarousel sneakerImgs={this.state.sneakerInfo.images} />
+        <SneakerDetails details={this.state.sneakerInfo} />
+      </div>
+    ) : (
+      ''
+    );
+  }
+
   render() {
-    console.log(this.props.match.params);
-    console.log('heyy');
     return (
-      <div>
-        <ContentContainer>
-          <SneakerCarousel sneakerImgs={this.state.sneakerInfo.images} />
-        </ContentContainer>
+      <div className="Sneaker">
+        <ContentContainer>{this.renderContent()}</ContentContainer>
       </div>
     );
   }
