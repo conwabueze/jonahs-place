@@ -37,3 +37,18 @@
   border-top: 1px solid #978d8d;
   margin: 3em 0;
 }
+
+.SneakerDetails-summary-title {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.SneakerDetails-summary-description {
+  font-size: 1.3rem;
+}
+
+.SneakerDetails-summary-other {
+  font-size: 1.1rem;
+  letter-spacing: 0.4px;
+}

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import CallToActionBtn from '../shared/CallToActionBtn/CallToActionBtn';
+import ShippingDetails from './ShippingDetails';
 import './SneakerDetails.css';
 
 class SneakerDetails extends Component {
@@ -10,6 +11,7 @@ class SneakerDetails extends Component {
         {size}
       </option>
     ));
+    const getDate = new Date(details.dateReleased);
     return (
       <div className="SneakerDetails">
         <h1 className="SneakerDetails-name">{details.name}</h1>
@@ -29,7 +31,16 @@ class SneakerDetails extends Component {
           <p className="SneakerDetails-summary-description">
             {details.description}
           </p>
+          <p className="SneakerDetails-summary-other">{`Product Code: ${details.productCode}`}</p>
+          <p className="SneakerDetails-summary-other">{`Color: ${details.color}`}</p>
+          <p className="SneakerDetails-summary-other">{`Release Date: ${getDate.getMonth()}/${getDate.getDate()}/${getDate.getFullYear()}`}</p>
         </div>
+
+        <div className="SneakerDetails-linebreak"></div>
+
+        <ShippingDetails />
+
+        <div className="SneakerDetails-linebreak"></div>
       </div>
     );
   }

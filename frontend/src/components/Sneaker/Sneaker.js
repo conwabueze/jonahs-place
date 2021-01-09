@@ -3,6 +3,7 @@ import axios from 'axios';
 import ContentContainer from '../shared/ContentContainer/ContentContainer';
 import SneakerCarousel from './SneakerCarousel';
 import SneakerDetails from './SneakerDetails';
+import SneakerGrid from '../shared/SneakerGrid/SneakerGrid';
 import './Sneaker.css';
 
 class Sneaker extends Component {
@@ -11,6 +12,7 @@ class Sneaker extends Component {
 
     this.state = {
       sneakerInfo: '',
+      sneakerRecommendations: '',
     };
   }
 
@@ -19,26 +21,37 @@ class Sneaker extends Component {
       `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
     );
 
-    this.setState({ sneakerInfo: sneakerInfo.data.data.data });
+    const sneakerRecommendations = await axios.get(
+      `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}?limit=8`
+    );
+
+    this.setState({
+      sneakerInfo: sneakerInfo.data.data.data,
+      sneakerRecommendations: sneakerRecommendations.data.data.sneakers,
+    });
   }
 
   renderContent() {
+    console.log(this.state.sneakerRecommendations);
     return this.state.sneakerInfo !== '' ? (
-      <div className="Sneaker-main-content">
-        <SneakerCarousel sneakerImgs={this.state.sneakerInfo.images} />
-        <SneakerDetails details={this.state.sneakerInfo} />
-      </div>
+      <ContentContainer>
+        <div className="Sneaker-main-content">
+          <SneakerCarousel sneakerImgs={this.state.sneakerInfo.images} />
+          <SneakerDetails details={this.state.sneakerInfo} />
+        </div>
+
+        <div className="Sneaker-recommendations">
+          <h2 className="Sneaker-recommendations-header">Recommendations</h2>
+          <SneakerGrid sneakersForDisplay={this.state.sneakerRecommendations} />
+        </div>
+      </ContentContainer>
     ) : (
       ''
     );
   }
 
   render() {
-    return (
-      <div className="Sneaker">
-        <ContentContainer>{this.renderContent()}</ContentContainer>
-      </div>
-    );
+    return <div className="Sneaker">{this.renderContent()}</div>;
   }
 }
 
