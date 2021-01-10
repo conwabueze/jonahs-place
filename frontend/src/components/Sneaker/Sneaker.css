@@ -3,6 +3,9 @@
   justify-content: space-between;
   margin-top: 1em;
 }
+.Sneaker-recommendations {
+  padding-bottom: 5em;
+}
 
 .Sneaker-recommendations-header {
   font-size: 2.5rem;
@@ -13,5 +16,27 @@
 .Sneaker-recommendations .SneakerGrid {
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   justify-content: center;
-  column-gap: 0.5em;
+  gap: 0.5em;
+}
+
+@media (max-width: 970px) {
+  .Sneaker .ContentContainer {
+    width: 80%;
+  }
+  .Sneaker-main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 776px) {
+  .Sneaker-recommendations .SneakerGrid {
+    grid-template-columns: repeat(auto-fit, 320px);
+  }
+}
+
+@media (max-width: 375px) {
+  .Sneaker-recommendations .SneakerGrid {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
 }

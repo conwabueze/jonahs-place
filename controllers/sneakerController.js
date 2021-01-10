@@ -68,10 +68,6 @@ exports.sneakerAverages = catchAsync(async (req, res, next) => {
 
 exports.uniqueSneakerTypes = catchAsync(async (req, res, next) => {});
 
-exports.getBrandSneakers = catchAsync(async (req, res, next) => {
-  //const brand =
-});
-
 exports.getAllSneakersByBrand = catchAsync(async (req, res, next) => {
   const brand = req.params.brand;
   const features = new APIFeatures(Sneaker.find({ brand: brand }), req.query)
@@ -174,6 +170,33 @@ exports.getAllSneakersByBrand = catchAsync(async (req, res, next) => {
       totalSneakers,
       sneakerTypes,
       sneakerSizes,
+    },
+  });
+});
+
+exports.getSneakerRecommendations = catchAsync(async (req, res, next) => {
+  const sneakerId = req.params.sneakerId;
+
+  if (!ObjectID.isValid(sneakerId)) {
+    next(new AppError('There is no sneaker with that name'), 404);
+  }
+
+  const sneaker = await Sneaker.findById(sneakerId);
+
+  const sneakerRecommendations = await Sneaker.aggregate([
+    {
+      $match: { brand: sneaker.brand, _id: { $ne: sneaker._id } },
+    },
+    {
+      $sample: { size: 8 },
+    },
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    results: sneakerRecommendations.length,
+    data: {
+      sneakerRecommendations,
     },
   });
 });

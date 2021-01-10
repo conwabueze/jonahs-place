@@ -6,40 +6,51 @@ class SneakerCarousel extends Component {
     super(props);
 
     this.state = {
-      currentImgIndex: 0,
+      mbMode: false,
     };
-
-    this.previousImg = this.previousImg.bind(this);
-    this.nextImg = this.nextImg.bind(this);
   }
 
-  previousImg() {
-    if (this.state.currentImgIndex === 0)
-      this.setState({ currentImgIndex: this.props.sneakerImgs.length - 1 });
-    else this.setState({ currentImgIndex: this.state.currentImgIndex - 1 });
-  }
-
-  nextImg() {
-    if (this.state.currentImgIndex === this.props.sneakerImgs.length - 1)
-      this.setState({ currentImgIndex: 0 });
-    else this.setState({ currentImgIndex: this.state.currentImgIndex + 1 });
+  renderMbImgIndicators() {
+    const renderIndicator = [];
+    for (let x = 0; x < this.props.sneakerImgs.length; x++) {
+      if (x === this.props.currentImgIndex) {
+        renderIndicator.push(
+          <div
+            className="SneakerCarousel-mb-indicator active-indicator"
+            key={x}
+          ></div>
+        );
+      } else {
+        renderIndicator.push(
+          <div className="SneakerCarousel-mb-indicator" key={x}></div>
+        );
+      }
+    }
+    return renderIndicator;
   }
 
   render() {
     const sneakerImgs = this.props.sneakerImgs;
     return (
       <div className="SneakerCarousel">
-        <button className="SneakerCarousel-previous" onClick={this.previousImg}>
+        <button
+          className="SneakerCarousel-previous"
+          onClick={this.props.previousImg}
+        >
           {String.fromCharCode(8249)}
         </button>
         <img
           className="SneakerCarousel-img"
-          src={`/imgs/${sneakerImgs[this.state.currentImgIndex]}`}
-          alt={sneakerImgs[this.state.currentImgIndex]}
+          src={`/imgs/${sneakerImgs[this.props.currentImgIndex]}`}
+          alt={sneakerImgs[this.props.currentImgIndex]}
+          onClick={this.props.mbMode ? this.props.nextImg : null}
         />
-        <button className="SneakerCarousel-next" onClick={this.nextImg}>
+        <button className="SneakerCarousel-next" onClick={this.props.nextImg}>
           {String.fromCharCode(8250)}
         </button>
+        <div className="SneakerCarousel-mb-indicators">
+          {this.renderMbImgIndicators()}
+        </div>
       </div>
     );
   }

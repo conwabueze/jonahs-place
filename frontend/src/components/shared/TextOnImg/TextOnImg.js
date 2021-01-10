@@ -13,7 +13,10 @@ class TextOnImg extends Component {
         />
         <div className="TextOnImg-txt">
           <h1 className="TextOnImg-txt-h1">{this.props.header}</h1>
-          <CallToActionBtn btnText={this.props.btnText} to="/" />
+          <CallToActionBtn
+            btnText={this.props.btnText}
+            linkTo={this.props.linkTo}
+          />
         </div>
       </div>
     );

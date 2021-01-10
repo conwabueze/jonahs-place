@@ -38,18 +38,21 @@ class Home extends Component {
             imgSrc="/imgs/nike-home-banner.jpg"
             header="nike"
             btnText="shop now"
+            linkTo="/sneakers/nike"
           />
           <TextOnImg
             classAlt="Home-adidas-banner"
             imgSrc="/imgs/adidas-home-banner.jpg"
             header="adidas"
             btnText="shop now"
+            linkTo="/sneakers/adidas"
           />
           <TextOnImg
             classAlt="Home-nb-banner"
             imgSrc="/imgs/nb-home-banner-2.jpg"
             header="new balance"
             btnText="shop now"
+            linkTo="/sneakers/new-balance"
           />
         </div>
       );
@@ -62,18 +65,21 @@ class Home extends Component {
           imgSrc="/imgs/nike-home-banner-mobile.jpg"
           header="nike"
           btnText="shop now"
+          linkTo="/sneakers/nike"
         />
         <TextOnImg
           classAlt="Home-adidas-banner"
           imgSrc="/imgs/adidas-home-banner-mobile-2.jpg"
           header="adidas"
           btnText="shop now"
+          linkTo="/sneakers/adidas"
         />
         <TextOnImg
           classAlt="Home-nb-banner"
           imgSrc="/imgs/nb-home-banner-mobile-2.jpg"
           header="new balance"
           btnText="shop now"
+          linkTo="/sneakers/new-balance"
         />
       </div>
     );
@@ -88,6 +94,7 @@ class Home extends Component {
             imgSrc="/imgs/jordan-home-banner.jpg"
             header="air jordan"
             btnText="shop now"
+            linkTo="/sneakers/air-jordan"
           />
 
           {this.renderBottomBanners()}

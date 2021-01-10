@@ -14,7 +14,11 @@ class SneakerCard extends Component {
   render() {
     const sneaker = this.props.sneaker;
     return (
-      <Link className="SneakerCard" to={`${sneaker.brand}/${sneaker._id}`}>
+      <Link
+        className="SneakerCard"
+        to={`/sneakers/${sneaker.brand}/${sneaker._id}`}
+        key={sneaker.id}
+      >
         <div className="SneakerCard-img-container">
           <img
             className="SneakerCard-img"
