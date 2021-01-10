@@ -34,6 +34,7 @@
 @media (max-width: 970px) {
   .Home-jordan-banner .TextOnImg-img {
     height: 400px;
+    object-position: top;
   }
   .Home-jordan-banner .TextOnImg-txt-h1 {
     font-size: 4rem;

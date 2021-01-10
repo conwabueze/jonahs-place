@@ -28,7 +28,7 @@ class Sneaker extends Component {
     );
 
     const sneakerRecommendations = await axios.get(
-      `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}?limit=8`
+      `http://localhost:3001/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
     );
 
     this.setState({
@@ -46,7 +46,7 @@ class Sneaker extends Component {
         `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
       );
       const sneakerRecommendations = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}?limit=8`
+        `http://localhost:3001/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
       );
 
       this.setState({

@@ -29,30 +29,44 @@ class SneakerCarousel extends Component {
     return renderIndicator;
   }
 
-  render() {
+  carouselRender() {
     const sneakerImgs = this.props.sneakerImgs;
-    return (
-      <div className="SneakerCarousel">
-        <button
-          className="SneakerCarousel-previous"
-          onClick={this.props.previousImg}
-        >
-          {String.fromCharCode(8249)}
-        </button>
+    if (this.props.sneakerImgs.length === 1) {
+      return (
         <img
           className="SneakerCarousel-img"
           src={`/imgs/${sneakerImgs[this.props.currentImgIndex]}`}
           alt={sneakerImgs[this.props.currentImgIndex]}
           onClick={this.props.mbMode ? this.props.nextImg : null}
         />
-        <button className="SneakerCarousel-next" onClick={this.props.nextImg}>
-          {String.fromCharCode(8250)}
-        </button>
-        <div className="SneakerCarousel-mb-indicators">
-          {this.renderMbImgIndicators()}
+      );
+    } else {
+      return (
+        <div>
+          <button
+            className="SneakerCarousel-previous"
+            onClick={this.props.previousImg}
+          >
+            {String.fromCharCode(8249)}
+          </button>
+          <img
+            className="SneakerCarousel-img"
+            src={`/imgs/${sneakerImgs[this.props.currentImgIndex]}`}
+            alt={sneakerImgs[this.props.currentImgIndex]}
+            onClick={this.props.mbMode ? this.props.nextImg : null}
+          />
+          <button className="SneakerCarousel-next" onClick={this.props.nextImg}>
+            {String.fromCharCode(8250)}
+          </button>
+          <div className="SneakerCarousel-mb-indicators">
+            {this.renderMbImgIndicators()}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+  }
+  render() {
+    return <div className="SneakerCarousel">{this.carouselRender()}</div>;
   }
 }
 

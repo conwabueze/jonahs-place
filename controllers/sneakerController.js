@@ -2,6 +2,7 @@ const Sneaker = require('../models/sneakerModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const handlerFactory = require('./handlerFactory');
+const ObjectID = require('mongodb').ObjectID;
 
 exports.getSneaker = handlerFactory.getOne(Sneaker, { path: 'reviews' });
 exports.getAllSneakers = handlerFactory.getAll(Sneaker);
@@ -183,7 +184,7 @@ exports.getSneakerRecommendations = catchAsync(async (req, res, next) => {
 
   const sneaker = await Sneaker.findById(sneakerId);
 
-  const sneakerRecommendations = await Sneaker.aggregate([
+  const sneakers = await Sneaker.aggregate([
     {
       $match: { brand: sneaker.brand, _id: { $ne: sneaker._id } },
     },
@@ -194,9 +195,9 @@ exports.getSneakerRecommendations = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    results: sneakerRecommendations.length,
+    results: sneakers.length,
     data: {
-      sneakerRecommendations,
+      sneakers,
     },
   });
 });

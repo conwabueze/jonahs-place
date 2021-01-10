@@ -11,6 +11,9 @@ router
   .get(sneakerController.sneakersReleasedIn);
 
 router.route('/sneaker-averages/:type?').get(sneakerController.sneakerAverages);
+router
+  .route('/recommendations/:sneakerId')
+  .get(sneakerController.getSneakerRecommendations);
 
 router
   .route('/:brand')
