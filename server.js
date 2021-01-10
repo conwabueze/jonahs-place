@@ -1,3 +1,4 @@
+const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
@@ -19,6 +20,10 @@ mongoose
   .then(() => {
     console.log('DB connection successful');
   });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+}
 
 const port = process.env.PORT;
 app.listen(port, () => {

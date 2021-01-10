@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const compression = require('compression');
 
 //routers
 const AppError = require('./utils/appError');
@@ -46,12 +47,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //Limit requests from same API
-// const limiter = rateLimit({
-//   max: 100,
-//   windowMs: 60 * 60 * 1000, //1 hour
-//   message: 'Too many requests from this IP, please try again in an hour!',
-// });
-// app.use('/api', limiter);
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000, //1 hour
+  message: 'Too many requests from this IP, please try again in an hour!',
+});
+app.use('/api', limiter);
 
 //Body parser,reading data from the body into req.body
 app.use(express.json({ limit: '10kb' }));
@@ -77,6 +78,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 app.use('/', viewRouter);
 

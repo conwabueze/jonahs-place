@@ -34,7 +34,7 @@ class SneakerDirectory extends Component {
 
   async componentDidMount() {
     const sneakersInfo = await axios.get(
-      `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}`
+      `/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}`
     );
 
     this.setState({
@@ -64,7 +64,7 @@ class SneakerDirectory extends Component {
       priceQuery = `&priceFrom=${this.state.startingPrice}&priceTo=${this.state.endingPrice}`;
 
       const sneakersInfo = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}${brandQuery}${sizeQuery}${priceQuery}`
+        `/api/v1/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}${brandQuery}${sizeQuery}${priceQuery}`
       );
 
       this.setState({

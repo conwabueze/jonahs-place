@@ -22,13 +22,14 @@ class Sneaker extends Component {
     this.nextImg = this.nextImg.bind(this);
   }
 
+  //http://localhost:3001
   async componentDidMount() {
     const sneakerInfo = await axios.get(
-      `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
+      `/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
     );
 
     const sneakerRecommendations = await axios.get(
-      `http://localhost:3001/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
+      `/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
     );
 
     this.setState({
@@ -43,10 +44,10 @@ class Sneaker extends Component {
   async componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.match.params.sneakerID !== this.state.sneakerID) {
       const sneakerInfo = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
+        `/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
       );
       const sneakerRecommendations = await axios.get(
-        `http://localhost:3001/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
+        `/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
       );
 
       this.setState({
