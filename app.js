@@ -31,8 +31,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 //set view engine
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views')); //give directory to our views folder
+//app.set('view engine', 'pug');
+//app.set('views', path.join(__dirname, 'views')); //give directory to our views folder
 
 //1) Global Middlewares
 //Serving static files
@@ -81,7 +81,7 @@ app.use(
 
 app.use(compression());
 
-app.use('/', viewRouter);
+//app.use('/', viewRouter);
 
 //app.use('/', viewRouter);
 app.use('/api/v1/sneakers', sneakerRouter);
