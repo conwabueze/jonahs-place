@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/styles2.css')
+        link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap')
+        script(src='https://kit.fontawesome.com/e556938a57.js' crossorigin='anonymous')
+        title Jonah's Place
+
+    body
+        include _header
+        
+        .content-container
+            .error-container.inner-content-container
+                h1.error-title-header= title
+                h2.error-message-header= msg
+        
+        include _footer
+
+
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha512-3BBFWr73Xrf8GRjO+0pl0cbVwESBvg3ovnuCXpoqOkC/mkt/hTkFtutUPrwRz8eLySYvy5v1daulkyUZYvH8jw==" crossorigin="anonymous")
+    script(src='/scripts/navScript.js')
+    script(src='/scripts/loginScript.js')

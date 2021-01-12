@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homey</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles2.css" />
+    <script
+      src="https://kit.fontawesome.com/e556938a57.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container nav">
+        <a class="logo home-link" href="logo">Jonah's Place</a>
+        <button aria-label="open-nav" class="hamburger">&#9776</button>
+       
+        <div class="shop-nav close-nav">
+          <a class="nav-item sneaker-link air-jordan" href="/sneaker/air-jordan">Air Jordans</a>
+
+          <div class="nested-shop-nav close-dropdown-nav" id="air-jordan">
+            <a class="nested-shop-nav-item" href="#">Air Jordan 1</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 2</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 3</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 4</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 5</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 6</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 7</a>
+          </div>
+
+          <a class="nav-item sneaker-link nike">Nike</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="nike">
+            <a class="nested-shop-nav-item" href="#">Air Max</a>
+            <a class="nested-shop-nav-item" href="#">Air Force 1</a>
+            <a class="nested-shop-nav-item" href="#">Blazer</a>
+            <a class="nested-shop-nav-item" href="#">Kobe Bryant</a>
+            <a class="nested-shop-nav-item" href="#">Kyrie Irving</a>
+            <a class="nested-shop-nav-item" href="#">Kevin Durant</a>
+          </div>
+
+          <a class="nav-item sneaker-link adidas">Adidas</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="adidas">
+            <a class="nested-shop-nav-item" href="#">Yeezy</a>
+            <a class="nested-shop-nav-item" href="#">Ultra boost</a>
+            <a class="nested-shop-nav-item" href="#">Superstar</a>
+          </div>
+
+          <a class="nav-item sneaker-link nb">New Balance</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="nb">
+            <a class="nested-shop-nav-item" href="#">990</a>
+            <a class="nested-shop-nav-item" href="#">574</a>
+            <a class="nested-shop-nav-item" href="#">1500</a>
+          </div>
+
+         
+        </div>
+        <div class="container sca-container close-nav">
+          <input
+            class="nav-item searchbar"
+            type="text"
+            placeholder="Search.."
+          />
+          <div class="ca-container">
+            <a class="nav-item cart-button" href="#"
+              ><i class="fas fa-shopping-cart"></i
+            ></a>
+            <a class="nav-item account-link" href="#">Account</a>
+          </div>
+        </div>
+      
+        
+     
+
+      
+    </header>
+
+    <div class="content-container">
+      <section class="home-section jordan-home">
+        <img
+          class="home-banner jordan-home-banner"
+          src="./img/jordan-home-banner.jpg"
+          alt=""
+        />
+
+        <div class="home-headers jordan-home-headers">
+          <h1 class="home-header jordan-home-header">Air Jordan</h1>
+          <a
+            class="home-header home-header-link jordan-home-header-link"
+            href="#"
+            >Shop Now</a
+          >
+        </div>
+      </section>
+
+      <div class="bottom-banners">
+        <section class="home-section nike-home">
+          <div class="home-banner-container">
+          <img
+            class="home-banner nike-home-banner"
+            src="./img/nike-home-banner.jpg"
+            alt=""
+          />
+          </div>
+
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/nike-home-banner-mobile.jpg"
+          alt=""
+        />
+          </div>
+          <div class="home-headers nike-home-headers">
+            <h1 class="home-header nike-home-header">Nike</h1>
+            <a
+              class="home-header home-header-link nike-home-header-link"
+              href="#"
+              >Shop Now</a
+            >
+          </div>
+        </section>
+
+        <section class="home-section adidas-home">
+          <div class="home-banner-container">
+          <img
+            class="home-banner adidas-home-banner"
+            src="./img/adidas-home-banner.jpg"
+            alt=""
+          />
+        </div>
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/adidas-home-banner-mobile-2.jpg"
+          alt=""
+        />
+          </div>
+          <div class="home-headers adidas-home-headers">
+            <h1 class="home-header adidas-home-header">Adidas</h1>
+            <a
+              class="home-header home-header-link adidas-home-header-link"
+              href="#"
+              >Shop Now</a
+            >
+          </div>
+        </section>
+
+        <section class="home-section nb-home">
+          <div class="home-banner-container">
+          <img
+            class="home-banner nb-home-banner"
+            src="./img/nb-home-banner-2.jpg"
+            alt=""
+          />
+        </div>
+
+          <div class="home-banner-mobile-container">
+          <img
+          class="home-banner-mobile jordan-home-banner-mobile"
+          src="./img/nb-home-banner-mobile-2.jpg"
+          alt=""
+        />
+      </div>
+          <div class="home-headers nb-home-headers">
+            <h1 class="home-header nb-home-header">New Balance</h1>
+            <a class="home-header home-header-link nb-home-header-link" href="#"
+              >Shop Now</a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <a class="logo footer-logo" href="logo">Jonah's Place</a>
+
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a class="footer-link" href="#">About us</a></li>
+          <li><a class="footer-link" href="#">Careers</a></li>
+          <li><a class="footer-link" href="#">Stores</a></li>
+          <li><a class="footer-link" href="#">Contact</a></li>
+        </ul>
+        <p>&#169; by Chino Nwabueze</p>
+      </div>
+    </footer>
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>

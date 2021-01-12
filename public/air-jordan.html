@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homey</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles2.css" />
+    <script
+      src="https://kit.fontawesome.com/e556938a57.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container nav">
+        <a class="logo home-link" href="#">Jonah's Place</a>
+        <button aria-label="open-nav" class="hamburger">&#9776</button>
+       
+        <div class="shop-nav close-nav">
+          <a class="nav-item sneaker-link air-jordan" href="/air-jordan">Air Jordans</a>
+
+          <div class="nested-shop-nav close-dropdown-nav" id="air-jordan">
+            <a class="nested-shop-nav-item" href="#">Air Jordan 1</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 2</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 3</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 4</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 5</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 6</a>
+            <a class="nested-shop-nav-item" href="#">Air Jordan 7</a>
+          </div>
+
+          <a class="nav-item sneaker-link nike">Nike</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="nike">
+            <a class="nested-shop-nav-item" href="#">Air Max</a>
+            <a class="nested-shop-nav-item" href="#">Air Force 1</a>
+            <a class="nested-shop-nav-item" href="#">Blazer</a>
+            <a class="nested-shop-nav-item" href="#">Kobe Bryant</a>
+            <a class="nested-shop-nav-item" href="#">Kyrie Irving</a>
+            <a class="nested-shop-nav-item" href="#">Kevin Durant</a>
+          </div>
+
+          <a class="nav-item sneaker-link adidas">Adidas</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="adidas">
+            <a class="nested-shop-nav-item" href="#">Yeezy</a>
+            <a class="nested-shop-nav-item" href="#">Ultra boost</a>
+            <a class="nested-shop-nav-item" href="#">Superstar</a>
+          </div>
+
+          <a class="nav-item sneaker-link nb">New Balance</a>
+          <div class="nested-shop-nav close-dropdown-nav" id="nb">
+            <a class="nested-shop-nav-item" href="#">990</a>
+            <a class="nested-shop-nav-item" href="#">574</a>
+            <a class="nested-shop-nav-item" href="#">1500</a>
+          </div>
+
+         
+        </div>
+        <div class="container sca-container close-nav">
+          <input
+            class="nav-item searchbar"
+            type="text"
+            placeholder="Search.."
+          />
+          <div class="ca-container">
+            <a class="nav-item cart-button" href="#"
+              ><i class="fas fa-shopping-cart"></i
+            ></a>
+            <a class="nav-item account-link" href="#">Account</a>
+          </div>
+        </div>
+    </header>
+
+    <div class="sneaker-directory-container content-container">
+    <div class="sneaker-filter">
+        <button class="sneaker-filter-option model-options" type="button">
+            <p class="sneaker-filter-name">Model</p>
+            <img class="dropdown-icon" src="./img/dropdown-icon.png" alt="dropdown-icon">
+        </button>
+        <div class="filter-options close-filter-options" id="model-options">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label class="sneaker-filter-label" for="vehicle1"> Air Jordan 1</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label  class="sneaker-filter-label" for="vehicle2"> Air Jordan 2</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label class="sneaker-filter-label" for="vehicle3"> Air Jordan 3</label><br>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label class="sneaker-filter-label" for="vehicle1"> Air Jordan 4</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label class="sneaker-filter-label" for="vehicle2"> Air Jordan 5</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label class="sneaker-filter-label" for="vehicle3"> Air Jordan 6</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label  class="sneaker-filter-label"for="vehicle3"> Air Jordan 7</label><br>
+        </div>
+
+        <button class="sneaker-filter-option men-size-options" type="button">
+            <p class="sneaker-filter-name">Men's Sizes</p>
+            <img class="dropdown-icon" src="./img/dropdown-icon.png" alt="dropdown-icon">
+        </button>
+        <div class="filter-options close-filter-options" id="men-size-options">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label class="sneaker-filter-label" for="vehicle1"> 1</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label  class="sneaker-filter-label" for="vehicle2"> 2</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label class="sneaker-filter-label" for="vehicle3"> 3</label><br>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label class="sneaker-filter-label" for="vehicle1"> 4</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label class="sneaker-filter-label" for="vehicle2"> 5</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label class="sneaker-filter-label" for="vehicle3"> 6</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label  class="sneaker-filter-label"for="vehicle3"> 7</label><br>
+        </div>
+
+    </div>
+
+        <div class="sneaker-grid">
+    <a class="sneaker-link-wrapper" href="#" >
+      <div class="sneaker-card">
+          <div class="sneaker-img-container">
+              <img class="sneaker-card-img" src="./img/aj1-pine-green-1.jpg" alt="aj1-pine-green-1">
+          </div>
+          <div class="sneaker-details">
+            <p class="sneaker-brand">Air Jordan</p>
+            <h2 class="sneaker-title">AIR JORDAN 1 RETRO HIGH OG 'PINE GREEN'</h2>
+            <p class="sneaker-price">$100</p>
+          </div>
+      </div>
+    </a>
+
+    <a class="sneaker-link-wrapper" href="#" >
+        <div class="sneaker-card">
+            <div class="sneaker-img-container">
+                <img class="sneaker-card-img" src="./img/aj1-pine-green-1.jpg" alt="aj1-pine-green-1">
+            </div>
+            <div class="sneaker-details">
+              <p class="sneaker-brand">Air Jordan</p>
+              <h2 class="sneaker-title">AIR JORDAN 1 RETRO HIGH OG 'PINE GREEN'</h2>
+              <p class="sneaker-price">$100</p>
+            </div>
+        </div>
+      </a>
+
+      <a class="sneaker-link-wrapper" href="#" >
+        <div class="sneaker-card">
+            <div class="sneaker-img-container">
+                <img class="sneaker-card-img" src="./img/aj1-pine-green-1.jpg" alt="aj1-pine-green-1">
+            </div>
+            <div class="sneaker-details">
+              <p class="sneaker-brand">Air Jordan</p>
+              <h2 class="sneaker-title">AIR JORDAN 1 RETRO HIGH OG 'PINE GREEN'</h2>
+              <p class="sneaker-price">$100</p>
+            </div>
+        </div>
+      </a>
+    </div>
+    </div>
+
+    <footer class="footer">
+      <a class="logo footer-logo" href="logo">Jonah's Place</a>
+
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a class="footer-link" href="#">About us</a></li>
+          <li><a class="footer-link" href="#">Careers</a></li>
+          <li><a class="footer-link" href="#">Stores</a></li>
+          <li><a class="footer-link" href="#">Contact</a></li>
+        </ul>
+        <p>&#169; by Chino Nwabueze</p>
+      </div>
+    </footer>
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>

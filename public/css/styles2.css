@@ -1,0 +1,1370 @@
+/*font-family: 'Teko', sans-serif;*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+}
+.header {
+  background: #ffffff;
+  border-bottom-style: solid;
+  border-bottom-color: #000000;
+  border-bottom-width: 0.5px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.header,
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.inner-content-container,
+.header-container,
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 1260px) {
+  .inner-content-container,
+  .header-container,
+  .footer-container {
+    width: 100%;
+    max-width: 950px;
+  }
+}
+
+/*Nav Desktop functionality*/
+.header-container {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.nav-item {
+  margin: 0 0.5em;
+}
+
+.shop-nav {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+}
+
+.nested-shop-nav {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  background-color: #ffffff;
+  border-style: solid;
+  border-width: 0.5px;
+  margin-top: 57.5px;
+  font-size: 1.2rem;
+}
+
+.nested-shop-nav-item {
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+.nested-shop-nav-item:hover {
+  color: #4f4f4f;
+  text-decoration: underline;
+}
+
+.sneaker-link {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+  padding: 11.5px;
+}
+
+.nav-item:hover,
+.logo:hover {
+  color: #4f4f4f;
+}
+
+::placeholder {
+  color: #000000;
+}
+
+.sca-container {
+  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ca-container,
+.ca-container .cart-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.ca-container .nav-item {
+  font-size: 1.3rem;
+}
+
+.ca-container .nav-item:hover {
+  cursor: pointer;
+}
+
+.cart-button .cart-button-text {
+  margin: 0 0 0 0.3em;
+  text-transform: uppercase;
+}
+
+.ca-container .v-line {
+  height: 1rem;
+  border-left: 1px solid #000000;
+}
+
+.ca-container .hide-v-line {
+  display: none;
+}
+
+.nested-account-nav {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  margin-top: 239px;
+  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  width: 100%;
+}
+
+.open-account-nav {
+  display: flex;
+}
+
+.nested-account-nav > * {
+  display: block;
+  margin: 0.3em 0;
+  font-size: 1.2rem;
+}
+
+.nested-account-nav > *:hover {
+  cursor: pointer;
+  color: #4f4f4f;
+}
+
+.nested-account-nav .account-logout {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #ffffff;
+  background-color: black;
+  border-style: none;
+  width: 80%;
+  margin-bottom: 0.5em;
+  padding: 0.4em 0;
+}
+
+.nested-account-nav .account-logout:hover {
+  background-color: #4f4f4f;
+}
+
+.close-dropdown-nav {
+  display: none;
+}
+
+.open-dropdown-nav {
+  display: grid;
+}
+
+.hamburger {
+  display: none;
+}
+
+.nested-account-nav .account-filter-exit {
+  display: none;
+}
+
+/*Nav Mobile Functionality*/
+@media (max-width: 970px) {
+  .header {
+    z-index: 1;
+    width: 100%;
+    border-bottom-style: none;
+  }
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .home-link {
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  .hamburger {
+    background: 0;
+    border: 0;
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0.4em;
+    margin-top: 2.5px;
+    padding: 2px 4px;
+  }
+
+  .shop-nav {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+    /* z-index: 1; */
+    background-color: #ffffff;
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  .sneaker-link,
+  .sca-container {
+    border-bottom-style: solid;
+    border-width: 0.5px;
+  }
+
+  .sca-container {
+    width: 100%;
+    justify-content: center;
+    text-align: initial;
+  }
+
+  .ca-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    width: 100%;
+    height: 70px;
+    background-color: #000000;
+  }
+
+  .ca-container .nav-item {
+    height: 100%;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .ca-container .cart-button {
+    grid-column: 1/2;
+    justify-content: center;
+    border-right: 0.5px solid #ffffff;
+  }
+  .ca-container .account-link {
+    grid-column: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-nav {
+    display: none;
+  }
+
+  .open-nav {
+    display: flex;
+  }
+
+  /* .nested-shop-nav {
+    position: static;
+    margin: 0;
+    border-top-style: none;
+    border-bottom-style: solid;
+  } */
+  .nested-account-nav {
+    display: flex;
+    background-color: #ffffff;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    height: 100vh;
+    transition: transform 300ms;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .nested-account-nav-mobile-open {
+    transform: translateX(-100%);
+  }
+
+  .nested-account-nav > * {
+    margin: 1.5em 0;
+    font-size: 1.9rem;
+  }
+
+  .nested-account-nav .account-filter-exit {
+    align-self: flex-end;
+    margin: 0.5em;
+    background-color: #ffffff;
+    border: none;
+    font-size: 2.7em;
+    display: block;
+  }
+
+  .nested-account-nav .account-logout {
+    font-size: 1.9rem;
+  }
+}
+
+/*Footer Desktop functionality*/
+.footer {
+  background-color: #000000;
+}
+.footer-container {
+  margin: 2em 0 0 0;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+}
+
+.footer-logo {
+  margin-left: 1rem;
+}
+
+.footer-logo,
+.footer-link {
+  color: #ffffff;
+}
+
+.footer-right {
+  margin-right: 1rem;
+}
+.footer-links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-link {
+  margin-left: 1em;
+  font-size: 1.2rem;
+}
+
+.footer-link:hover {
+  color: #4f4f4f;
+}
+.footer p {
+  margin: 0;
+  text-align: end;
+}
+
+@media (max-width: 970px) {
+  .footer-container {
+    flex-direction: column;
+    justify-content: center;
+    min-height: 25vh;
+  }
+
+  .footer-logo {
+    margin: 0;
+  }
+
+  .footer-right {
+    margin: 0;
+    text-align: center;
+    width: 250px;
+  }
+
+  .footer-right p {
+    text-align: unset;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 0.8rem 0;
+  }
+  .footer-link {
+    margin: 0;
+  }
+}
+
+/*Home Content Desktop functionality*/
+
+.home-section {
+  position: relative;
+}
+
+.home-headers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2em;
+}
+
+.home-header {
+  text-transform: uppercase;
+}
+
+.home-header-link:hover {
+  color: #4f4f4f;
+}
+
+.jordan-home-banner {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.jordan-home-headers {
+  width: auto;
+}
+
+.jordan-home-header {
+  font-size: 6.5rem;
+  margin: 0;
+}
+
+.jordan-home-header-link {
+  background-color: #000000;
+  color: #ffffff;
+  width: 5em;
+  font-size: 3rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.bottom-banners {
+  display: flex;
+  justify-content: space-around;
+}
+.bottom-banners .home-banner-container {
+  max-height: 600px;
+  max-width: 390px;
+}
+@media (max-width: 1260px) {
+  .bottom-banners .home-banner-container {
+    max-width: 300px;
+  }
+}
+.bottom-banners .home-banner {
+  width: 100%;
+  object-fit: contain;
+  opacity: 1;
+}
+
+.bottom-banners .home-headers {
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+.bottom-banners .home-header {
+  font-size: 4.5rem;
+  margin: 0;
+}
+
+.bottom-banners .home-header-link {
+  font-size: 2rem;
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0.2rem 1rem;
+}
+
+.bottom-banners .home-header-link:hover {
+  color: #4f4f4f;
+}
+
+.home-banner-mobile-container {
+  display: none;
+}
+
+@media (max-width: 970px) {
+  .logo {
+    margin-bottom: 0;
+    padding-left: 1rem;
+  }
+  .jordan-home-banner {
+    margin-bottom: 2rem;
+  }
+
+  .jordan-home-header {
+    font-size: 4rem;
+  }
+  .jordan-home-header-link {
+    font-size: 2rem;
+  }
+
+  .bottom-banners {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .bottom-banners .home-headers {
+    margin-bottom: 2.5em;
+  }
+
+  .bottom-banners .home-header {
+    font-size: 4rem;
+  }
+
+  .bottom-banners .home-header-link {
+    font-size: 2rem;
+  }
+
+  .bottom-banners .nb-home-headers {
+    margin-top: 1.5em;
+  }
+
+  .bottom-banners .home-section {
+    position: static;
+  }
+
+  .bottom-banners .home-banner {
+    display: none;
+  }
+
+  .home-banner-mobile-container {
+    display: block;
+    max-height: 300px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .home-banner-mobile-container .home-banner-mobile {
+    width: 100%;
+    display: block;
+  }
+
+  .bottom-banners .home-headers {
+    position: static;
+  }
+}
+
+/*Sneaker Directory Functionality*/
+.sneaker-directory-container {
+  display: flex;
+  margin-top: 2em;
+}
+
+.filter-toggle {
+  display: none;
+}
+
+.sneaker-filter {
+  width: 25%;
+}
+
+.sneaker-filter-option {
+  background-color: #f2f2f2;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0.5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+  padding: 1em;
+  margin-top: 1.5em;
+}
+
+.sneaker-filter-option.model-options {
+  margin: 0;
+}
+
+.sneaker-filter-option:hover {
+  background-color: #dadada;
+  cursor: pointer;
+}
+
+.sneaker-filter-name {
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+.sneaker-filter .dropdown-icon {
+  height: 1.2rem;
+}
+
+.mobile-filter-nav-container {
+  display: none;
+}
+
+.filter-options {
+  background-color: #f2f2f2;
+  border-style: none solid solid solid;
+  border-color: #000000;
+  border-width: 0.5px;
+  font-size: 1.3rem;
+  padding: 1em 0.5em;
+}
+
+.filter-options .sneaker-filter-label {
+  display: inline-block;
+  margin: 7px 4px;
+}
+
+.filter-options .sneaker-filter-label-count {
+  color: #444444;
+  font-size: 1rem;
+  padding-left: 3px;
+}
+
+.filter-options .price-error {
+  color: #ff0033;
+  font-weight: 300;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0.2em;
+}
+
+.filter-options .price-error.close-price-error {
+  display: none;
+}
+
+.filter-options .price-error.open-price-error {
+  display: block;
+}
+
+.filter-options .sneaker-filter-label {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.filter-options .price-input {
+  display: block;
+  block-size: 2.7em;
+  width: 100%;
+}
+
+.filter-options .price-input-error {
+  border-color: #ff0033;
+  border-style: solid;
+  border-width: 1.5px;
+  margin-bottom: 1em;
+}
+
+.filter-options .price-submit {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.9rem;
+  margin-top: 0.5em;
+  text-transform: uppercase;
+  border-style: none;
+}
+
+.filter-options .price-submit:hover {
+  background-color: #4f4f4f;
+  cursor: pointer;
+}
+
+.page-input {
+  display: none;
+}
+
+.close-filter-options {
+  display: none;
+}
+
+.sneaker-content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2em;
+}
+
+.sneaker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  justify-content: space-around;
+  width: 100%;
+}
+.sneaker-link-wrapper {
+  margin-bottom: 2em;
+  height: 406px;
+}
+.sneaker-card {
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.sneaker-card-img {
+  width: 100%;
+  padding: 1em 0.8em;
+}
+
+.sneaker-details {
+  padding-bottom: 2em;
+  margin-left: 0.8em;
+}
+.sneaker-details > * {
+  margin: 0;
+}
+
+.sneaker-brand {
+  font-size: 1.3rem;
+}
+
+.sneaker-title {
+  font-weight: 400;
+  font-size: 1.7rem;
+  height: 77px;
+}
+
+.sneaker-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.sneaker-brand {
+  color: #444444;
+}
+
+.sneaker-pagination {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: baseline;
+  justify-items: center;
+  width: 100%;
+}
+
+.sneaker-pagination button {
+  background-color: #ffffff;
+  border-style: none;
+  padding: 1em;
+  font-size: 1.7rem;
+}
+
+.sneaker-pagination button:hover {
+  cursor: pointer;
+}
+
+.sneaker-pagination .previous-result {
+  grid-column: 1/2;
+  justify-self: end;
+}
+
+.sneaker-pagination .forward-result {
+  grid-column: 3/4;
+  justify-self: start;
+}
+
+.sneaker-pagination .page-data {
+  font-size: 1.7rem;
+  letter-spacing: 4px;
+  grid-column: 2/3;
+}
+
+.sneaker-pagination .hide-result-button {
+  display: none;
+}
+
+@media (max-width: 970px) {
+  .sneaker-directory-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sneaker-filter {
+    background-color: #ffffff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    height: 100vh;
+    transition: transform 300ms;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .sneaker-filter-mobile-open {
+    transform: translateX(-100%);
+  }
+
+  .filter-submission {
+    height: 100%;
+    background-color: #ffffff;
+  }
+
+  .filter-toggle {
+    display: block;
+    color: #ffffff;
+    background-color: #000000;
+    border-style: none;
+    font-family: 'Teko', sans-serif;
+    font-weight: 300;
+    padding: 1em;
+  }
+
+  .filter-toggle:hover {
+    cursor: pointer;
+    background-color: #4f4f4f;
+  }
+
+  .filter-toggle p {
+    letter-spacing: 1px;
+  }
+  .mobile-filter-nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+  }
+
+  .mobile-filter-nav-container > * {
+    display: block;
+  }
+  .mobile-filter-nav-container .filter-exit {
+    background-color: #ffffff;
+    border-style: none;
+    font-size: 2.5rem;
+  }
+
+  .mobile-filter-nav-container .mobile-filter-submit {
+    background-color: #000000;
+    color: #ffffff;
+    border-style: none;
+    font-size: 1.8rem;
+    font-family: 'Teko', sans-serif;
+    font-weight: 300;
+    padding: 0.2em 0.7em;
+  }
+
+  .filter-options .close-price-submit {
+    display: none;
+  }
+
+  .sneaker-grid {
+    margin: 4em 0 0 0;
+  }
+
+  .sneaker-content-container {
+    margin: 0;
+  }
+
+  .sneaker-link-wrapper {
+    margin: 0 1em 2em 1em;
+  }
+}
+
+/*Sneaker Page Desktop*/
+.sneaker-page-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+.mobile-sneaker-details-name,
+.mobile-sneaker-details-price {
+  display: none;
+}
+
+.mobile-sneaker-details-name {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 2.5rem;
+}
+
+.mobile-sneaker-details-price {
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.display-mb-header {
+  display: block;
+}
+
+.sneaker-carousel {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  margin-right: 1em;
+}
+
+.sneaker-carousel > button {
+  background-color: #ffffff;
+  border-style: none;
+  font-size: 4em;
+  height: 100%;
+}
+
+.sneaker-carousel > button:hover {
+  cursor: pointer;
+}
+
+.sneaker-carousel .hide-carousel-img,
+.sneaker-carousel .hide-sneaker-carousel {
+  display: none;
+}
+
+.sneaker-carousel-imgs {
+  width: 615px;
+}
+
+.sneaker-carousel-img {
+  width: 100%;
+}
+
+.sneaker-details .sneaker-details-name {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 2.5rem;
+}
+
+.sneaker-details .sneaker-details-price {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.hide-dt-header {
+  display: none;
+}
+
+.sneaker-details .size-container {
+  margin-bottom: 2.5em;
+}
+
+.sneaker-details .size-select {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+/* .size-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.size-grid .size-button {
+  background-color: #ffffff;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1.5px;
+  font-size: 1rem;
+  padding: 1em 2.5em;
+}
+.size-grid .size-button:hover {
+  cursor: pointer;
+  border-color: #ffffff;
+}
+
+.hide-size-grid {
+  display: none;
+} */
+
+.size-dropdown-container {
+  display: block;
+}
+
+/* .display-size-dropdown {
+  display: block;
+} */
+
+.size-dropdown-container .size-dropdown {
+  width: 100%;
+  height: 3.2rem;
+}
+
+.size-dropdown-container .size-dropdown:after {
+  background-color: #ffffff;
+}
+
+.sneaker-details .add-to-chart {
+  background-color: #000000;
+  color: #ffffff;
+  border-style: none;
+  width: 100%;
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+.sneaker-details .add-to-chart:hover {
+  cursor: pointer;
+  background-color: #4f4f4f;
+}
+
+.sneaker-details .line-break {
+  border-top: 1px solid #978d8d;
+  margin: 3em 0;
+}
+
+.product-summary-container .product-summary-title {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.product-summary-container .product-summary {
+  font-size: 1.3rem;
+}
+
+.product-summary-container .product-summary-other {
+  font-size: 1.1rem;
+  letter-spacing: 0.4px;
+}
+
+.product-shipping-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #ffffff;
+  border-style: none;
+  padding: 0;
+}
+
+.product-shipping-button:hover {
+  cursor: pointer;
+}
+
+.product-shipping-button .product-shipping-header {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-shipping-button .shipping-dropdown-icon {
+  height: 1.5rem;
+}
+
+.shipping-details {
+  display: none;
+  margin-top: 2em;
+}
+
+.shipping-details.open-shipping-details {
+  display: block;
+}
+
+.shipping-details .shipping-details-header {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.shipping-details .shipping-details-p {
+  font-size: 1.1rem;
+}
+
+.sneaker-recommendations .sneaker-recommendations-header {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.sneaker-recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
+}
+
+.sneaker-recommendations-grid .sneaker-card {
+  width: 290px;
+}
+
+@media (max-width: 1260px) {
+  .sneaker-recommendations-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .sneaker-carousel-imgs {
+    width: 420px;
+  }
+}
+
+@media (max-width: 970px) {
+  .sneaker-page-container {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .sneaker-carousel {
+    height: auto;
+    display: block;
+  }
+
+  .sneaker-carousel-imgs {
+    width: auto;
+  }
+
+  .sneaker-carousel-state-mb {
+    display: flex;
+    height: 7px;
+  }
+
+  .sneaker-carousel-state-mb .carousel-state {
+    border: 1px solid #000000;
+    margin: 1rem 2px;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+  }
+
+  .sneaker-carousel-state-mb .curr-carousel-state {
+    background-color: #000000;
+  }
+
+  .sneaker-details {
+    margin: 0;
+  }
+
+  .sneaker-recommendations {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .sneaker-recommendations-header {
+    text-align: center;
+  }
+
+  .sneaker-recommendations-grid {
+    justify-items: center;
+  }
+}
+
+/*Login Desktop*/
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.login-container .login-header {
+  font-size: 2.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.login-container .input-error-header {
+  font-weight: 400;
+  color: #ff0033;
+}
+
+.login-container .hide-header {
+  display: none;
+}
+
+.login-form {
+  width: 65%;
+}
+
+.login-form > label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.login-form .login-input {
+  margin-bottom: 2.5em;
+  height: 3rem;
+  width: 100%;
+  border: 1px solid #000000;
+}
+
+.login-form .input-error {
+  border-style: solid;
+  border-color: #ff0033;
+}
+
+.login-form .login-submit {
+  font-family: 'Teko', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  border-style: none;
+  height: 3.7rem;
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+.login-form .login-submit:hover {
+  cursor: pointer;
+  background-color: #4f4f4f;
+}
+
+/*Error Page Desktop*/
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.error-title-header,
+.error-message-header {
+  text-transform: uppercase;
+}
+
+.error-title-header {
+  font-size: 3.5rem;
+}
+
+.error-message-header {
+  font-size: 1.8rem;
+}
+
+@media (max-width: 970px) {
+  .error-title-header {
+    font-size: 2.3rem;
+  }
+
+  .error-message-header {
+    font-size: 1.3rem;
+  }
+}
+
+/* Account Settings/My Account Settings */
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.my-account-header,
+.my-account-settings-header,
+.account-form > label {
+  text-transform: uppercase;
+}
+
+.my-account-header {
+  font-size: 6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0.5em 0 0 0;
+}
+
+.my-account-settings-header {
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.success-header,
+.error-header {
+  display: none;
+  text-transform: uppercase;
+  font-weight: 100;
+  margin-bottom: 0;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.success-header {
+  color: #4bb543;
+}
+
+.error-header {
+  color: #ff0033;
+}
+
+.show-success-header,
+.show-error-header {
+  display: block;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+  margin: 2em 0;
+}
+
+.account-form > label {
+  font-size: 1.9rem;
+  letter-spacing: 1.5px;
+}
+
+.account-form .account-input {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid #000000;
+  margin: 0.4em 0 3em 0;
+}
+
+.account-form .account-input::-webkit-input-placeholder {
+  font-family: 'Teko', sans-serif;
+}
+
+.account-form .account-submit {
+  font-family: 'Teko', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  border-style: none;
+  height: 3.5rem;
+  width: 100%;
+  margin: 0.5em 0 1em 0;
+  letter-spacing: 1.5px;
+}
+
+.account-form .account-submit:hover {
+  cursor: pointer;
+  background-color: #4f4f4f;
+}
+
+.account-form .input-error {
+  border-style: solid;
+  border-color: #ff0033;
+}
+
+.account-form .input-success {
+  border-style: solid;
+  border-color: #4bb543;
+}
+
+.account-container .line-break {
+  border-top: 1px solid #000000;
+  margin-bottom: 3em;
+  width: 65%;
+}
