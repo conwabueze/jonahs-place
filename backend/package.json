@@ -5,9 +5,6 @@
   "description": "A sneaker api and server rendered site",
   "main": "app.js",
   "scripts": {
-    "build": "cd frontend && npm run build",
-    "install-client": "cd frontend && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",

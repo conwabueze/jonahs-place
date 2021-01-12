@@ -1,4 +1,3 @@
-const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
@@ -21,13 +20,13 @@ mongoose
     console.log('DB connection successful');
   });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('frontend/build'));
+//   const path = require('path');
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+//   });
+// }
 
 const port = process.env.PORT;
 app.listen(port, () => {
