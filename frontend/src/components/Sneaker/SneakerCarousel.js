@@ -33,16 +33,18 @@ class SneakerCarousel extends Component {
     const sneakerImgs = this.props.sneakerImgs;
     if (this.props.sneakerImgs.length === 1) {
       return (
-        <img
-          className="SneakerCarousel-img"
-          src={`/imgs/${sneakerImgs[this.props.currentImgIndex]}`}
-          alt={sneakerImgs[this.props.currentImgIndex]}
-          onClick={this.props.mbMode ? this.props.nextImg : null}
-        />
+        <div className="SneakerCarousel">
+          <img
+            className="SneakerCarousel-img"
+            src={`/imgs/${sneakerImgs[this.props.currentImgIndex]}`}
+            alt={sneakerImgs[this.props.currentImgIndex]}
+            onClick={this.props.mbMode ? this.props.nextImg : null}
+          />
+        </div>
       );
     } else {
       return (
-        <div>
+        <div className="SneakerCarousel">
           <button
             className="SneakerCarousel-previous"
             onClick={this.props.previousImg}
@@ -66,7 +68,7 @@ class SneakerCarousel extends Component {
     }
   }
   render() {
-    return <div className="SneakerCarousel">{this.carouselRender()}</div>;
+    return this.carouselRender();
   }
 }
 

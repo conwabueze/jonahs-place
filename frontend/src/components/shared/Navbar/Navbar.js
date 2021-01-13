@@ -138,7 +138,7 @@ class Navbar extends Component {
             </Link>
             <div className="Navbar-cart-account-line-break"></div>
             <Link
-              to="#"
+              to="/login"
               className="Navbar-cart-account-link Navbar-account-link"
             >
               Account

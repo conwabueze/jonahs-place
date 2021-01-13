@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Footer from './components/shared/Footer/Footer';
 import SneakerDirectory from './components/SneakerDirectory/SneakerDirectory';
 import Sneaker from './components/Sneaker/Sneaker';
+import Account from './components/Account/Account';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <SneakerDirectory brandDirectory="adidas" />
         </Route>
         <Route exact path="/sneakers/:brand/:sneakerID" component={Sneaker} />
+        <Route exact path="/login" component={Account} />
       </Switch>
       <Footer />
     </div>

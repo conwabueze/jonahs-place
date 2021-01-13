@@ -5,6 +5,7 @@ import SneakerCarousel from './SneakerCarousel';
 import SneakerDetails from './SneakerDetails';
 import SneakerGrid from '../shared/SneakerGrid/SneakerGrid';
 import './Sneaker.css';
+const apiUrl = 'https://jonahsplace.herokuapp.com/api/v1';
 
 class Sneaker extends Component {
   constructor(props) {
@@ -25,11 +26,11 @@ class Sneaker extends Component {
   //http://localhost:3001
   async componentDidMount() {
     const sneakerInfo = await axios.get(
-      `/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
+      `${apiUrl}/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
     );
 
     const sneakerRecommendations = await axios.get(
-      `/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
+      `${apiUrl}/sneakers/recommendations/${this.props.match.params.sneakerID}`
     );
 
     this.setState({
@@ -44,10 +45,10 @@ class Sneaker extends Component {
   async componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.match.params.sneakerID !== this.state.sneakerID) {
       const sneakerInfo = await axios.get(
-        `/api/v1/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
+        `${apiUrl}/sneakers/${this.props.match.params.brand}/${this.props.match.params.sneakerID}`
       );
       const sneakerRecommendations = await axios.get(
-        `/api/v1/sneakers/recommendations/${this.props.match.params.sneakerID}`
+        `${apiUrl}/sneakers/recommendations/${this.props.match.params.sneakerID}`
       );
 
       this.setState({
