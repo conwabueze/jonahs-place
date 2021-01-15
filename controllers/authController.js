@@ -268,3 +268,38 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   const token = signToken(user._id);
   createSendToken(user, 200, token, res);
 });
+
+exports.checkedInForLoggedInUser = catchAsync(async (req, res, next) => {
+  // if (req.cookies.jwt) {
+  //   let token = req.cookies.jwt;
+
+  //   //1) Verify if token is an actual token
+  //   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  //   //2) Check if the user still exist
+  //   const currentUser = await User.findById(decoded.id);
+
+  //   if (!currentUser) {
+  //     return next(new AppError('this user does not exist'), 404);
+  //   }
+
+  //   //3) Check if user changed password after the token was issued
+  //   if (currentUser.changedPasswordAfter(decoded.iat)) {
+  //     return next(new AppError('please login into your profile'), 403);
+  //   }
+
+  //   //There is a logged in user
+  //   res.status(200).json({
+  //     status: 'success',
+  //     data: {
+  //       user: 'dad',
+  //     },
+  //   });
+  // }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: 'dad',
+    },
+  });
+});

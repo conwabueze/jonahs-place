@@ -4,7 +4,8 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const reviewRoutes = require('./reviewRoutes');
 
-router.use('/:sneakerId/reviews', reviewRoutes);
+//router.use('/:sneakerId/reviews', reviewRoutes);
+router.use(authController.isLoggedIn);
 
 router
   .route('/sneakers-released/:year')

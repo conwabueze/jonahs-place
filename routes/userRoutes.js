@@ -28,6 +28,8 @@ router
   .delete(userController.deleteUser)
   .patch(userController.updateOne);
 
+router.route('/currentUser').get(authController.checkedInForLoggedInUser);
+
 router.route('/').get(userController.getAllUsers);
 
 module.exports = router;

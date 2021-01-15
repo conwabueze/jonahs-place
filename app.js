@@ -22,7 +22,13 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
+//'http://127.0.0.1:3000'
 app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+
+//handle preflight phase to allow cookies, delete, put to work
+app.options('*', cors());
+
 // parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json data
@@ -39,7 +45,17 @@ app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 
 //Set security HTTP headers
-//app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", 'https:', 'http:', 'data:', 'ws:'],
+      baseUri: ["'self'"],
+      fontSrc: ["'self'", 'https:', 'http:', 'data:'],
+      scriptSrc: ["'self'", 'https:', 'http:', 'blob:'],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'http:'],
+    },
+  })
+);
 
 //Development logging
 if (process.env.NODE_ENV === 'development') {
