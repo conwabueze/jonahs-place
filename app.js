@@ -24,7 +24,7 @@ const app = express();
 
 //'http://127.0.0.1:3000'
 app.use(cors());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: true }));
 
 //handle preflight phase to allow cookies, delete, put to work
 app.options('*', cors());
