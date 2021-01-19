@@ -22,7 +22,13 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
+app.options('*', cors());
 // parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json data
@@ -40,6 +46,17 @@ app.use(cookieParser());
 
 //Set security HTTP headers
 //app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", 'https:', 'http:', 'data:', 'ws:'],
+      baseUri: ["'self'"],
+      fontSrc: ["'self'", 'https:', 'http:', 'data:'],
+      scriptSrc: ["'self'", 'https:', 'http:', 'blob:'],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'http:'],
+    },
+  })
+);
 
 //Development logging
 if (process.env.NODE_ENV === 'development') {

@@ -38,6 +38,7 @@ class SneakerDirectory extends Component {
       `${apiUrl}/sneakers/${this.props.brandDirectory}?page=${this.state.pageNumber}`
     );
 
+    console.log(sneakersInfo)
     this.setState({
       sneakers: sneakersInfo.data.data.sneakers,
       totalSneakers: sneakersInfo.data.data.totalSneakers,

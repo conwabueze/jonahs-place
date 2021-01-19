@@ -75,6 +75,24 @@ class Navbar extends Component {
       : this.setState({ mobileNavOpen: true });
   }
 
+  renderAccountLink() {
+    return this.props.user !== '' ? (
+      <Link
+        to="/account-settings"
+        className="Navbar-cart-account-link Navbar-account-link"
+      >
+        {`Hi, ${this.props.user.name.split(' ')[0]}`}
+      </Link>
+    ) : (
+      <Link
+        to="/login"
+        className="Navbar-cart-account-link Navbar-account-link"
+      >
+        Account
+      </Link>
+    );
+  }
+
   render() {
     const displayCartAccountLinks = this.state.mobileNavOpen
       ? 'cart-account-links-open-nav'
@@ -137,12 +155,7 @@ class Navbar extends Component {
               <p className="cart-text">Cart</p>
             </Link>
             <div className="Navbar-cart-account-line-break"></div>
-            <Link
-              to="/login"
-              className="Navbar-cart-account-link Navbar-account-link"
-            >
-              Account
-            </Link>
+            {this.renderAccountLink()}
           </div>
         </ContentContainer>
       </div>

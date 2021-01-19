@@ -268,3 +268,48 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   const token = signToken(user._id);
   createSendToken(user, 200, token, res);
 });
+
+//only for rendered pages, no errors
+exports.userLoggedIn = async (req, res, next) => {
+  if (req.cookies.jwt) {
+   
+      let token = req.cookies.jwt;
+
+      //1) Verify if token is an actual token
+      const decoded = await promisify(jwt.verify)(
+        token,
+        process.env.JWT_SECRET
+      );
+
+      //2) Check if the user still exist
+      const currentUser = await User.findById(decoded.id);
+
+      if (!currentUser) {
+        return next(new AppError('No user is logged in', 404));
+      }
+
+      //3) Check if user changed password after the token was issued
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next(new AppError('User needs to sign in again', 404));
+      }
+
+      //There is a logged in user
+      res.locals.user = currentUser; //give pug template access to current user
+      
+      res.status(200).json({
+        status: 'success',
+        message: 'User is logged in',
+        data:{
+          user: currentUser
+        }
+      });
+    
+  }else{
+
+
+
+    
+    return next(new AppError('User not logged in', 404))
+  }
+  
+};
