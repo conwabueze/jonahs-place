@@ -18,7 +18,23 @@ class AccountSettings extends Component {
           <form className="AccountSettings-form AccountSettings-edit-form">
             <label for="name">name</label>
             <br></br>
-            <input type="text" id="name" name="name" value={this.props.user} />
+            <input
+              className="AccountSettings-input AccountSettings-edit-input"
+              type="text"
+              id="name"
+              name="name"
+              value={this.props.user.name}
+            />
+            <br></br>
+            <label for="email">email</label>
+            <br></br>
+            <input
+              className="AccountSettings-input AccountSettings-edit-input"
+              type="email"
+              id="email"
+              name="email"
+              value={this.props.user.email}
+            />
           </form>
         </ContentContainer>
       </div>
