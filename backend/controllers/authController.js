@@ -90,6 +90,7 @@ exports.logout = (req, res) => {
 
 //this middleware function only deals with routes we need protected
 exports.protect = catchAsync(async (req, res, next) => {
+  console.log(req.cookies);
   //1) Check if there is a token in the request header. If not tell user to login
   let token;
   if (
@@ -272,44 +273,34 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 //only for rendered pages, no errors
 exports.userLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
-   
-      let token = req.cookies.jwt;
+    let token = req.cookies.jwt;
 
-      //1) Verify if token is an actual token
-      const decoded = await promisify(jwt.verify)(
-        token,
-        process.env.JWT_SECRET
-      );
+    //1) Verify if token is an actual token
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-      //2) Check if the user still exist
-      const currentUser = await User.findById(decoded.id);
+    //2) Check if the user still exist
+    const currentUser = await User.findById(decoded.id);
 
-      if (!currentUser) {
-        return next(new AppError('No user is logged in', 404));
-      }
+    if (!currentUser) {
+      return next(new AppError('No user is logged in', 404));
+    }
 
-      //3) Check if user changed password after the token was issued
-      if (currentUser.changedPasswordAfter(decoded.iat)) {
-        return next(new AppError('User needs to sign in again', 404));
-      }
+    //3) Check if user changed password after the token was issued
+    if (currentUser.changedPasswordAfter(decoded.iat)) {
+      return next(new AppError('User needs to sign in again', 404));
+    }
 
-      //There is a logged in user
-      res.locals.user = currentUser; //give pug template access to current user
-      
-      res.status(200).json({
-        status: 'success',
-        message: 'User is logged in',
-        data:{
-          user: currentUser
-        }
-      });
-    
-  }else{
+    //There is a logged in user
+    res.locals.user = currentUser; //give pug template access to current user
 
-
-
-    
-    return next(new AppError('User not logged in', 404))
+    res.status(200).json({
+      status: 'success',
+      message: 'User is logged in',
+      data: {
+        user: currentUser,
+      },
+    });
+  } else {
+    return next(new AppError('User not logged in', 404));
   }
-  
 };

@@ -16,6 +16,7 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
+  console.log(req);
   //1) Check if the client passed in any password properties
   if (req.body.password || req.body.passwordConfirm) {
     return next(
