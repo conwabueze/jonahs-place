@@ -12,6 +12,11 @@
   font-weight: 500;
 }
 
+.Login-error-header {
+  font-weight: 400;
+  color: #ff0033;
+}
+
 .Login-form {
   width: 65%;
 }
@@ -27,6 +32,11 @@
   height: 3rem;
   width: 100%;
   border: 1px solid #000000;
+}
+
+.Login-input-error {
+  border-style: solid;
+  border-color: #ff0033;
 }
 
 .Login-submit {
