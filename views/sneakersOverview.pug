@@ -1,0 +1,112 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/styles2.css')
+        link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap')
+        script(src='https://kit.fontawesome.com/e556938a57.js' crossorigin='anonymous')
+        title Jonah's Place
+
+    body.sneakers-overview-body
+        include _header
+                    
+                    
+        .content-container
+            .sneaker-directory-container.inner-content-container
+                button.filter-toggle.open-toggle(type='button')
+                    p.sneaker-filter-name Open Filters
+                
+                .sneaker-filter
+            
+                    form.filter-submission(action=`/sneakers/${brand}` method="GET" novalidate)
+                        //mobile-filter-nav
+                        .mobile-filter-nav-container
+                            button.filter-exit(type='button') &times;
+                            button.mobile-filter-submit(type='button') View Filters
+
+                        //Model filter
+                        button.sneaker-filter-option.model-options(type='button')
+                            p.sneaker-filter-name Model
+                            img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
+                        .filter-options.close-filter-options#model-options
+                            each model in models
+                                input(type="checkbox" id=`${model}` name="type" value=`${model}`)
+                                - 
+                                    if(model.includes('-')){
+                                        let x = 0;
+                                        model = model.split('-');
+                                        model.forEach(word => {
+                                            model[x++] = word.substring(0,1).toUpperCase() + word.substring(1);
+                                        });
+                                        model = model.join(' ');
+                                    }
+                                    else{
+                                        model = model.substring(0,1).toUpperCase() + model.substring(1);
+                                    }
+                                label.sneaker-filter-label(for='air-jordan-1')= model
+                                br
+                        //Size filter
+                        button.sneaker-filter-option.size-options(type='button')
+                            p.sneaker-filter-name Size
+                            img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
+                        .filter-options.close-filter-options#size-options
+                            each size in sneakerSizes
+                                input(type="checkbox" id=`${size._id}` name="size" value=`${size._id}`)
+                                label.sneaker-filter-label(for=`${size._id}`)= size._id
+                                    span.sneaker-filter-label-count= `(${size.count})`
+                                br
+                        //Price Filter        
+                        button.sneaker-filter-option.price-options(type='button')
+                            p.sneaker-filter-name Price
+                            img.dropdown-icon(src='/img/dropdown-icon.png' alt='dropdown-icon')
+                        .filter-options.close-filter-options#price-options
+                            .price-error.close-price-error Error:
+                            label.sneaker-filter-label.starting-price-label.price-label(for="starting-price") From:
+                            input.price-input( id='starting-price')
+                            br
+                            label.sneaker-filter-label.ending-price-label.price-label(for="ending-price") To:
+                            input.price-input( id='ending-price')
+
+                            button.price-submit(type="button") Submit
+
+                        
+                        
+                        input.page-input( id='page')
+                
+                .sneaker-content-container
+                    .sneaker-grid
+                        each sneaker in sneakers
+                            a.sneaker-link-wrapper(href=`/sneakers/${sneaker.brand}/${sneaker.id}`)
+                                .sneaker-card
+                                    .sneaker-img-container
+                                        img.sneaker-card-img(src=`/img/${sneaker.images[0]}` alt=`${sneaker.images[0]}`)
+                                    .sneaker-details
+                                        -
+                                            let brand = sneaker.brand
+                                            if(sneaker.brand.includes('-')){
+                                                brand = brand.split('-');
+                                                let x = 0;
+                                                brand.forEach(word => {
+                                                    brand[x++]= word.substring(0,1).toUpperCase() + word.substring(1);
+                                                });
+                                                brand = brand.join(' ');
+                                            }
+                                            else{
+                                                brand = brand.substring(0,1).toUpperCase() + brand.substring(1);
+                                            }
+                                        p.sneaker-brand= brand
+                                        h2.sneaker-title= sneaker.name
+                                        p.sneaker-price= `$${sneaker.price}`
+                    .sneaker-pagination
+                        button.previous-result &#8592
+                        p.page-data= `${pageNumber}/${Math.ceil(totalSneakers/9)}`
+                        button.forward-result &#8594
+    
+        include _footer
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha512-3BBFWr73Xrf8GRjO+0pl0cbVwESBvg3ovnuCXpoqOkC/mkt/hTkFtutUPrwRz8eLySYvy5v1daulkyUZYvH8jw==" crossorigin="anonymous")
+    script(src='/scripts/navScript.js')
+    script(src='/scripts/script.js')
+    script(src='/scripts/loginScript.js')
+
