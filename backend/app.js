@@ -28,6 +28,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.options('*', cors());
 // parse application/form data
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -4,7 +4,8 @@ import Login from './Login';
 import AccountSettings from './AccountSettings';
 import ContentContainer from '../shared/ContentContainer/ContentContainer';
 import axios from 'axios';
-//const apiUrl = 'https://jonahsplace.herokuapp.com/api/v1';
+const apiUrl = 'https://jonahsplace.herokuapp.com/api/v1';
+const apiUrl2 = 'https://arcane-badlands-30704.herokuapp.com/api/v1';
 
 //http://localhost:3001/api/v1
 class Account extends Component {
@@ -47,13 +48,15 @@ class Account extends Component {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3001/api/v1/users/login`,
+        `${apiUrl2}/users/login`,
         {
           email: this.state.loginEmailInput,
           password: this.state.loginPasswordInput,
         },
         { withCredentials: true }
       );
+
+      console.log(res);
 
       if (res.status === 200) {
         this.props.appRerender();

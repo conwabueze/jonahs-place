@@ -90,7 +90,6 @@ exports.logout = (req, res) => {
 
 //this middleware function only deals with routes we need protected
 exports.protect = catchAsync(async (req, res, next) => {
-  console.log(req.cookies);
   //1) Check if there is a token in the request header. If not tell user to login
   let token;
   if (
